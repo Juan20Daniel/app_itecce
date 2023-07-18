@@ -1,0 +1,25 @@
+.loading {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0);
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+.show-loader {
+    display: flex;
+}
+.loading-center {
+    background-color: #fff;
+    box-shadow: 0 0 0.5rem gray;
+    padding: 2rem;
+    border-radius: 0.5rem;
+}
+.Loading-span {
+    font-size: 2rem;
+    color: #313131;
+    font-weight: bold;
+}

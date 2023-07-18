@@ -1,0 +1,61 @@
+.loadexcel {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 11.3rem);
+    overflow: auto;
+}
+.showData {
+    grid-template-rows: 4rem 1fr 15rem;
+}
+.loadexcel-title,
+.upload-file h2 {
+    color: var(--blue-font);
+    font-size: 1.7rem;
+}
+.loadexcel-options {
+    padding: 3rem 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    column-gap: 5rem;
+    row-gap: 5rem;
+}
+.upload-file {
+    padding: 4rem 0 5rem 0;
+}
+.upload-file p {
+    font-size: 1.2rem;
+    min-width: 27rem;
+    max-width: 40rem;
+    margin: 0.5rem 0 1rem 0;
+}
+.btn--load-excel {
+    position: relative;
+    background-color: var(--blue-font);
+    border: none;
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+    color: var(--white);
+    font-size: 1.4rem;
+}
+.input-load-excel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+.btn--load-excel span {
+    cursor: pointer;
+}
+@media(min-width:600px) {
+    .loadexcel-title,
+    .upload-file h2 {
+        font-size: 2.5rem;
+    }
+    .upload-file p {
+        font-size: 1.4rem;
+        margin: 1rem 0 1.5rem 0;
+    }
+}

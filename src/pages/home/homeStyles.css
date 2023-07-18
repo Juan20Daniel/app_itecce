@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Inter:wght@300;600&display=swap');
+.home {
+    position: relative;
+    width: 100%;
+    min-width: 32rem;
+    height: 100vh;
+    min-height: 80rem;
+    padding: 1rem;
+}
+.content-home {
+    width: 100%;
+    height: 100%;
+    background-color: #D1E4FF;
+}
+.box-title-home {
+    position: absolute;
+    width: calc(100% - 20px);
+    display: flex;
+    justify-content: center;
+    padding-top: 4rem;
+}
+.title-home {
+    font-size: 3rem;
+    color: #fff;
+    font-family: 'Electrolize', sans-serif;
+}
+.boxImage {
+    width: 100%;
+    height: 25%;
+}
+.imgBack {
+    width: 100%;
+    height: 100%;
+    object-fit:fill;
+}
+.menu {
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 80%;
+    max-width: 1466px;
+    height: 50rem;
+    background-color: #fff;
+    padding: 0 4rem;
+    display: block;
+    border-radius: 2.7rem;
+    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.466);
+    z-index: 1;
+}
+.boxOptions {
+    width: 100%;
+    height: 30rem;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(250px, 1fr));
+    overflow-x: auto;
+}
+.officeWork {
+    position: absolute;
+    bottom: 0;
+    width: 150px;
+    height: 150px;
+}
+@media(min-width: 500px) {
+    .boxImage {
+        width: 100%;
+        height: 40%;
+    }
+    .box-title-home {
+        position: absolute;
+        padding-top: 6rem;
+    }
+    .title-home {
+        font-size: 5rem;
+    }
+    .menu {
+        top: 23%;
+    }
+}
+@media(min-width: 650px) {
+    .boxOptions {
+        margin-top: 9rem;
+    }
+}
+@media(min-width: 900px) {
+    .boxImage {
+        width: 100%;
+        height: 60%;
+    }
+    .box-title-home {
+        position: absolute;
+        padding-top: 9rem;
+    }
+    .title-home {
+        font-size: 8rem;
+    }
+    .menu {
+        top: 33%;
+    }
+}

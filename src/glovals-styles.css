@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Electrolize&family=Inter:wght@300;600&family=Roboto:wght@100;300;700&display=swap');
+:root {
+    --white: #ffffff;
+    --black: #000000;
+    --gray-low: rgb(243, 243, 243);
+    --blue-font: #1A66AC;
+    --radio-button: 0.5rem;
+    --padding-phone: 1rem;
+    --padding-tablet: 6rem;
+    --padding-laptop: 8rem;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+html {
+    font-size: 62.5%;
+}

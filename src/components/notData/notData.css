@@ -1,0 +1,14 @@
+.not-data {
+    margin: 1rem;
+    background-color: #e6e6e696;
+    grid-column: 1 / -1;
+    height: 15rem;
+    border-radius: 1.5rem;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+.not-data span {
+    font-size: 1.5rem;
+    color: gray;
+}

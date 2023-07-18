@@ -1,0 +1,135 @@
+.printFrontId,
+.printBackId {
+    width: 756px;
+    height: 1133px;
+    display: grid;
+    grid-template-columns: 325px 325px;
+    grid-template-rows: repeat(5, 205px);
+    grid-column-gap: 6mm;
+    grid-row-gap: 2.6mm;
+    padding: 9mm 4mm;
+    justify-content: center;
+}
+.frontId, .reverseId {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.img-Studen {
+    position: absolute;
+    top: 16px;
+    right: 19.5px;
+    width: 89px;
+    height: 98px;
+    z-index: 1;
+}
+.nameStudent, .isStiding, .mtc {
+    position: absolute;
+    top: 65px;
+    left: 20px;
+    font-family: sans-serif;
+    font-size: 11px;
+    z-index: 1;
+}
+.name {
+    margin-bottom: 2px;
+}
+.isStiding {
+    top: 122px;
+}
+.mtc{
+    top: 147.4px;
+    left: 90px;
+}
+.id0 {
+    grid-column: 2 / 3;
+}
+.id1 {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.id2 {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+.id3 {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+}
+.id4 {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+.id5 {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+.id6 {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+.id7 {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+}
+.id8 {
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+}
+.id9 {
+    grid-column: 1 / 2;
+    grid-row: 5 / 6;
+}
+
+.printFrontId .id4,
+.printFrontId .id5,
+.printFrontId .id6,
+.printFrontId .id7,
+.printFrontId .id8,
+.printFrontId .id9
+{
+    display: none;
+}
+.printFrontId .id0 {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+.printFrontId .id1 {
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+}
+.printFrontId .id2 {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+.printFrontId .id3 {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+}
+.expireId {
+    position: absolute;
+    top: 11.2rem;
+    right: 2.8rem;
+    font-family: serif;
+    transform: 0;
+    text-transform: uppercase;
+}
+.img {
+    width: 100%;
+    height: 100%;
+}
+.input-edit-expire-date {
+    position: absolute;
+    top: -0.3rem;
+    outline: none;
+    left: -3.5rem;
+    width: 4rem;
+    font-size: 1rem;
+    text-transform:uppercase;
+}
+.btn-show-input {
+    position: absolute;
+    top: 11rem;
+    right: -0.7rem;
+    font-size: 1rem;
+}

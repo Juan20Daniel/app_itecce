@@ -1,0 +1,34 @@
+.Id-delivered {
+    padding-top: 1rem;
+}
+.Id-delivered__title {
+    display: block;
+    font-size: 0.8rem;
+}
+.Id-delivered__box-date {
+    display: flex;
+    align-items: center;
+}
+.Id-delivered__box-date--date {
+    font-size: 1.1rem;
+    color: #555555;
+}
+.Id-delivered__box-date--btn-edit {
+    border: 0.1rem solid #555555;
+    border-radius: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    margin-left: 1rem;
+}
+.icon-edit {
+    width: 100%;
+    height: 100%;
+}
+@media(min-width: 400px) {
+    .Id-delivered__title {
+       font-size: 1rem;
+    }
+    .Id-delivered__box-date--date {
+        font-size: 1.2rem;
+    }
+}

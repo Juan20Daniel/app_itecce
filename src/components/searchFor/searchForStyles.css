@@ -1,0 +1,16 @@
+.search {
+    width: calc(100% - 2rem);
+    display: grid;
+    margin: 0 1rem 1rem 1rem;
+}
+@media(min-width: 650px) {
+    .search {
+        grid-template-columns: 20rem 1fr;
+        height: 4rem;
+    }
+}
+@media(min-width: 800px) {
+    .search {
+        grid-template-columns: 24rem 1fr;
+    }
+}

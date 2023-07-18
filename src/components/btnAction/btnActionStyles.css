@@ -1,0 +1,18 @@
+.btn-action {
+    border: none;
+    color: #fff;
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.blue {
+    background-color: #2f86d8;
+}
+.red {
+    background-color: rgb(240, 72, 72);
+}
+.white {
+    background-color: #fff;
+    color: #2f86d8;
+    border: 1px solid #2f86d8;
+}

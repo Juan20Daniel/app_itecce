@@ -1,0 +1,87 @@
+.generateIds {
+    width: 100%;
+    min-width: 83rem;
+    height: calc(100vh - 8rem);
+    padding: 2.5rem 0;
+    overflow: auto;
+}
+.page {
+    display: flex;
+    justify-content: center;
+}
+.border-page {
+    border: 0.1rem solid rgb(209, 209, 209);
+}
+.box-actions {
+    margin: 3rem auto;
+    padding: 1rem 3.5rem;
+    width: 756px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 0.3rem 0.7rem rgb(219, 219, 219);
+}
+.btn-goBack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 10rem;
+    height: 3.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.btn-goBack:hover {
+    box-shadow: 0 0 0.3rem gray;
+}
+.btn-goBack:active {
+    box-shadow: 0 0 0.3rem rgb(255, 255, 255);
+}
+.btn-goBack img {
+    width: 2.5rem;
+    height: 1.7rem;
+}
+.btn-goBack span {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #737373;
+}
+.btn-actions {
+    height: 3.5rem;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+.btn-action-print {
+    padding: 0 2rem;
+    height: 3rem;
+    border: none;
+    background-color: #DBDBDB;
+    color: #636363;
+    border-radius: 0.8rem;
+    cursor: pointer;
+}
+.btn-print {
+    background-color: #1A66AC;
+    color: #fff;
+    padding: 0 3rem;
+}
+.modal-alert__content--btns {
+    display: flex;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+.modal-alert__content--btns button {
+    padding: 0.5rem 4rem;
+    background-color: #1A66AC;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+.modal-alert__content--btns .modal-alert__not {
+    background-color: #D9D9D9;
+    color: rgb(44, 44, 44);
+}
+.modal-alert__content--btns button:active {
+    background-color: #a7a5a5;
+}

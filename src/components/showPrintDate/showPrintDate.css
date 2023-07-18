@@ -1,0 +1,21 @@
+.show-print-date__title {
+    color: #000000;
+    font-size: 0.8rem;
+    display: block;
+    padding-bottom: 0.7rem;
+}
+.show-print-date__date {
+    display: inline-block;
+    background-color: #fff;
+    padding: 0.9rem 3rem;
+    border-radius: 0.8rem;
+    border: 0.1rem solid #939393;
+}
+@media(min-width: 400px) {
+    .show-print-date__title {
+       font-size: 1rem;
+    }
+    .show-print-date__date {
+        font-size: 1.2rem;
+    }
+}

@@ -1,0 +1,132 @@
+.box-identification {
+    min-height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+.identification {
+    position: relative;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    padding: 1.5rem;
+    display: grid;
+    grid-template-columns: 11.0rem 1fr;
+    grid-template-rows: 12rem 5rem;
+    border: 0.1rem solid #ccccccab;
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+}
+.identification:hover {
+    box-shadow: 0 0.4rem 0.5rem #a5a5a5ab;
+}
+.isSelected {
+    border: 0.1rem solid #1179b4;
+}
+.identification__img {
+    padding: 1rem;
+    display: inline-block;
+    background-color: #ECECEC;
+    border-radius: 1rem;
+}
+.icon-aux { 
+    width: 9rem;
+    height: 10rem;
+    border-radius: 1rem;
+
+}
+.identification__info {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.identification__info--box {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 1rem;
+}
+.ident-label-item {
+    font-size: 1.1rem;
+    color: #636060;
+    user-select: none;
+}
+.ident-label-value {
+    color: #000;
+    font-size: 1.2rem;
+    padding-top: 0.1rem;
+}
+.school-data {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 7.2rem 1fr;
+    grid-template-rows: 1.5rem 1fr;
+}
+.matric-label {
+    align-self: flex-end;
+}
+.matric {
+    font-weight: bold;
+    grid-row: 2 / 3;
+    padding-top: 0.1rem;
+}
+.ident-box-group {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+.ident-group {
+    padding: 0.3rem 1rem;
+    display: inline-block;
+    background-color: rgb(209, 209, 209);
+    border-radius: 0.5rem;
+}
+.identification__buttons {
+    grid-column: span 2;
+    align-self: flex-end;
+    padding-top: 2rem;
+}
+.identification__button {
+    height: 2.5rem;
+    margin-right: 0.5rem;
+    padding: 0 1rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.btn-up-image {
+    background-color: #1A66AC;
+    color: #fff;
+}
+.btn-select {
+    background-color: #fff;
+    color: #1A66AC;
+    border: 0.1rem solid #1A66AC;;
+}
+.btn-menu-options {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    z-index: 1;
+    background: none;
+    border: none;
+}
+.icon-menu-options {
+    width: 0.4rem;
+    height: 2rem;
+}
+.ident-optons {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 2;
+    background-color: white;
+    border: 1px solid rgb(175, 175, 175);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
