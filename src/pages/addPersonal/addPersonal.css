@@ -1,0 +1,9 @@
+.loadexcel {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 11.3rem);
+    overflow: auto;
+}
+.showData {
+    grid-template-rows: 4rem 1fr 15rem;
+}

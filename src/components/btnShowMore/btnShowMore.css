@@ -1,0 +1,23 @@
+.box-btn-show-more {
+    grid-column: 1 / -1;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-btn-show-more .btn-show-more {
+    width: 100%;
+    max-width: 50rem;
+    margin: 0 2rem;
+    padding: 1rem 0;
+    border: 0.1rem solid var(--gray-dark);
+    background: none;
+    border-radius: 1.2rem;
+    cursor: pointer;
+}
+.box-btn-show-more .btn-show-more:hover {
+    background: var(--gray-low);
+}
+.box-btn-show-more .btn-show-more:active {
+    background: none;
+}

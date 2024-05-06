@@ -1,38 +1,44 @@
 import axios from "axios";
-const arrayLotes = (array) => {
-  var actualArray = [];
-  for(let i=0; i<=array.length - 1; i++) {
-    var arrayIndex = Math.floor(i / 200);
-    if(!actualArray[arrayIndex]) {
-      actualArray[arrayIndex] = [];
-    }
-    actualArray[arrayIndex].push(array[i]);
-  }
-  return actualArray;
-}
-export function sendArrayLotes(array) {
-  const resultArrayLotes = arrayLotes(array);
-  for(const lote of resultArrayLotes) {
-    try {
-      var data = { lote:lote }
-      const response = axios.post('http://localhost:3000/api/load-excel', data);
-      console.log(response)
-    }catch(error) {
-      console.log(error);
-    }
-  }
-}
-export const sendExcel = async (url, fileContent) => {
-  const formData = new FormData();
-  formData.append('excelFile', fileContent);
 
-  const response = await axios.post(url, formData, {
-    headers: {
-      'Content-Type': 'multipart/form-data',
-    },
-  });
-  console.log(response);
+async function send(request, params) {
+  try {
+    return await fetch(`http://localhost:3000/api/${request}`, params)
+    .then(result => {
+      if(result.status === 200) {
+        return result.json().then(res => {
+          return { message:res.message, codeError:200, exactError:null, data:res.data }
+        });
+      }
+      return result.json().then(res => {
+        return { 
+          message:res.message, 
+          codeError:result.status, 
+          exactError:res.exactError,
+          data:res.data }
+      });
+    })
+  } catch (error) {
+    console.log(error);
+    return { 
+      message:'Servidor no disponible', 
+      codeError:503,
+      exactError:'El servidor esta actualmente fuera de linea, cominicate con el creador del sistema.',
+      data:null 
+    }
+  }
 }
+
+export const sendRequestHTTP = async (file, typeList) => {
+  const formData = new FormData();
+  formData.append('excelFile', file);
+  formData.append('typeList', typeList);
+  const params = {
+    method:'POST',
+    body:formData
+  }
+  return await send('load-excel', params);
+}
+
 export const requestHTTP = (url, method, data) => {
   const params = {
     method:method,

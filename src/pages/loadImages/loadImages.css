@@ -1,0 +1,12 @@
+.lists {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.list {
+    padding: 40px;
+    background-color: red;
+}
+.los {
+    padding: 10px 40px;
+}

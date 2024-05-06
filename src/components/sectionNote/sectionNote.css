@@ -1,0 +1,13 @@
+.section-note {
+    margin: 0 auto;
+    max-width: 35rem;
+    text-align: center;
+    font-size: 1.4rem;
+    margin-top: 1rem;
+}
+@media(min-width:1400px) {
+    .section-note {
+        max-width: 45rem;
+        font-size: 1.8rem;
+    }
+}

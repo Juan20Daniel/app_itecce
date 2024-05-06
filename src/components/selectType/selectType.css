@@ -1,0 +1,15 @@
+.select-type {
+    width: 12rem;
+    height: 3rem;
+    outline: none;
+    border-radius: 1rem;
+    border-color: var(--gray);
+    cursor: pointer;
+}
+
+@media(min-width: 1400px) {
+    .select-type {
+        width: 17rem;
+        height: 3rem;
+    }
+}

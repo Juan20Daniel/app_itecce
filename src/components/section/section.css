@@ -1,0 +1,25 @@
+.section-page {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 6.4rem);
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    padding: 0 1rem;
+}
+.section-page::-webkit-scrollbar {
+    width: 0.5rem;
+}
+.section-page::-webkit-scrollbar-thumb {
+    background-color: var(--blue-font);
+}
+@media(min-width:900px) {
+    .section-page { 
+        padding: 0 4rem;
+    }
+}
+@media(min-width:1400px) {
+    .section-page {
+        padding: 0 9rem;
+    }
+}

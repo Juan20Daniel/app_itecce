@@ -1,11 +1,8 @@
-import iconLoader from '../../assets/iconLoader.png';
 import './spin.css';
-const Spin = () => {
-    return (
-        <div className='spin'>
-            <img src={iconLoader} alt="ico loader" />
-        </div>
-    );
-}
-
+import IconsSpinerSmall from '../../assets/iconSpinnerSmall.png';
+const Spin = () => (
+    <div className='box-spin'>
+        <img src={IconsSpinerSmall} alt="Spinner" />
+    </div>
+);
 export default Spin;

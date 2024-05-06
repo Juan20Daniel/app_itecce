@@ -1,12 +1,11 @@
-.spin {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin-top: 4rem;
-}
-.spin img {
-    width: 4rem;
+.box-spin {
+    width: 2rem;
+    height: 2rem;
     animation: spin 1s linear infinite;
+}
+.box-spin img {
+    width: 100%;
+    height: 100%;
 }
 @keyframes spin {
     0% {

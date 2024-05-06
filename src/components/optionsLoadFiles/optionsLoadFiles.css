@@ -1,0 +1,7 @@
+.options-load-files {
+    padding: 3rem 0.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    column-gap: 5rem;
+    row-gap: 5rem;
+}

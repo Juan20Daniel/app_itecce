@@ -1,0 +1,10 @@
+.home {
+    width: 100%;
+    min-width: 30rem;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 6.4rem 1fr;
+}
+.content {
+    position: relative;
+}

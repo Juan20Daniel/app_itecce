@@ -1,0 +1,23 @@
+.btn-config {
+    width: 17rem;
+    height: 3.4rem;
+    text-decoration: none;
+    border: 0.1rem solid var(--gray);
+    color: var(--black);
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+.btn-icon-config {
+    width: 1.7rem;
+    height: 1.7rem;
+}
+
+.btn-config-active {
+    background-color: var(--blue-font);
+    color: var(--white);
+}

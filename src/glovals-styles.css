@@ -3,11 +3,16 @@
     --white: #ffffff;
     --black: #000000;
     --gray-low: rgb(243, 243, 243);
+    --gray-active:rgb(230, 230, 230);
+    --gray:rgb(168, 168, 168);
+    --disable: #ECECEC;
+    --red: #AC3636;
+    --box-shadow:#00000021;
     --blue-font: #1A66AC;
+    --blue-active: #4078ad;
     --radio-button: 0.5rem;
-    --padding-phone: 1rem;
-    --padding-tablet: 6rem;
-    --padding-laptop: 8rem;
+    --font-weight-light: 300;
+    --font-weight-bold: 600;
 }
 * {
     margin: 0;

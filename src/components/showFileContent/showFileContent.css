@@ -1,0 +1,13 @@
+.file-content {
+    position: fixed;
+    width: 100%;
+    height: calc(100% - 6.4rem);
+    top: 6.4rem;
+    left: 0;
+    z-index: 1;
+    background: var(--white);
+    padding: var(--padding-phone) var(--padding-phone) 0 var(--padding-phone);
+    overflow: auto;
+    transform: translate(0);
+    display: block;
+}
