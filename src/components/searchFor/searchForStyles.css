@@ -4,12 +4,14 @@
     background-color: var(--white);
     border: 0.1rem solid var(--gray);
     border-radius: 1.5rem;
-    display: flex;
+    display: grid;
+    grid-template-columns: 5rem 3.1rem 1fr;
+    grid-template-rows: 4.7rem;
     align-items: center;
 }
 .search .box-icon {
-    width:6rem;
-    height: 5rem;
+    width: 5rem;
+    height: 4.7rem;
     display: flex;
 }
 .search .box-icon img {
@@ -18,45 +20,95 @@
     object-fit: contain;
     margin: auto;
 }
-.search input {
-    width: calc(100% - 10rem);
-    height: 4.4rem;
-    border: none;
-    outline: none;
-    font-size: 1.7rem;
+
+.search .box-input {
+   display: flex;
 }
-.search .btn-clear-input {
+.search .box-input .box-fullname,
+.search .box-input .input-id {
+    flex: 1;
+} 
+.search .box-input input {
+    outline: none;
+    border: none;
+    height: 4.4rem;
+    background: none;
+}
+.search .box-input .box-fullname {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0.5rem;
+}
+.search .box-input .box-fullname .btn-next {
+    width: 2rem;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 0.2rem;
+    cursor: pointer;
+    background: none;
+    outline: none;
+}
+.search .box-input .box-fullname .btn-next:active > svg {
+    display: none;
+}
+.search .box-input .box-fullname .btn-rotate {
+    transform: rotate(-180deg);
+}
+.search .box-input .box-fullname input {
+    width: 100%;
+    min-width: 10rem;
+}
+.search .box-input .box-fullname .input-name,
+.search .box-input .box-fullname .input-firstname,
+.search .box-input .box-fullname .input-lastname,
+.search .box-input .box-fullname .divider {
+    display: none;
+}
+.search .box-input .box-fullname .show {
+    display: block;
+}
+.search .box-input .btn-clear-input {
     width: 4rem;
     height: 4.4rem;
     border: none;
-    /* background: #f2f2f2; */
     margin: 0 0.2rem;
     border-radius: 1.5rem;
     cursor: pointer;
-}
-.search .btn-clear-input:active {
     background: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
 }
-.search .btn-clear-input img {
-    width: 2rem;
-    height: 2rem;
-    object-fit: contain;
+.search .box-input .btn-clear-input:active {
+    background: var(--gray-active);
 }
-@media(min-width: 800px) {
-    .search {
-        height: 6rem;
+@media(min-width: 600px) {
+    .search .box-input input,
+    .search .box-input .input::placeholder {
+        font-size: 1.6rem;
+    }  
+}
+@media(min-width: 760px) {
+    .search .box-input .box-fullname {
+        gap: 1.5rem;
     }
-    .search .box-icon {
-        width:9rem;
-        height: 6rem;
-        display: flex;
+    .search .box-input .box-fullname .btn-next {
+        display: none;
     }
-    .search input {
-        height: 5.4rem;
-        font-size: 2rem
+    .search .box-input .box-fullname .input-name,
+    .search .box-input .box-fullname .input-firstname,
+    .search .box-input .box-fullname .input-lastname {
+        display: block;
     }
-    .search .btn-clear-input {
-        width: 6rem;
-        height: 5.4rem;
+    .search .box-input .box-fullname .divider {
+        display: block;
+        width: 0.1rem;
+        height: 60%;
+        background-color: var(--gray);
     }
 }

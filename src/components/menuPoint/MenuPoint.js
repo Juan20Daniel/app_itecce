@@ -3,9 +3,27 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-const options = ['Ver','Eliminar'];
+import { styled } from '@mui/material/styles';
+// const options = ['Ver','Eliminar'];
+
+const Option = styled(MenuItem, {
+  shouldForwardProp: (prop) => prop !== 'title',
+})(({ title }) => ({
+  fontSize: 12,
+  ...(title && {
+    fontWeight: 'bold',
+    fontSize: 18,
+    cursor:'default',
+    '&.MuiMenuItem-root': {
+      '&:hover': {
+        backgroundColor:'white'
+      }
+    }
+  }),
+}));
+
 const ITEM_HEIGHT = 48;
-const MenuPoint = () => {
+const MenuPoint = ({options}) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -38,14 +56,21 @@ const MenuPoint = () => {
         PaperProps={{
           style: {
             maxHeight: ITEM_HEIGHT * 4.5,
-            width: '20ch',
+            width: '24ch',
           },
         }}
       >
         {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-            {option}
-          </MenuItem>
+          <Option 
+            key={option.value} 
+            onClick={() => {
+              option.action(option.name);
+              handleClose();
+            }}
+            title={option.title}
+          >
+            {option.value}
+          </Option>
         ))}
       </Menu>
     </div>
