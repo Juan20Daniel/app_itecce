@@ -1,18 +1,19 @@
 import { useState } from "react";
 import { select } from "../../functions";
 var count = 1;
-export const SearchFormViewModel = () => {
+export const SearchFormViewModel = (searchBy, setSearchBy, clearSearchInputs) => {
     const [ fullname, setFullname ] = useState([
         { id:1, active:true },
         { id:2, active:false },
         { id:3, active:false }
     ]);
-    const [ optionSelected, setOptionSelected ] = useState('id');
     const [ btnLeft, setBtnLeft ] = useState(false);
     const [ btnRigth, setBtnRigth ] = useState(true);
     const searchOption = (option) => {
         if(option === '') return ;
-        setOptionSelected(option)
+        setSearchBy(option);
+        if(searchBy === option) return;
+        clearSearchInputs();
     }
     const increment = () => {
         if(count === 2) setBtnRigth(false);
@@ -28,5 +29,5 @@ export const SearchFormViewModel = () => {
         setFullname(select(fullname, count));
         if(count < 3) setBtnRigth(true);
     }
-    return {optionSelected,btnLeft, btnRigth, fullname, searchOption, increment, decrement}
+    return {btnLeft, btnRigth, fullname, searchOption, increment, decrement}
 }

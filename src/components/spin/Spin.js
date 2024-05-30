@@ -1,8 +1,6 @@
+import CircularProgress from '@mui/material/CircularProgress';
 import './spin.css';
-import IconsSpinerSmall from '../../assets/iconSpinnerSmall.png';
-const Spin = () => (
-    <div className='box-spin'>
-        <img src={IconsSpinerSmall} alt="Spinner" />
-    </div>
+const Spin = ({ size=20, color='black' }) => (
+    <CircularProgress size={size} sx={{color:color}} />
 );
 export default Spin;

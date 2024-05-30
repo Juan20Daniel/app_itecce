@@ -1,0 +1,12 @@
+.interseptor {
+    height: 1rem;
+}
+.box-loader {
+    grid-column: 1 / -1;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 2rem;
+}

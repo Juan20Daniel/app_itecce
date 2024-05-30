@@ -1,6 +1,4 @@
 .box-spin {
-    width: 2rem;
-    height: 2rem;
     animation: spin 1s linear infinite;
 }
 .box-spin img {

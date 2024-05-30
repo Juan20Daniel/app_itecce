@@ -61,6 +61,10 @@
 .search .box-input .box-fullname input {
     width: 100%;
     min-width: 10rem;
+    text-transform: uppercase;
+}
+.search .box-input .box-fullname input::placeholder {
+    text-transform: capitalize;
 }
 .search .box-input .box-fullname .input-name,
 .search .box-input .box-fullname .input-firstname,
