@@ -49,7 +49,7 @@ export const useGetPersonsDB = (section) => {
         }
     },[elementRef, section, data, dispatch]);
     
-    return {elementRef, data, isLoading}
+    return {elementRef, data, hasMore, isLoading}
 }
 
 

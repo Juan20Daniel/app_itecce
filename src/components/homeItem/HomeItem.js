@@ -1,13 +1,7 @@
 import './homeItem.css';
 import MenuPoint from '../menuPoint/MenuPoint';
 
-const sections = {
-    students:'Alumno',
-    teachers:'Profesor',
-    collaborators:'Colaborador'
-}
-
-const HomeItem = ({ item, selectSection }) => {
+const HomeItem = ({ item, section }) => {
     const { idPerson, name, firstname, lastname, avatar } = item;
     const action = () => {
         console.log("action")
@@ -27,7 +21,7 @@ const HomeItem = ({ item, selectSection }) => {
                     </div>
                 </div>
                 <div className="type">
-                    <span>{sections[selectSection]}</span>
+                    <span>{section}</span>
                 </div>
             </div>
             <div className="info">
