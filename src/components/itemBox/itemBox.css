@@ -1,4 +1,5 @@
 .home-item {
+    min-width: 14.5rem;
     height: 25rem;
     background-color: var(--white);
 }
@@ -23,7 +24,7 @@
     justify-content: center;
     align-items: flex-end;
 }
-.home-item .card .avatar {
+.home-item .card .box-avatar .avatar {
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
@@ -31,7 +32,16 @@
     align-items: center;
     justify-content: center;
 }
-.home-item .card .avatar span {
+.home-item .card .box-avatar .box-img {
+    width: 8rem;
+    height: 8rem;
+}
+.home-item .card .box-avatar .box-img .img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.home-item .card .box-avatar .avatar span {
     font-size: 3rem;
     font-weight: var(--font-weight-bold);
     color: var(--white);

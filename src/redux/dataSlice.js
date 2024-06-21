@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 const credencialesSlice = createSlice({
     name:'credenciales',
-    initialState:{
+    initialState: {
         user:false,
         centralAlert:{visible:false, title:'', message:'', type:''},
-        modalShowFile: false
+        modalShowFile: false,
+        images:[]
     },
     reducers: {
         setModalShowFile:(state, action) => {
@@ -15,14 +16,22 @@ const credencialesSlice = createSlice({
         },
         saveUser:(state, action) => {
             state.user = action.payload;
+        },
+        setImages: (state, action) => {
+            state.images.push(action.payload)
+        },
+        setRemoveImg: (state, action) => {
+            state.images = action.payload;
         }
     }
-})
+});
 
 export const {
     setModalShowFile,
     setCentralAlert,
     saveUser,
+    setImages,
+    setRemoveImg
 } = credencialesSlice.actions;
 
 export default credencialesSlice.reducer;

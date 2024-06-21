@@ -1,7 +1,7 @@
 import Spin from '../spin/Spin';
-import './interseptor.css';
+import './columnsInterseptor.css';
 
-const Interseptor = ({elementRef, isLoading}) => (
+const ColumnsInterseptor = ({elementRef, isLoading}) => (
     <>
         <div className="interseptor" ref={elementRef} />
         {isLoading &&<div className="box-loader">
@@ -10,4 +10,4 @@ const Interseptor = ({elementRef, isLoading}) => (
     </>
 );
 
-export default Interseptor;
+export default ColumnsInterseptor;

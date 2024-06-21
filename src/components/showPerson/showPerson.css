@@ -1,0 +1,27 @@
+.show-person {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    min-width: 320px;
+    height: 100%;
+    background-color: #ffffff;
+    z-index: 1;
+    padding-top: 6.4rem;
+    overflow: auto;
+}
+.show-person::-webkit-scrollbar {
+    display: none;
+}
+
+@media(min-width: 600px) {
+    .show-person {
+        display: grid;
+        grid-template-columns: minmax(30rem, 40rem) 1fr;
+    }
+}
+@media(min-width: 900px) {
+    .show-person {
+        grid-template-columns: minmax(40rem, 50rem) 1fr;
+    }
+}

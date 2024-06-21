@@ -1,0 +1,35 @@
+.show-person .box-person-info {
+    padding: 2.3rem 1rem;
+}
+.show-person .box-person-info .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 2rem 0 3rem;
+    display: block;
+}
+@media(min-width: 400px) {
+    .box-person-info .title {
+        font-size: 2.4rem;
+    }
+}
+@media(min-width: 600px) {
+    .show-person .box-person-info {
+        grid-column: 2 / 3;
+    }
+}
+@media(min-width: 900px) {
+    .show-person .box-person-info {
+        padding: 2.3rem 4rem 2.3rem 2.3rem;
+    }
+    .show-person .box-person-info .title {
+        font-size: 3rem;
+    }
+}
+@media(min-width: 1400px) {
+    .show-person .box-person-info {
+        padding: 2.3rem 9rem 2.3rem 2.3rem;
+    }
+    .show-person .box-person-info .title {
+        font-size: 3.5rem;
+    }
+}
