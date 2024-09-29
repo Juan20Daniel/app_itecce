@@ -1,14 +1,11 @@
-import { NavLink } from 'react-router-dom';
-import { IconConfig } from '../../assets/IconConfig';
+import { IconCount } from '../../assets/IconCount';
 import './btnConfig.css';
-const BtnConfig = () => (
-    <NavLink to="/config" className={({isActive}) => isActive ? "btn-config btn-config-active" : "btn-config"}>
-        {({isActive}) => (
-            <>
-                <span>Configuración</span>
-                <IconConfig size={15} color={isActive ? "#ffffff" : "rgb(168, 168, 168)"} /> 
-            </>
-        )}
-    </NavLink>
-);
+const BtnConfig = ({ showCount, setShowCount }) => {
+    return (
+        <button className="btn-config" type='button' onClick={() => setShowCount(!showCount)}>
+            <span>Cuenta</span>
+            <IconCount size={24} />
+        </button>
+    );
+}
 export default BtnConfig;

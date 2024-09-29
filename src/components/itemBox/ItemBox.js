@@ -1,44 +1,84 @@
-import { useState, useLayoutEffect } from 'react';
-import { useSelector } from 'react-redux';
-import './itemBox.css';
+import { useState, useLayoutEffect, useContext } from 'react';
+import { useGetPersonImg } from '../../hooks/useGetPersonImg';
 import MenuPoint from '../menuPoint/MenuPoint';
-
-const ItemBox = ({ item, section, setPersonInfo, setShowPerson }) => {
-    const [ personImage, setPersonImage ] = useState('');
-    const { idPerson, name, firstname, lastname, avatar } = item;
-    const { images } = useSelector(state => state.credenciales);
+import GenerateIdContext from '../../context/generateId/GenerateIdContext';
+import ModalShowPersonContext from '../../context/modalShowPerson/ModalShowPersonContext';
+import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
+import './itemBox.css';
+const typesPerson = {
+    STUDENT:'Alumno',
+    TEACHER:'Profesor',
+    COLLABORATOR:'Colaborador'
+}
+const ItemBox = ({ item, remove }) => {
+    const [ isSelected, setIsSelected ] = useState(false);
+    const { setShowPerson, setPersonInfo } = useContext(ModalShowPersonContext);
+    const { openCentralAlert } = useContext(CentralAlertContext);
+    const { generateIdState, addSelectedPerson, removeSelectedPerson } = useContext(GenerateIdContext);
+    const { selectedPersons } = generateIdState;
+    const { idPerson, name, firstname, lastname, typePerson, avatar } = item;
+    const { image } = useGetPersonImg(idPerson);
     useLayoutEffect(() => {
-        const getImage = images.find(item => item.idPerson === idPerson);
-        setPersonImage(getImage ? getImage.personImage : avatar);
-    },[idPerson, images, avatar]);
+        const getSelectedPerson = selectedPersons.find(item => item.idPerson === idPerson);
+        setIsSelected(getSelectedPerson ? true : false);
+    },[idPerson, selectedPersons]);
     const action = () => {
         setPersonInfo(item);
         setShowPerson(true);
     }
+    const select = () => {
+        if(selectedPersons.length === 10 && !isSelected) {
+            return openCentralAlert( 
+                'Limite alcanzado',
+                `No se pueden seleccionar más, ya que se alcanzó el límite de 10 personas.`, 
+                'error'
+            );
+        }
+        if(!isSelected) addSelectedPerson(item);
+        if(isSelected) {
+            const result = selectedPersons.filter(item => item.idPerson !== idPerson);
+            removeSelectedPerson(result);
+        }
+        setIsSelected(!isSelected);
+    }
+    const confirmDeletion = () => {
+        openCentralAlert( 
+            'Eliminar',
+            `¿Seguro que quieres eliminar este ${typesPerson[typePerson]}?`, 
+            'confirm',
+            () => remove(idPerson)
+        );
+    }
     return (
-        <div className='home-item'>
-            <div className='card'>
+        <div className='item-box'>
+            <div className={`card ${isSelected && 'selected'}`}>
                 <div className="menu">
-                    <MenuPoint options={[
-                        {name:'see', value:'Ver', title:false, action:action},
-                        {name:'select', value:'Seleccionar', title:false, action:action},
-                        {name:'delete', value:'Eliminar', title:false, action:action}]}
+                    <MenuPoint
+                        options={
+                            [{name:'see', value:'Ver', title:false, action:action},
+                            {name:'delete', value:'Eliminar', title:false, action:confirmDeletion}]
+                        }
                     />
                 </div>
                 <div className="box-avatar">
-                    {personImage.length === 7 ?
+                    {!image ?
                         <div className="avatar" style={{background:avatar}}>
-                            <span>E</span>
+                            <span>{name.replace(/\s/g,'')[0]}</span>
                         </div>
                         :
                         <figure className='box-img'>
-                            <img src={personImage} alt='Img para credencial' className='img' />
+                            <img src={image} alt='Img para credencial' className='img' />
                         </figure>
                     }
                 </div>
                 <div className="type">
-                    <span>{section}</span>
+                    <span>{typesPerson[typePerson]}</span>
                 </div>
+                {image &&
+                    <button className='btn-select' onClick={() => select()}>
+                        {isSelected ? 'Deseleccionar' : 'Seleccionar'}
+                    </button>
+                }
             </div>
             <div className="info">
                 <p>{name} {firstname} {lastname}</p>

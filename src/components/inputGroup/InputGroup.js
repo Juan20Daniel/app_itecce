@@ -1,8 +1,10 @@
-import './inputGroup.css';
+import { useState } from 'react';
+import { useInfoNavigator } from '../../hooks/useInfoNavigator';
 import IconsSvg from '../../assets/IconsSvg';
-import { InputGroupViewModel } from './InputGroupViewModel';
+import './inputGroup.css';
 const InputGroup = ({ placeholder, camp, type, setValue, children }) => {
-    const { isEdge, showPass,  setShowPass  } = InputGroupViewModel();
+    const [ showPass, setShowPass ] = useState(false);
+    const { isEdge } = useInfoNavigator();
     return (
         <div className={`input-group ${(camp.name === 'password' && !isEdge) && 'pass'} ${camp.state === 'error' && 'input-err'}`}>
             {children}

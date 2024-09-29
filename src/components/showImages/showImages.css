@@ -1,0 +1,8 @@
+.show-images {
+    width: 100%;
+    padding-bottom: 16rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}

@@ -1,21 +1,32 @@
-import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import { getUser } from "../../helpers/helpers";
+import { useDispatch } from "react-redux";
+import { saveUser } from "../../redux/dataSlice";
+import ModalShowPersonProvider from "../../context/modalShowPerson/ModalShowPersonProvider";
 import Header from "../../components/header/Header";
 import './home.css';
-import HomeViewModel from "./HomeViewModel";
 
 const Home = () => {
-    const { verifyUser } = HomeViewModel();
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     useEffect(() => {
+        const verifyUser = () => {
+            const user = getUser();
+            if(!user) return navigate('/login',{replace:true});
+            dispatch(saveUser(user));
+        }   
         verifyUser();
-    },[verifyUser]);
+    },[navigate, dispatch]);
     return (
-        <div className="home">
-            <Header /> 
-            <div className="content">
-                <Outlet />
+        <ModalShowPersonProvider>
+            <div className="home">
+                <Header /> 
+                <div className="content">
+                    <Outlet />
+                </div>
             </div>
-        </div>
+        </ModalShowPersonProvider>
     );
 }
 export default Home;

@@ -1,10 +1,11 @@
-import { memo } from 'react';
-import './searchForStyles.css';
+import { useState } from "react";
+import { select } from "../../functions";
+import { IconX } from '../../assets/iconX.js';
+import { IconNext } from '../../assets/IconNext.js';
 import iconSearch from '../../assets/iconSearch.png';
 import MenuPoint from '../menuPoint/MenuPoint';
-import { SearchFormViewModel } from './searchForViewModel';
-import {IconX} from '../../assets/iconX.js';
-import { IconNext } from '../../assets/IconNext.js';
+import './searchForStyles.css';
+var count = 1;
 const SearchFor = ({
     idToSearch,
     nameToSearch,
@@ -20,19 +21,46 @@ const SearchFor = ({
     clearSearchInputs,
     children
 }) => {
-    const { btnLeft, btnRigth, fullname, searchOption, increment, decrement} = SearchFormViewModel(searchBy, setSearchBy, clearSearchInputs);
-
+    const [ fullname, setFullname ] = useState([
+        { id:1, active:true },
+        { id:2, active:false },
+        { id:3, active:false }
+    ]);
+    const [ btnLeft, setBtnLeft ] = useState(false);
+    const [ btnRigth, setBtnRigth ] = useState(true);
+    const searchOption = (option) => {
+        if(option === '') return ;
+        setSearchBy(option);
+        if(searchBy === option) return;
+        clearSearchInputs();
+    }
+    const increment = () => {
+        if(count === 2) setBtnRigth(false);
+        if(count === 3) return;
+        count++;
+        setFullname(select(fullname, count));
+        if(count > 1) setBtnLeft(true);
+    }
+    const decrement = () => {
+        if(count === 2) setBtnLeft(false);
+        if(count === 1) return; 
+        count--;
+        setFullname(select(fullname, count));
+        if(count < 3) setBtnRigth(true);
+    }
     return (
         <div className='search'>
             <div className={`content ${isSearching && 'is-searching'}`}>
                 <div className='box-icon'>
                     <img src={iconSearch} alt="Icono de busqueda" />
                 </div>
-                <MenuPoint options={[
-                    {name:'', value:'Buscar por', title:true, action:searchOption},
-                    {name:'search-by-id', value:'Matrícula', title:false, action:searchOption},
-                    {name:'search-by-name', value:'Nombre completo', title:false, action:searchOption}
-                ]} />
+                <div className='box-menu-point'>
+                    <MenuPoint options={[
+                        {name:'', value:'Buscar por', title:true, action:searchOption},
+                        {name:'search-by-id', value:'Matrícula', title:false, action:searchOption},
+                        {name:'search-by-name', value:'Nombre completo', title:false, action:searchOption}
+                    ]} />
+                </div>
                 <div className='box-input'>
                     {searchBy === 'search-by-id' ?
                         <input 
@@ -75,13 +103,13 @@ const SearchFor = ({
                             </button>
                         </div>
                     }
-                    <div className='box-btn-clear-input'>
-                        {isSearching && 
+                    {isSearching &&
+                        <div className='box-btn-clear-input'>
                             <button onClick={() => clearSearchInputs()} className='btn-clear-input' title='Limpiar'>
                                 <IconX size={16} />
                             </button>
-                        }
-                    </div>
+                        </div>
+                    }
                 </div>
            </div>
             {isSearching && 
@@ -93,4 +121,4 @@ const SearchFor = ({
       
     );
 }
-export default memo(SearchFor);
+export default SearchFor;

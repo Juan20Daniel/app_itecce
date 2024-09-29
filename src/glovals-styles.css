@@ -6,10 +6,15 @@
     --gray-active:rgb(230, 230, 230);
     --gray:rgb(168, 168, 168);
     --disable: #ECECEC;
-    --red: #AC3636;
+    --green: #075300;
+    --green-active: #3e8838;
+    --red: #8f0505;
+    --red-active: #b66e6e;
     --box-shadow:#00000021;
     --blue-font: #1A66AC;
     --blue-active: #4078ad;
+    --yellow: #887A00;
+    --yellow-active: #9c9445;
     --radio-button: 0.5rem;
     --font-weight-light: 300;
     --font-weight-bold: 600;

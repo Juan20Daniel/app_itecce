@@ -6,11 +6,8 @@
     height: 100%;
     padding: 1rem;
     background-color: rgba(0, 0, 0, 0.171);
-    display: none;
-    z-index: 2;
-}
-.show-central-alert {
     display: flex;
+    z-index: 3;
 }
 .central-alert .box-content {
     width: 100%;
@@ -39,15 +36,35 @@
     max-width: 35rem;
     text-align: center;
 }
+.central-alert .box-content .box-btns-confirm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+.central-alert .box-content .box-btns-confirm .btn-not,
+.central-alert .box-content .box-btns-confirm .btn-yes {
+    width: 10rem;
+    height: 3rem;
+}
+.central-alert .box-content .box-btns-confirm .btn-not {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
 .central-alert .box-content .btn-ok {
+    margin-top: 3rem;
     width: 15rem;
     height: 4rem;
-    margin-top: 3rem;
 }
 @media(min-width: 600px) {
     .central-alert .box-content {
         max-width: 55rem;
         padding: 4rem;
+    }
+    .central-alert .box-content .box-btns-confirm .btn-not,
+    .central-alert .box-content .box-btns-confirm .btn-yes {
+        width: 13rem;
+        height: 3.5rem;
     }
 }
 
@@ -66,5 +83,12 @@
     }
     .central-alert .box-content .btn-ok {
         width: 20rem;
+    }
+}
+@media(min-width: 1200px) {
+    .central-alert .box-content .box-btns-confirm .btn-not,
+    .central-alert .box-content .box-btns-confirm .btn-yes {
+        width: 15rem;
+        height: 4rem;
     }
 }

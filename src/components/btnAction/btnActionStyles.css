@@ -10,10 +10,35 @@
     cursor: pointer;
 }
 .blue {
-    background-color: #2f86d8;
+    background-color: var(--blue-font);
+}
+.blue:active {
+    background-color: var(--blue-active);
 }
 .error {
     background-color: var(--red);
+}
+.error:active {
+    background-color: var(--red-active);
+}
+.confirm {
+    background-color: var(--yellow);
+}
+.confirm:active {
+    background-color: var(--yellow-active);
+}
+.success {
+    background-color: var(--blue-font);
+}
+.success:active {
+    background-color: var(--blue-active);
+}
+.gray {
+    background-color: var(--gray-low);
+    color: var(--black);
+}
+.gray:active {
+    background-color: var(--gray-active);
 }
 .white {
     background-color: #fff;

@@ -108,6 +108,13 @@ export const downloadExcel = (section, data, nameFile) => {
     XLSX.utils.book_append_sheet(wb, workbook['Sheet1'], 'Sheet1');
     XLSX.writeFile(wb, nameFile+'.xlsx');
 }
+
+export const donwload = (data, nameFile) => {
+    let workbook = {'Sheet1':XLSX.utils.aoa_to_sheet(data)};
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, workbook['Sheet1'], 'Sheet1');
+    XLSX.writeFile(wb, nameFile+'.xlsx');
+}
 //123Tamarindo-
 
 

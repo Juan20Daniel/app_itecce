@@ -1,0 +1,54 @@
+.show-selected-persons .header {
+    display: grid;
+    align-content: center;
+    margin: 0 4.5rem;
+}
+.show-selected-persons .header .box-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.show-selected-persons .header .box-title .title {
+    font-size: 2rem;
+    line-height: 4rem;
+}
+.show-selected-persons .header .box-title .btn-close {
+    width: 3.7rem;
+    height: 3.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+.show-selected-persons .header .box-title .btn-close:hover {
+    background: var(--gray-active);
+}
+.show-selected-persons .header .box-title .btn-close:active {
+    background: none;
+}
+.show-selected-persons .header .text {
+    font-size: 1.5rem;
+    max-width: 32rem;
+    margin-right: 3.7rem;
+}
+.show-selected-persons .header .box-btns {
+    display: flex;
+    gap: 1rem;
+}
+
+@media(min-width: 600px) {
+    .show-selected-persons .header {
+        gap: 1rem;
+    }
+    .show-selected-persons .header .box-title .title {
+        font-size: 3.5rem;
+    }
+    .show-selected-persons .header .text {
+        font-size: 2rem;
+        max-width: 42rem;
+        margin-right: 3.7rem;
+    }
+}

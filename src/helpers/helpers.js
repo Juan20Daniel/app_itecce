@@ -24,3 +24,17 @@ export const validateImg = (e, result) => {
         result(false, reader.result);
     }
 }
+const addZero = (num) => {
+    return num <= 9 ? `0${num}` : `${num}`;
+}
+export const getDate = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    return {year, month:addZero(month), day:addZero(day)}
+}
+export const reverseText = (text) => {
+    const result = text.split('-').reverse().join();
+    return result;
+}

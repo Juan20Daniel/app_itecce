@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import './nameExcel.css';
 import { IconFile } from '../../assets/IconFile'
 import { recordText } from '../../functions';
+import './nameExcel.css';
 const NameExcel = ({totalItems, nameExcel}) => {
   const [anchoPantalla, setAnchoPantalla] = useState(window.innerWidth);
   const actualizarAnchoPantalla = () => setAnchoPantalla(window.innerWidth);

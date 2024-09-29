@@ -4,7 +4,6 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { styled } from '@mui/material/styles';
-// const options = ['Ver','Eliminar'];
 
 const Option = styled(MenuItem, {
   shouldForwardProp: (prop) => prop !== 'title',

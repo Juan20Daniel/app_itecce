@@ -1,13 +1,18 @@
 import { useEffect } from 'react';
+import { getUser } from "../../helpers/helpers";
+import { useNavigate } from "react-router-dom";
 import './login.css';
 import Intro from '../../components/intro/Intro';
 import FormLogin from '../../components/formLogin/FormLogin';
-import { LoginViewModel } from './LoginViewModel';
 const Login = () => {
-    const { verifyUser } = LoginViewModel();
+    const navigate = useNavigate();
     useEffect(() => {
+        const verifyUser = () => {
+            const user = getUser();
+            if(user) navigate('/', {replace:true});
+        }
         verifyUser();
-    },[verifyUser]);
+    },[navigate]);
     return (
         <section className="login">
             <div className="box-login">

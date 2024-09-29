@@ -1,0 +1,25 @@
+.count {
+    position: absolute;
+    top: 8rem;
+    right: 0;
+    width: calc(100% - 2rem);
+    max-width: 50rem;
+    height: 100vh;
+    max-height: 70rem;
+    background-color: var(--white);
+    box-shadow: 0 0 0.7rem rgba(0, 0, 0, 0.123);
+    margin: 0 1rem;
+    border-radius: 3rem;
+}
+@media(min-width:900px) {
+    .count {
+        width: 100%;
+        right: 4rem;
+        margin: 0rem;
+    }
+}
+@media(min-width:1400px) {
+    .count {
+        right: 9rem;
+    }
+}

@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
-import AddPersonalContext from "./AddPersonalContext";
+import { useState, useContext } from "react";
 import { verifyCamps, transformExcel, addTempAvatar } from '../../functions';
-import { useDispatch } from "react-redux";
-import { setCentralAlert, setModalShowFile } from "../../redux/dataSlice";
+import AddPersonalContext from "./AddPersonalContext";
+import CentralAlertContext from "../centralAlert/CentralAlertContext";
 const validExtentionFile = /^.+[.xls XLS xlsx XLSX]{3,4}$/;
 const AddPersonalProvider = ({ children }) => {
     const [ nameExcel, setNameExcel ] = useState('');
@@ -14,22 +13,14 @@ const AddPersonalProvider = ({ children }) => {
         { id:2, active:false, value:"teachers", name:"Profesores" },
         { id:3, active:false, value:"collaborators", name:"Colaboradores" }
     ]);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        if(fileContent.length !== 0) dispatch(setModalShowFile(true));
-    },[fileContent, dispatch]);
+    const {openCentralAlert} = useContext(CentralAlertContext);
     const handleFile = async e => {
         const file = e.target.files[0];
         setNameExcel(file.name);
         setInputValue(e.target.value);
         setFileToLoad(file);
         if(!validExtentionFile.test(file.name)) {
-            return dispatch(setCentralAlert({
-                visible:true,
-                title: 'Error al cargar el archivo',
-                message:'El archivo cargado, no es el correcto.',
-                type:'error'
-            }));
+            return openCentralAlert('Error al cargar el archivo','El archivo cargado, no es el correcto.','error');
         }
         const reader = new FileReader();
         reader.readAsArrayBuffer(file);
@@ -39,21 +30,19 @@ const AddPersonalProvider = ({ children }) => {
         const data = transformExcel(excel);
         const listSelected = options.find(option => option.active);
         if(data.length === 0) {
-            return dispatch(setCentralAlert({
-                visible:true,
-                title: 'Error al cargar el archivo',
-                message:`No hay registros en el archivo de (${listSelected.name}) que se está intentando cargar.`,
-                type:'error'
-            }));
+            return openCentralAlert(
+                'Error al cargar el archivo',
+                `No hay registros en el archivo de (${listSelected.name}) que se está intentando cargar.`,
+                'error'
+            );
         }
         const requiredFields = verifyCamps(data, listSelected.value);
         if(requiredFields) {
-            return dispatch(setCentralAlert({
-                visible:true,
-                title: 'Error al cargar el archivo',
-                message:`Faltan campos en el archivo de (${listSelected.name}) que intenta cargar: `+requiredFields+".",
-                type:'error'
-            }));
+            return openCentralAlert(
+                'Error al cargar el archivo',
+                `Faltan campos en el archivo de (${listSelected.name}) que intenta cargar: `+requiredFields+".",
+                'error'
+            );
         }
         setFileContent(addTempAvatar(data));
     }
@@ -63,6 +52,7 @@ const AddPersonalProvider = ({ children }) => {
         inputValue,
         fileContent,
         fileToLoad,
+        setFileContent,
         setInputValue,
         setOptions, 
         handleFile

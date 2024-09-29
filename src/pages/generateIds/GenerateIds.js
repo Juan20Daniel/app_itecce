@@ -1,69 +1,86 @@
+import { useState, useEffect, useRef, useContext } from "react";
+import { usePersonsDB } from "../../hooks/usePersonsDB";
+import { useSearchPersons } from "../../hooks/useSearchPersons";
+import { Link } from "react-router-dom";
+import { IconGo } from "../../assets/IconGo";
+import axiosInstance from "../../data/remote/axios.instance";
 import TitleSection from "../../components/titleSection/TitleSection";
 import SearchFor from "../../components/searchFor/SearchFor";
 import Section from "../../components/section/Section";
 import SelectSection from "../../components/selectSection/SelectSection";
-import Actions from "../../components/actions/Actions";
+import ActionButtonsGroup from "../../components/actions/ActionButtonsGroup";
 import ItemBox from "../../components/itemBox/ItemBox";
 import SectionNote from "../../components/sectionNote/SectionNote";
 import ColumnsInterseptor from "../../components/columnsInterseptor/ColumnsInterseptor";
 import ShowPerson from '../../components/showPerson/ShowPerson';
 import NotData from "../../components/notData/NotData";
 import Spin from "../../components/spin/Spin";
-import { Link } from "react-router-dom";
-import { IconGo } from "../../assets/IconGo";
-import { GenerateIdsViewModel } from './GenerateIdsViewModel';
-import { IconPoint } from "../../assets/IconPoint";
+import ShowSelectedPersons from "../../components/showSelectedPersons/ShowSelectedPersons";
+import GenerateIdContext from "../../context/generateId/GenerateIdContext";
+import ModalShowPersonContext from "../../context/modalShowPerson/ModalShowPersonContext";
+import FormaAddPerson from "../../components/formAddPerson/FormAddPerson";
+import BoxSticky from "../../components/boxSticky/BoxSticky";
+import BoxOptions from "../../components/boxOptions/BoxOptions";
 import './generateIds.css';
-const sections = {
-    students:{
-        one:'alumno',
-        all:'alumnos'
-    },
-    teachers:{
-        one:'profesor',
-        all:'profesores',
-    },
-    collaborators:{
-        one:'colaborador',
-        all:'colaboradores'
-    }
+const typeSections = {
+    students:'alumnos',
+    teachers:'profesores',
+    collaborators:'colaboradores'
 }
 const Home = () => {
+    const [selectSection, setSelectSection] = useState('students');
+    const [idToSearch, setIdToSearch] = useState('');
+    const [nameToSearch, setNameToSearch] = useState('');
+    const [firstnameToSearch, setFirstnameToSearch] = useState('');
+    const [lastnameToSearch, setLastnameToSearch] = useState('');
+    const [searchBy, setSearchBy] = useState('search-by-id');
+    const [isSearching, setIsSearching] = useState(false);
+    const [notData, setNotData] = useState(true);
+    const [total, setTotal] = useState(0);
+    const {showPerson} = useContext(ModalShowPersonContext);
+    const {renderPersons,data,hasMorePersons,isLoadingPersons, remove} = usePersonsDB(selectSection);
+    const {generateIdState} = useContext(GenerateIdContext);
+    const {showSelectedPersons, showFormAddPerson} = generateIdState;
     const {
-        selectSection,
-        idToSearch,
-        nameToSearch,
-        firstnameToSearch,
-        lastnameToSearch,
-        searchBy,
-        renderPersons,
-        data,
-        hasMorePersons,
-        isSearching,
-        isLoadingPersons,
-        notDataRef,
-        notData,
-        searchResult, 
-        isLoadingResults, 
-        interseptorSearch, 
+        searchResult,
+        isLoadingResults,
+        interseptorSearch,
         showMoreResults,
-        showPerson,
-        personInfo,
-        setPersonInfo,
-        setShowPerson,
-        setSearchBy,
-        setIdToSearch,
-        setNameToSearch,
-        setFirstnameToSearch,
-        setLastnameToSearch,
-        setSelectSection,
-        clearSearchInputs
-    } = GenerateIdsViewModel();
+        removeItemSerach
+    } = useSearchPersons(selectSection,searchBy,idToSearch,nameToSearch,firstnameToSearch,lastnameToSearch);
+    const notDataRef = useRef(null);
+    useEffect(() => {
+        if(idToSearch !== '' || nameToSearch !== '' || firstnameToSearch !== '' || lastnameToSearch !== '') {
+            setIsSearching(true);
+        } else {
+            setIsSearching(false);
+        }
+    },[idToSearch,nameToSearch,firstnameToSearch,lastnameToSearch]);
+    useEffect(() => {
+        if(notDataRef.current) setNotData(notDataRef.current.children.length > 0);
+    },[isLoadingPersons]);
+    //En caso de que cambiemos de sección podamos pintar los datos
+    useEffect(() => {
+        setNotData(true);
+    },[selectSection]);
+    useEffect(() => {
+        const getNumTotal = async () => {
+            const response = await axiosInstance.get(`/${selectSection}/get-num-total`);
+            setTotal(response.total);
+        }
+        getNumTotal();
+    },[selectSection]);
+    const clearSearchInputs = () => {
+        setIdToSearch('');
+        setNameToSearch('');
+        setFirstnameToSearch('');
+        setLastnameToSearch('');
+    }
     return (
         <Section>
             <TitleSection value="Generar Credenciales" />
-            <SectionNote value={`Selecciona a los ${sections[selectSection].all} a quienes se les va a generar la credencial, maximo 10.`} />
-            <div className='box-sticky'>
+            <SectionNote value={`Selecciona a los ${typeSections[selectSection]} a quienes se les va a generar la credencial, maximo 10.`} />
+            <BoxSticky>
                 <SearchFor
                     idToSearch={idToSearch}
                     nameToSearch={nameToSearch}
@@ -85,10 +102,8 @@ const Home = () => {
                                 {searchResult.map(item => (
                                     <ItemBox
                                         key={item.idPerson} 
-                                        item={item} 
-                                        section='Alumnos'
-                                        setPersonInfo={setPersonInfo}
-                                        setShowPerson={setShowPerson}
+                                        item={item}
+                                        remove={removeItemSerach}
                                     />
                                 ))}
                                 {/* Para pintar un spinner cuando se carga por primera vez */}
@@ -107,33 +122,29 @@ const Home = () => {
                         :
                             <NotData>
                                 <p className="message">
-                                    No se encontro ningún registro que conincida con tu búsqueda en la seccion de <b>{sections[selectSection].all}.</b>
+                                    No se encontro ningún registro que conincida con tu búsqueda en la seccion de <b>{typeSections[selectSection]}.</b>
                                 </p>
-                            </NotData> 
+                            </NotData>
                         }
                     </div>
                 </SearchFor>
-                <div className="box-options">
-                    <div className="box-select-type">
-                        <SelectSection 
-                            selectSection={selectSection} 
-                            setSelectSection={setSelectSection} 
-                        />
-                        <IconPoint size={5} />
-                        <p>500 de 2540</p>
-                    </div>
-                    <Actions section={sections[selectSection]} />
-                </div>
-            </div>
+                <BoxOptions>
+                    <SelectSection
+                        data={data}
+                        total={total}
+                        selectSection={selectSection} 
+                        setSelectSection={setSelectSection} 
+                    />
+                    <ActionButtonsGroup section={selectSection} />
+                </BoxOptions>
+            </BoxSticky>
             {notData ? 
                 <div className="home-content-items" ref={notDataRef}>
                     {data.map(item => (
                         <ItemBox
                             key={item.idPerson}
                             item={item}
-                            section={sections[selectSection].one}
-                            setPersonInfo={setPersonInfo}
-                            setShowPerson={setShowPerson}
+                            remove={remove}
                         />
                     ))}
                     {/* Para cargar datos bajo demanda */}
@@ -142,8 +153,8 @@ const Home = () => {
             :
                 <NotData>
                     <p className="message">
-                        No se encontraron {sections[selectSection].all} registrados por el momento,
-                        agrega alguno en el botón de <b>Agregar {sections[selectSection].one}</b> o en la sección de <b>Cargar lista</b> en el botón de abajo.
+                        No se encontraron {typeSections[selectSection]} registrados por el momento,
+                        agrega alguno en el botón de <b>Agregar {typeSections[selectSection]}</b> o en la sección de <b>Cargar lista</b> en el botón de abajo.
                     </p>
                     <Link to='/add-personal' className="btn-go">
                         <span>Agregar</span>
@@ -151,7 +162,9 @@ const Home = () => {
                     </Link>
                 </NotData>
             }
-            {showPerson && <ShowPerson setShowPerson={setShowPerson} personInfo={personInfo} />}
+            {showPerson && <ShowPerson section={selectSection} /> }
+            {showFormAddPerson && <FormaAddPerson section={selectSection} />}
+            {showSelectedPersons && <ShowSelectedPersons />}
         </Section>
     );
 }

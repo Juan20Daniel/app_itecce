@@ -42,6 +42,7 @@ nav {
     list-style: none;
     height: 3.4rem;
 }
+
 @media(min-width:900px) {
     header {
         padding: 0 4rem;

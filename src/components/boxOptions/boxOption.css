@@ -1,0 +1,14 @@
+.box-sticky .box-options {
+    display: flex;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    justify-content: space-between;
+    overflow: auto;
+}
+.box-sticky .box-options::-webkit-scrollbar {
+    height: 0.5rem;
+}
+.box-sticky .box-options::-webkit-scrollbar-thumb {
+    height: 0.5rem;
+    background-color: var(--blue-font);
+}

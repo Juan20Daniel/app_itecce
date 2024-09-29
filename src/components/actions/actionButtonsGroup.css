@@ -1,0 +1,32 @@
+.action-buttons-group {
+    display: flex;
+    gap: 1rem
+}
+.action-buttons-group .btn-add-person,
+.action-buttons-group .btn-show-selecteds {
+    width: 18rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    border: 0.1rem solid var(--gray);
+    cursor: pointer;
+    background-color: var(--white);
+    font-size: 1.4rem;
+}
+.action-buttons-group button:active {
+    background-color: var(--gray-active);
+}
+.action-buttons-group .btn-show-selecteds {
+    border: none;
+    background-color: var(--gray-low);
+    color: var(--black);
+    border: none;
+    box-shadow: 0 0 0.5rem rgba(85, 85, 85, 0.164);
+}
+.action-buttons-group .btn-show-selecteds:hover {
+    border: none;
+    background-color: var(--blue-font);
+    color: var(--white);
+}
+.action-buttons-group .btn-show-selecteds:active {
+    background-color: var(--blue-active);
+}

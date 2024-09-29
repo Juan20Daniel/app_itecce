@@ -1,4 +1,5 @@
 .btn-config {
+    position: relative;
     width: 17rem;
     height: 3.4rem;
     text-decoration: none;
@@ -11,13 +12,16 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 2rem;
+    background: none;
 }
-.btn-icon-config {
-    width: 1.7rem;
-    height: 1.7rem;
-}
-
-.btn-config-active {
+.btn-config:active {
     background-color: var(--blue-font);
     color: var(--white);
+    border: 0.1rem solid var(--blue-font);
+}
+.btn-config svg {
+    fill: #4F4F4F;
+}
+.btn-config:active > svg {
+    fill: #ffffff;
 }

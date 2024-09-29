@@ -1,9 +1,32 @@
+import Spin from '../spin/Spin';
 import './btnActionStyles.css';
-const BtnAction = ({ value, color, action }) => {
+const BtnAction = ({ value, color, action, type='button', isLoading=false }) => {
     return (
-        <button className={`btn-action ${color}`} onClick={() => action()}>
-            { value }
-        </button>
+        <>
+            {type !== 'submit' ?
+                <button 
+                    className={`btn-action ${color}`} 
+                    onClick={() => action()}
+                    type={type}
+                >
+                    {isLoading
+                        ? <Spin size={15} color='white' />
+                        : <span>{ value }</span>
+                    }
+                </button>
+            :
+                <button 
+                    className={`btn-action ${color}`} 
+                    type='submit'
+                >
+                    {isLoading
+                        ? <Spin size={15} color='white' />
+                        : <span>{ value }</span>
+                    }
+                </button>
+                
+            }
+        </>
     );
 }
 

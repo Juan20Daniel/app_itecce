@@ -1,22 +1,25 @@
-import { useState, useLayoutEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { validateImg } from '../../../../helpers/helpers';
-import { setCentralAlert } from '../../../../redux/dataSlice';
-import { setImages, setRemoveImg } from '../../../../redux/dataSlice';
 import { IconX } from '../../../../assets/iconX';
-import { useDispatch, useSelector } from 'react-redux';
+import { useGetPersonImg } from '../../../../hooks/useGetPersonImg';
 import avatare from '../../../../assets/avatare.png';
+import GenerateIdContext from '../../../../context/generateId/GenerateIdContext';
+import ModalShowPersonContext from '../../../../context/modalShowPerson/ModalShowPersonContext';
+import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
 import './loadImage.css';
-const LoadImage = ({personInfo}) => {
+const LoadImage = () => {
     const [ personImage, setPersonImage ] = useState('');
     const [ disableBtn, setDisableBtn ] = useState(true);
     const [ valueInput, setValueInput ] = useState('');
-    const { images } = useSelector(state => state.credenciales);
+    const { openCentralAlert } = useContext(CentralAlertContext);
+    const { personInfo } = useContext(ModalShowPersonContext);
+    const { generateIdState, addImage, removeImage, removeSelectedPerson } = useContext(GenerateIdContext);
+    const { images, selectedPersons } = generateIdState;
     const { idPerson } = personInfo;
-    const dispatch = useDispatch();
-    useLayoutEffect(() => {
-        const getImage = images.find(item => item.idPerson === idPerson);
-        if(getImage) setPersonImage(getImage.personImage);
-    },[idPerson, images]);
+    const { image } = useGetPersonImg(idPerson);
+    useEffect(() => {
+        if(image) setPersonImage(image);
+    },[image]);
     const handleImage = async (e) => {
         setValueInput(e.target.value);
         validateImg(e, (error, img) => {
@@ -27,21 +30,24 @@ const LoadImage = ({personInfo}) => {
                 return setPersonImage(img);
             }
             setDisableBtn(error);
-            dispatch(setCentralAlert({
-                visible:true, 
-                title:'Error al cargar la imagen', 
-                message:'Hay un error con la imagen a cargar, verifica que el nombre solo sean 7 números, que la extensión sea jpg y que no haya espacios en blanco.', 
-                type:'error' 
-            }));
+            openCentralAlert( 
+                'Error al cargar la imagen', 
+                'Hay un error con la imagen a cargar, verifica que el nombre solo sean 7 números, que la extensión sea jpg y que no haya espacios en blanco.', 
+                'error'
+            );
         });
     }
     const saveImg = () => {
-        dispatch(setImages({idPerson, personImage}));
+        addImage({idPerson, personImage});
         setDisableBtn(true);
     }
     const clearInputFile = () => {
-        const result = images.filter(item => item.idPerson !== idPerson);
-        dispatch(setRemoveImg(result));
+        const imgResult = images.filter(item => item.idPerson !== idPerson);
+        removeImage(imgResult);
+        if(selectedPersons.length > 0) {
+            const selectedResult = selectedPersons.filter(item => item.idPerson !== idPerson);
+            removeSelectedPerson( selectedResult);
+        }
         setValueInput('');
         setPersonImage('');
         setDisableBtn(true);

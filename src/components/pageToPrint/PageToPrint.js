@@ -1,31 +1,14 @@
 import React, { useState } from "react";
-import './pageToPrint.css';
-import backIds from '../../assets/reverse.jpg';
 import { getdataExpire } from '../../functions';
 import { useSelector } from "react-redux";
+import backIds from '../../assets/reverse.jpg';
+import './pageToPrint.css';
 const designIds = {
     student:require('../../assets/studens.jpg'),
     teacher:require('../../assets/teachers.jpg'),
     collaborator:require('../../assets/collaborators.jpg')
 }
-const sections = {
-    "BACHILLERATO GENERAL":"NIVEL MEDIO SUPERIOR",
-    "BACHILLERATO TÉCNICO EN SEGURIDAD PÚBLICA":"NIVEL MEDIO SUPERIOR",
-    "BACHILLERATO TÉCNICO EN COMERCIO EXTERIOR":"NIVEL MEDIO SUPERIOR",
-    "LICENCIATURA EN ADMINISTRACIÓN":"LIC EN ADMINISTRACIÓN",
-    "LICENCIATURA EN ADUANAS Y COMERCIO EXTERIOR":"LIC EN ADUANAS Y COM EXT",
-    "LICENCIATURA EN DISEÑO GRÁFICO":"LICENCIATURA EN DISEÑO GRÁFICO",
-    "LICENCIATURA EN DERECHO":"LICENCIATURA EN DERECHO",
-    "LICENCIATURA EN NUTRICIÓN":"LICENCIATURA EN NUTRICIÓN",
-    "LICENCIATURA EN CONTABILIDAD":"LIC EN CONTABILIDAD",
-    "LICENCIATURA EN CIENCIAS DE LA EDUCACIÓN":"LIC EN C. DE LA EDUCACIÓN",
-    "LICENCIATURA EN INFORMÁTICA (UNAM)":"LICENCIATURA EN INFORMÁTICA",
-    "LICENCIATURA EN LENGUA INGLESA":"LIC EN LENGUA INGLESA",
-    "MAESTRÍA EN GESTIÓN OPERACIÓN ADUANERA":"MAESTRÍA EN GESTIÓN OPE ADU",
-    "MAESTRÍA EN DERECHO FAMILIAR":"MAESTRÍA EN DERECHO FAMILIAR",
-    "MAESTRÍA EN FISCAL":"MAESTRÍA EN FISCAL",
-    "MAESTRÍA EN INVESTIGACIÓN EDUCATIVA":"MAESTRÍA EN INVESTIGACIÓN EDU."
-}
+
 const PageToPrint = React.forwardRef((props, ref) => {
     const { editExpireDate } = useSelector(state => state.credenciales);
     const {data, reverse, joinRverse} = props;
