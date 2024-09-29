@@ -12,10 +12,10 @@ const Header = () => {
             <nav>
                 <ul className="links">
                     <li>
-                        <NavLink to="/" value="Generar credenciales" />
+                        <NavLink to="/" value="Inicio" />
                     </li>
                     <li>
-                        <NavLink to="/load-images" value="Subir imagenes" />
+                        <NavLink to="/load-images" value="Generar credenciales" />
                     </li>
                     <li>
                         <NavLink to="/add-personal" value="Agregar personal" />
