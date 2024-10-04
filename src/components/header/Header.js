@@ -4,6 +4,7 @@ import NavLink from '../navLink/NavLink';
 import BtnConfig from '../btnConfig/BtnConfig';
 import Count from '../count/Count';
 import './header.css';
+
 const Header = () => {
     const [ showCount, setShowCount ] = useState(false);
     return (
@@ -36,6 +37,6 @@ const Header = () => {
             </nav>
             {showCount && <Count />}
         </header>
-    )
+    );
 }
 export default Header;
