@@ -33,12 +33,11 @@ const fontImg = {
     'REVERSE':imgReverse
 }
 const FrontId = ({item}) => {
-    console.log(item)
     const [ schoolSection, setSchoolSection ] = useState(null);
     const { generateIdState } = useContext(GenerateIdContext);
     const { infoSchool } = generateIdState;
     const { image } = useGetPersonImg(item.idPerson);
-
+    console.log(infoSchool)
     useEffect(() => {
         if(item.typePerson === "STUDENT") {
             const resultInfo = infoSchool.filter(info => info.idPerson_info === item.idPerson);
