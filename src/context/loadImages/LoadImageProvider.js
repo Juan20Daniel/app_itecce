@@ -18,10 +18,9 @@ const LoadImageProvider = ({children}) => {
             setIsLoading(true);
             const getRequest = images.map(image => getSchollInfo(image.idPerson));
             const result = await Promise.all(getRequest);
-            const getInfo = result.filter(result => {
-                if(result.data.length > 0) return result.data[0];
-                return false;
-            });
+            const getInfo = result
+                .filter(item => item.data.length > 0)
+                .map(item => item.data[0]);
             addInfoSchool(getInfo);
             addImages(images);
             setImages(null);
