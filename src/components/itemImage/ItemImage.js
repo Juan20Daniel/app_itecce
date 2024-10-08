@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { IconX } from '../../assets/iconX';
-import './itemImage.css';
 import LoadImagesContext from '../../context/loadImages/LoadImageContext';
+import './itemImage.css';
 const ItemImage = ({data}) => {
     const { removeImage } = useContext(LoadImagesContext);
     return (

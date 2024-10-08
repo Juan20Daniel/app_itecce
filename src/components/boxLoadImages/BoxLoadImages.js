@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import imgLoadImages from '../../assets/img-load-images.png';
 import LoadImagesContext from '../../context/loadImages/LoadImageContext';
-import './boxLoadImages.css';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
+import './boxLoadImages.css';
 const BoxLoadImages = () => {
     const {  inputValue, setInputValue, setImages } = useContext(LoadImagesContext);
     const { openCentralAlert } = useContext(CentralAlertContext);

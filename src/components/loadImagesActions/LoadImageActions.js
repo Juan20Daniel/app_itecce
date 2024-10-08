@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import BtnAction from '../btnAction/BtnAction';
-import './loadImagesActions.css';
 import LoadImagesContext from '../../context/loadImages/LoadImageContext';
+import './loadImagesActions.css';
 
 const LoadImageActions = () => {
     const { isLoading, saveImages, cancel } = useContext(LoadImagesContext);
@@ -9,7 +9,7 @@ const LoadImageActions = () => {
         <div className="load-images-actions">
             <div className='btn-load-images-save'>
                 <BtnAction
-                    value='Cargar imagenes'
+                    value='Siguiente'
                     color='blue'
                     action={() => saveImages()}
                     isLoading={isLoading}

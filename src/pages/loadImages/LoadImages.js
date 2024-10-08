@@ -4,18 +4,25 @@ import SectionNote from "../../components/sectionNote/SectionNote";
 import BoxLoadImages from "../../components/boxLoadImages/BoxLoadImages";
 import LoadImageActions from "../../components/loadImagesActions/LoadImageActions";
 import ShowImages from "../../components/showImages/ShowImages";
-import './loadImages.css';
-import { useContext } from "react";
 import LoadImagesContext from "../../context/loadImages/LoadImageContext";
+import GenerateIds from "../../components/generateIds/GenerateIds";
+import { useContext } from "react";
+import './loadImages.css';
 const LoadImages = () => {
-    const { images } = useContext(LoadImagesContext);
+    const { images, generateIds } = useContext(LoadImagesContext);
     return (
         <Section>
-            <TitleSection value='Subir imagenes' />
-            <SectionNote  value='Arrastra y suelta todas las imagenes en el rectangulo o has clic sobre el para cargar las imagenes'/>
-            {!images && <BoxLoadImages />}
-            {images && <ShowImages />}
-            {images && <LoadImageActions />}
+            <TitleSection value='Generar credenciales' />
+            <SectionNote
+                value={!generateIds
+                    ? 'Arrastra y suelta todas las imagenes en el rectangulo o has clic sobre el para cargar las imagenes'
+                    : 'Genera las credenciales de cada página con el botón de imprimir y captura la fecha de impresión para su posterior consulta.'
+                }
+            />
+            {(!images && !generateIds) && <BoxLoadImages />}
+            {(images && !generateIds) && <ShowImages />}
+            {(images && !generateIds) && <LoadImageActions />}
+            {generateIds && <GenerateIds />}
         </Section>
     );
 }

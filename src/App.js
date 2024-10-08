@@ -29,7 +29,7 @@ function App() {
                     <Route path='/' element={<Home />} >
                       <Route index element={<GenerateIds />} />
                       <Route path="/add-personal" element={<AddPersonal />} />
-                      <Route path="/load-images" element={<LoadImages />} />
+                      <Route path="/generate-ids" element={<LoadImages />} />
                       <Route path='/generate-report' element={<GenerateReport />} />
                       <Route path='/config' element={<Config />} />
                     </Route>

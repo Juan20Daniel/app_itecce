@@ -7,9 +7,9 @@ const LoadImageProvider = ({children}) => {
     const [ images, setImages ] = useState(null);
     const [ inputValue, setInputValue ] = useState('');
     const [ isLoading, setIsLoading ] = useState(false);
+    const [ generateIds, setGenerateIds ] = useState(false);
     const { addImages, addInfoSchool } = useContext(GenerateIdContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
-
     const getSchollInfo = (id) => {
         return axiosInstance.get(`/students/get-info-school/${id}`);
     }
@@ -25,11 +25,7 @@ const LoadImageProvider = ({children}) => {
             addImages(images);
             setImages(null);
             setInputValue('');
-            openCentralAlert(
-                'Imagenes',
-                'Las imagenes han sido cargadas',
-                'success'
-            );
+            setGenerateIds(true);
         } catch (error) {
             openCentralAlert(
                 'Imagenes',
@@ -48,12 +44,14 @@ const LoadImageProvider = ({children}) => {
     const cancel = () => {
         setInputValue('');
         setImages(null);
+        setGenerateIds(false);
     }
     return (
         <LoadImagesContext.Provider value={{
             images,
             inputValue,
             isLoading,
+            generateIds,
             saveImages,
             removeImage,
             cancel,
