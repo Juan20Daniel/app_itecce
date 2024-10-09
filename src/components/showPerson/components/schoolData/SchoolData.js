@@ -15,7 +15,7 @@ const SchoolData = ({id}) => {
     const { infoSchool } = generateIdState;
     const getInfoschool = useCallback( async () => {
         try {
-            const result = await axiosInstance.get(`/students/get-info-school/${id}`);
+            const result = await axiosInstance.get(`/students/info-school/${id}`);
             addInfoSchool(result.data);
             setSchoolSection(result.data[0].seccion);
             setgroup(result.data[0].group_student);

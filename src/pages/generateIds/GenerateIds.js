@@ -65,7 +65,7 @@ const Home = () => {
     },[selectSection]);
     useEffect(() => {
         const getNumTotal = async () => {
-            const response = await axiosInstance.get(`/${selectSection}/get-num-total`);
+            const response = await axiosInstance.get(`/${selectSection}/num-total`);
             setTotal(response.total);
         }
         getNumTotal();
