@@ -8,40 +8,32 @@ const LoadImageProvider = ({children}) => {
     const [ inputValue, setInputValue ] = useState('');
     const [ isLoading, setIsLoading ] = useState(false);
     const [ generateIds, setGenerateIds ] = useState(false);
-    const { addImages, addInfoSchool } = useContext(GenerateIdContext);
+    const { addImages, addInfoIdentityCard } = useContext(GenerateIdContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
-    const getSchollInfo = (id) => {
-        return axiosInstance.get(`/students/get-info-school/${id}`);
+    const getUrl = (id) => {
+        return axiosInstance.get(`/schoolIdentityCard/info-identity-card/${id}`);
     }
     const saveImages = async () => {
         try {
             setIsLoading(true);
-            const getRequest = images.map(image => getSchollInfo(image.idPerson));
-            const result = await Promise.all(getRequest);
-            const getInfo = result
-                .filter(item => item.data.length > 0)
-                .map(item => item.data[0]);
-            addInfoSchool(getInfo);
+            const getUrlRequests = images.map(image => getUrl(image.idPerson));
+            const responses = await Promise.all(getUrlRequests);
+            const info = responses.map(response => response.data[0]);
+            addInfoIdentityCard(info);
             addImages(images);
-            setImages(null);
-            setInputValue('');
-            setGenerateIds(true);
+            clear();
         } catch (error) {
-            openCentralAlert(
-                'Imagenes',
-                error.message,
-                'error'
-            );
+            openCentralAlert('Imagenes',error.message,'error');
         } finally {
             setIsLoading(false);
         }
     }
     const removeImage = (id) => {
         const result = images.filter(image => image.idPerson !== id);
-        if(result.length === 0) return cancel();
+        if(result.length === 0) return clear();
         setImages(result);
     }
-    const cancel = () => {
+    const clear = () => {
         setInputValue('');
         setImages(null);
         setGenerateIds(false);
@@ -54,8 +46,8 @@ const LoadImageProvider = ({children}) => {
             generateIds,
             saveImages,
             removeImage,
-            cancel,
-            setInputValue, 
+            clear,
+            setInputValue,
             setImages
         }}>
             {children}

@@ -47,9 +47,9 @@ const GenerateIdProvider = ({children}) => {
             payload: persons
         });
     }
-    const addInfoSchool = (info) => {
+    const addInfoIdentityCard = (info) => {
         dispatch({
-            type: types.addInfoSchool,
+            type: types.addInfoIdentityCard,
             payload: info
         });
     }
@@ -78,7 +78,7 @@ const GenerateIdProvider = ({children}) => {
             addImage,
             removeImage,
             addSelectedPerson,
-            addInfoSchool,
+            addInfoIdentityCard,
             removeSelectedPerson,
             modalSelectedPersons,
             addRemovePerson,

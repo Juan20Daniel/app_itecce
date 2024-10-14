@@ -59,7 +59,7 @@ const Home = () => {
     useEffect(() => {
         if(notDataRef.current) setNotData(notDataRef.current.children.length > 0);
     },[isLoadingPersons]);
-    //En caso de que cambiemos de sección podamos pintar los datos
+    //En caso de que cambiemos de sección, podamos pintar los datos
     useEffect(() => {
         setNotData(true);
     },[selectSection]);

@@ -3,7 +3,7 @@ export const types = {
     removeImage: '[generateId], remove image',
     addSelectPerson: '[generateId] add selected person',
     removeSelectPerson: '[generateId] remove selected person',
-    addInfoSchool: '[generateId] add information school',
+    addInfoIdentityCard: '[generateId] add information to school identity card',
     addPersons: '[generateId] add persons',
     removed: '[generateId] remove person',
     modalSelectedPersons: '[generateId] open or close modal of selected persons',

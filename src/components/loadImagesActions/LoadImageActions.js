@@ -4,7 +4,7 @@ import LoadImagesContext from '../../context/loadImages/LoadImageContext';
 import './loadImagesActions.css';
 
 const LoadImageActions = () => {
-    const { isLoading, saveImages, cancel } = useContext(LoadImagesContext);
+    const { isLoading, saveImages, clear } = useContext(LoadImagesContext);
     return (
         <div className="load-images-actions">
             <div className='btn-load-images-save'>
@@ -19,7 +19,7 @@ const LoadImageActions = () => {
                 <BtnAction
                     value='Cancelar'
                     color='gray'
-                    action={() => cancel()}
+                    action={() => clear()}
                 />
             </div>
         </div>
