@@ -10,14 +10,11 @@
     max-width: 50rem;
     margin: 0 2rem;
     padding: 1rem 0;
-    border: 0.1rem solid var(--gray-dark);
+    border: 0.1rem solid var(--gray);
     background: none;
     border-radius: 1.2rem;
     cursor: pointer;
 }
-.box-btn-show-more .btn-show-more:hover {
-    background: var(--gray-low);
-}
 .box-btn-show-more .btn-show-more:active {
-    background: none;
+    background: var(--gray-low);
 }

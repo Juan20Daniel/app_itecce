@@ -8,6 +8,7 @@ const LoadImageProvider = ({children}) => {
     const [ inputValue, setInputValue ] = useState('');
     const [ isLoading, setIsLoading ] = useState(false);
     const [ generateIds, setGenerateIds ] = useState(false);
+    const [ lastRemoved, setLastRemoved ] = useState(null);
     const { addImages, addInfoIdentityCard } = useContext(GenerateIdContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const getUrl = (id) => {
@@ -29,11 +30,13 @@ const LoadImageProvider = ({children}) => {
         }
     }
     const removeImage = (id) => {
+        setLastRemoved(id);
         const result = images.filter(image => image.idPerson !== id);
         if(result.length === 0) return clear();
         setImages(result);
     }
     const clear = () => {
+        setLastRemoved(null);
         setInputValue('');
         setImages(null);
         setGenerateIds(false);
@@ -44,6 +47,7 @@ const LoadImageProvider = ({children}) => {
             inputValue,
             isLoading,
             generateIds,
+            lastRemoved,
             saveImages,
             removeImage,
             clear,
