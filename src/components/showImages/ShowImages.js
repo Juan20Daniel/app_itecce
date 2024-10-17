@@ -8,26 +8,26 @@ const range = 43
 const ShowImages = () => {
     const [ data, setData ] = useState(null);
     const [ disableBtn, setDisableBtn ] = useState(false);
-    const { images, lastRemoved } = useContext(LoadImagesContext);
+    const { images, lastRemoved, setLastRemoved } = useContext(LoadImagesContext);
     const offset = useRef(0);
     const getMoreData = useCallback(() => {
         let result = getLastItems(images, offset.current, range);
         if(result.length < range) setDisableBtn(true);
         if(result.length === range) result.pop();
-        console.log(result);
         if(data) setData(data => [...data, ...result]);
         else setData([...result]);
-        offset.current = offset.current+range;
+        offset.current = offset.current+range-1;
     },[images, data]);
     useEffect(() => {
         if(!data) getMoreData();
     },[getMoreData, data]);
-    //Eliminar 
+    //En caso de que se elimine una imagen.
     useEffect(() => {
         if(!lastRemoved) return;
         const result = data.filter(item => item.idPerson !== lastRemoved);
         setData(result);
-    },[lastRemoved]);
+        setLastRemoved(null);
+    },[lastRemoved, data, setLastRemoved]);
     return (
         <ul className="show-images">
             {data?.map(image => (

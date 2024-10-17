@@ -22,7 +22,7 @@ const LoadImageProvider = ({children}) => {
             const info = responses.map(response => response.data[0]);
             addInfoIdentityCard(info);
             addImages(images);
-            clear();
+            setGenerateIds(true);
         } catch (error) {
             openCentralAlert('Imagenes',error.message,'error');
         } finally {
@@ -49,6 +49,7 @@ const LoadImageProvider = ({children}) => {
             generateIds,
             lastRemoved,
             saveImages,
+            setLastRemoved,
             removeImage,
             clear,
             setInputValue,

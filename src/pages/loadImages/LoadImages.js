@@ -20,8 +20,12 @@ const LoadImages = () => {
                 }
             />
             {(!images && !generateIds) && <BoxLoadImages />}
-            {(images && !generateIds) && <ShowImages />}
-            {(images && !generateIds) && <LoadImageActions />}
+            {(images && !generateIds) && 
+                <>
+                    <ShowImages />
+                    <LoadImageActions />
+                </>
+            }
             {generateIds && <GenerateIds />}
         </Section>
     );
