@@ -18,6 +18,7 @@ const LoadImages = () => {
                     ? 'Arrastra y suelta todas las imagenes en el rectangulo o has clic sobre el para cargar las imagenes'
                     : 'Genera las credenciales de cada página con el botón de imprimir y captura la fecha de impresión para su posterior consulta.'
                 }
+                maxWidth={600}
             />
             {(!images && !generateIds) && <BoxLoadImages />}
             {(images && !generateIds) && 

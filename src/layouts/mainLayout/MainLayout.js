@@ -2,9 +2,9 @@ import { Outlet } from 'react-router-dom';
 import { useContext } from 'react';
 import CentralAlert from '../../components/centralAlert/CentralAlert';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
-import './main.css';
+import './mainLayout.css';
 
-const Main = () => {
+const MainLayout = () => {
     const { centralAlert } = useContext(CentralAlertContext);
     return (
         <main>
@@ -13,4 +13,4 @@ const Main = () => {
         </main>
     )
 }
-export default Main;
+export default MainLayout;

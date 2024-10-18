@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 import { saveUser } from "../../redux/dataSlice";
 import ModalShowPersonProvider from "../../context/modalShowPerson/ModalShowPersonProvider";
 import Header from "../../components/header/Header";
-import './home.css';
+import './appLayout.css';
 
-const Home = () => {
+const AppLayout = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     useEffect(() => {
@@ -29,4 +29,4 @@ const Home = () => {
         </ModalShowPersonProvider>
     );
 }
-export default Home;
+export default AppLayout;

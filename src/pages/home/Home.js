@@ -21,7 +21,7 @@ import ModalShowPersonContext from "../../context/modalShowPerson/ModalShowPerso
 import FormaAddPerson from "../../components/formAddPerson/FormAddPerson";
 import BoxSticky from "../../components/boxSticky/BoxSticky";
 import BoxOptions from "../../components/boxOptions/BoxOptions";
-import './generateIds.css';
+import './home.css';
 const typeSections = {
     students:'alumnos',
     teachers:'profesores',
@@ -79,7 +79,10 @@ const Home = () => {
     return (
         <Section>
             <TitleSection value="Generar Credenciales" />
-            <SectionNote value={`Selecciona a los ${typeSections[selectSection]} a quienes se les va a generar la credencial, maximo 10.`} />
+            <SectionNote 
+                value={"Selecciona a los estudiantes a quienes se les va a generar la credencial, maximo 10."} 
+                maxWidth={400}
+            />
             <BoxSticky>
                 <SearchFor
                     idToSearch={idToSearch}

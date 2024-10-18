@@ -6,7 +6,10 @@ const GenerateReport = () => {
     return (
         <Section>
             <TitleSection value='Generar reporte' />
-            <SectionNote  value='Arrastra y suelta todas las imagenes en el rectangulo o has clic sobre el para cargar las imagenes'/>
+            <SectionNote 
+                value='Arrastra y suelta todas las imagenes en el rectangulo o has clic sobre el para cargar las imagenes'
+                maxWidth={500}    
+            />
             <DownloadReport />
         </Section>
     );

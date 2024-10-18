@@ -2,9 +2,9 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
-import Main from './layouts/main/Main';
-import Home from './layouts/home/Home';
-import GenerateIds from './pages/generateIds/GenerateIds';
+import MainLayout from './layouts/mainLayout/MainLayout';
+import AppLayout from './layouts/AppLayout/AppLayout';
+import Home from './pages/home/Home';
 import GenerateIdProvider from './context/generateId/GenerateIdProvider';
 import CentralAlertProvider from './context/centralAlert/CentralAlertProvider';
 import LoadImageProvider from './context/loadImages/LoadImageProvider';
@@ -25,9 +25,9 @@ function App() {
             <LoadImageProvider>
               <AddPersonalProvider>
                 <Routes>
-                  <Route path='/' element={<Main />}>
-                    <Route path='/' element={<Home />} >
-                      <Route index element={<GenerateIds />} />
+                  <Route path='/' element={<MainLayout />}>
+                    <Route path='/' element={<AppLayout />} >
+                      <Route index element={<Home />} />
                       <Route path="/add-personal" element={<AddPersonal />} />
                       <Route path="/generate-ids" element={<LoadImages />} />
                       <Route path='/generate-report' element={<GenerateReport />} />
