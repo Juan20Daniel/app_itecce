@@ -1,0 +1,29 @@
+.options-id {
+    margin-top: 3rem;
+    padding: 1.5rem;
+    box-shadow: 0 0 0.5rem var(--box-shadow);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 4rem 4rem;
+    border-radius: 1.5rem;
+}
+.options-id .btn-add-date,
+.options-id .btn-show-reverse {
+    justify-self: start;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--black);
+    font-size: 1.5rem;
+}
+.options-id .btn-add-date {
+    grid-column: span 2;
+}
+.options-id .btn-show-reverse:hover,
+.options-id .btn-add-date:hover {
+    color: var(--blue-font);
+}
+.options-id .btn-show-reverse:active,
+.options-id .btn-add-date:active {
+    color: var(--black);
+}

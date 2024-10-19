@@ -1,0 +1,12 @@
+.generate-ids {
+    display: grid;
+    margin-top: 2rem;
+    gap: 3rem;
+    justify-content: center;
+}
+.box-pages {
+    max-width: 756px;
+    box-shadow: 0 0 0.5rem var(--box-shadow);
+    overflow: auto;
+    margin-bottom: 1rem;
+}
