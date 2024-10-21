@@ -14,6 +14,10 @@
     border: none;
     cursor: pointer;
     color: var(--black);
+}
+.options-id .btn-add-date,
+.options-id .btn-show-reverse,
+.options-id .btn-action {
     font-size: 1.5rem;
 }
 .options-id .btn-add-date {
@@ -26,4 +30,24 @@
 .options-id .btn-show-reverse:active,
 .options-id .btn-add-date:active {
     color: var(--black);
+}
+@media(min-width: 730px) {
+    .options-id {
+        grid-template-columns: 1fr 15rem 15rem;
+        grid-template-rows: 4rem;
+    }
+    .options-id .btn-add-date {
+        grid-column: span 1;
+    }
+}
+@media(min-width: 1400px) {
+    .options-id {
+        margin-top: 3rem;
+        padding: 1.5rem 2rem;
+    }
+    .options-id .btn-add-date,
+    .options-id .btn-show-reverse,
+    .options-id .btn-action {
+        font-size: 1.8rem;
+    }
 }

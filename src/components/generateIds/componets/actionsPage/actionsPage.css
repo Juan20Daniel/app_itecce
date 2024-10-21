@@ -2,3 +2,10 @@
     max-width: 756px;
     margin-bottom: 3rem;
 }
+@media(min-width: 1250px) {
+    .actions-page {
+        width: 100%;
+        grid-column: 2 / 3;
+        justify-self: start;
+    }
+}

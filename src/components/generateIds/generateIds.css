@@ -1,6 +1,6 @@
 .generate-ids {
     display: grid;
-    margin-top: 2rem;
+    margin-top: 4rem;
     gap: 3rem;
     justify-content: center;
 }
@@ -9,4 +9,20 @@
     box-shadow: 0 0 0.5rem var(--box-shadow);
     overflow: auto;
     margin-bottom: 1rem;
+}
+@media(min-width: 1250px) {
+    .generate-ids {
+        grid-template-columns: 35rem 1fr;
+        grid-template-rows: 1fr auto;
+    }
+    .box-pages {
+        justify-self: start;
+    }
+}
+@media(min-width: 1400px) {
+    .generate-ids {
+        grid-template-columns: 44rem 1fr;
+        grid-template-rows: 1fr auto;
+        gap: 5rem;
+    }
 }
