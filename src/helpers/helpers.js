@@ -38,7 +38,7 @@ export const reverseText = (text) => {
     const result = text.split('-').reverse().join();
     return result;
 }
-export const getLastItems = (array_items, offset, range=30) => {
+export const getLastItems = (array_items, offset, range=11) => {
     let result = array_items.slice(offset, offset+range);
     return result;
 }

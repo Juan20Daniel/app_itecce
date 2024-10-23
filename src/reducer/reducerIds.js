@@ -49,8 +49,18 @@ export const reducerIds = (state, action) => {
         case types.addImages:
             return {
                 ...state,
-                images:[...state.images, ...action.payload]
+                images:[...action.payload]
             }
+        case types.addInfoIdentityCard:
+            return {
+                ...state,
+                infoIdentityCard:action.payload
+            }
+            case types.addInfoIdentityCardNotFound:
+                return {
+                    ...state,
+                    infoIdentityCardNotFound:action.payload
+                }
         default:
             return state;
     }

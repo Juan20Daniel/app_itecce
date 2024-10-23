@@ -9,7 +9,7 @@ const LoadImageProvider = ({children}) => {
     const [ isLoading, setIsLoading ] = useState(false);
     const [ generateIds, setGenerateIds ] = useState(false);
     const [ lastRemoved, setLastRemoved ] = useState(null);
-    const { addImages, addInfoIdentityCard } = useContext(GenerateIdContext);
+    const { addImages, addInfoIdentityCard, addInfoIdentityCardHotFound } = useContext(GenerateIdContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const getUrl = (id) => {
         return axiosInstance.get(`/schoolIdentityCard/info-identity-card/${id}`);
@@ -19,8 +19,14 @@ const LoadImageProvider = ({children}) => {
             setIsLoading(true);
             const getUrlRequests = images.map(image => getUrl(image.idPerson));
             const responses = await Promise.all(getUrlRequests);
-            const info = responses.map(response => response.data[0]);
-            addInfoIdentityCard(info);
+            let toGenereteId = [];
+            let notFounds = [];
+            responses.forEach(response => {
+                if(response.data.isActive) toGenereteId.push(response.data);
+                else notFounds.push(response.data);
+            });
+            addInfoIdentityCard(toGenereteId);
+            addInfoIdentityCardHotFound(notFounds);
             addImages(images);
             setGenerateIds(true);
         } catch (error) {

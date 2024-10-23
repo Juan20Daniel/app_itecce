@@ -7,6 +7,8 @@ const initialstate = {
     images:[],
     selectedPersons:[],
     infoSchool:[],
+    infoIdentityCard:[],
+    infoIdentityCardNotFound:[],
     removed:null,
     showFormAddPerson:false,
     showSelectedPersons:false
@@ -53,6 +55,12 @@ const GenerateIdProvider = ({children}) => {
             payload: info
         });
     }
+    const addInfoIdentityCardHotFound = (info) => {
+        dispatch({
+            type: types.addInfoIdentityCardNotFound,
+            payload: info
+        })
+    }
     const modalSelectedPersons = (visible) => {
         dispatch({
             type:types.modalSelectedPersons,
@@ -79,6 +87,7 @@ const GenerateIdProvider = ({children}) => {
             removeImage,
             addSelectedPerson,
             addInfoIdentityCard,
+            addInfoIdentityCardHotFound,
             removeSelectedPerson,
             modalSelectedPersons,
             addRemovePerson,

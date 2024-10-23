@@ -7,7 +7,7 @@ const Page = React.forwardRef((props, ref) => {
     // const [ backIds, setBackIds ] = useState(null);
     // const { generateIdState } = useContext(GenerateIdContext);
     // const { selectedPersons } = generateIdState;
-    const { promiseResolveRef, isPrinting } = props;
+    const { promiseResolveRef, isPrinting, pages, currentPage } = props;
     // useLayoutEffect(() => {
     //     if(selectedPersons.length <= 4) {
     //         let addReverse = [];
@@ -30,36 +30,11 @@ const Page = React.forwardRef((props, ref) => {
     },[isPrinting, promiseResolveRef]);
     return (
         <div ref={ref} className="page">
-            <figure className='box-front-id'>
-                <img src={imgId} alt='test' className='front-id-img' />
-            </figure>
-            <figure className='box-front-id'>
-                <img src={imgId} alt='test' className='front-id-img' />
-            </figure>
-            <figure className='box-front-id'>
-                <img src={imgId} alt='test' className='front-id-img' />
-            </figure>
-            <figure className='box-front-id'>
-                <img src={imgId} alt='test' className='front-id-img' />
-            </figure>
-            <figure className='box-front-id'>
-                <img src={imgId} alt='test' className='front-id-img' />
-            </figure>
-            <figure className='box-front-id'>
-                <img src={imgId} alt='test' className='front-id-img' />
-            </figure>
-            <figure className='box-front-id'>
-                <img src={imgId} alt='test' className='front-id-img' />
-            </figure>
-            <figure className='box-front-id'>
-                <img src={imgId} alt='test' className='front-id-img' />
-            </figure>
-            <figure className='box-front-id'>
-                <img src={imgId} alt='test' className='front-id-img' />
-            </figure>
-            <figure className='box-front-id'>
-                <img src={imgId} alt='test' className='front-id-img' />
-            </figure>
+            {pages[currentPage]?.map((page, index) => (
+                <figure className='box-front-id' key={index}>
+                    <img src={imgId} alt='test' className='front-id-img' />
+                </figure>
+            ))}
         </div>
     );
 })

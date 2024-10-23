@@ -2,7 +2,7 @@ import { useReactToPrint } from "react-to-print";
 import Pagination from "../pagination/Pagination";
 import OptionsId from "../optionsId/OptionsId";
 import './actionsPage.css';
-const ActionsPage = ({ componentRef, promiseResolveRef, hideStyles, setIsPrinting }) => {
+const ActionsPage = ({ componentRef, promiseResolveRef, hideStyles, setIsPrinting, setCurrentPage, totalPages }) => {
     const print = useReactToPrint({
         content:() => componentRef.current,
         onBeforeGetContent:() => {
@@ -20,7 +20,10 @@ const ActionsPage = ({ componentRef, promiseResolveRef, hideStyles, setIsPrintin
     });
     return (
         <div className="actions-page">
-            <Pagination />
+            <Pagination 
+                setCurrentPage={setCurrentPage}
+                totalPages={totalPages}
+            />
             <OptionsId print={print} />
         </div>
     );
