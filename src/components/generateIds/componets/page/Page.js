@@ -1,28 +1,9 @@
 import React, {  useEffect } from 'react';
-import imgId from '../../../../assets/studens.jpg';
-// import GenerateIdContext from '../../../../context/generateId/GenerateIdContext';
+import FrontId from '../frontId/FrontId';
+import BackId from '../backId/BackId';
 import './page.css';
 const Page = React.forwardRef((props, ref) => {
-    // const [ frintIds, setFrontIds ] = useState(null);
-    // const [ backIds, setBackIds ] = useState(null);
-    // const { generateIdState } = useContext(GenerateIdContext);
-    // const { selectedPersons } = generateIdState;
-    const { promiseResolveRef, isPrinting, pages, currentPage } = props;
-    // useLayoutEffect(() => {
-    //     if(selectedPersons.length <= 4) {
-    //         let addReverse = [];
-    //         for(let i=0; i<=selectedPersons.length-1; i++) {
-    //             addReverse.push({idPerson:selectedPersons[i].idPerson, typePerson:'REVERSE'});
-    //         }
-    //         setFrontIds([...selectedPersons, ...addReverse]);
-    //     } else {
-    //         setFrontIds(selectedPersons);
-    //         const getBackIds = selectedPersons.map(item => {
-    //             return {idPerson:item.idPerson, typePerson:'REVERSE'}
-    //         });
-    //         setBackIds(getBackIds);
-    //     }
-    // },[selectedPersons]);
+    const { promiseResolveRef, isPrinting, pages, currentPage, hideStyles, showBack } = props;
     useEffect(() => {
         if(isPrinting && promiseResolveRef.current) {
             promiseResolveRef.current();
@@ -30,11 +11,19 @@ const Page = React.forwardRef((props, ref) => {
     },[isPrinting, promiseResolveRef]);
     return (
         <div ref={ref} className="page">
-            {pages[currentPage]?.map((page, index) => (
-                <figure className='box-front-id' key={index}>
-                    <img src={imgId} alt='test' className='front-id-img' />
-                </figure>
-            ))}
+            {pages[currentPage]?.page.map((infoIdentity, index) => {
+                //La primera validación es para imprimir el reverso de cada hoja cuando hay 5 o más credenciales.
+                //la segunda validación es para juntar la parte delanteras con la trasera en una sola hoja, lo cual sucede cuando son 4 o menos credenciales.
+                if((showBack && pages[currentPage]?.reverse) || (infoIdentity.typeCard === 'REVERSE' && !pages[currentPage]?.reverse)) {
+                    return <BackId 
+                        item={infoIdentity} 
+                        position={(!pages[currentPage]?.reverse && pages[currentPage]?.page.length === 6 ) ? index+1 : index}
+                        key={index} 
+                        hideStyles={hideStyles}
+                    />
+                }
+                return <FrontId item={infoIdentity} key={index} />
+            })}
         </div>
     );
 })

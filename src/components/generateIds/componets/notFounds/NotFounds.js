@@ -4,7 +4,6 @@ import './notFounds.css';
 const NotFounds = () => {
     const { generateIdState } = useContext(GenerateIdContext);
     const { infoIdentityCardNotFound } = generateIdState;
-    console.log(infoIdentityCardNotFound);
     return (
         <div className="not-founds">
             <p className="title">No disponibles para hacer credencial</p>

@@ -2,7 +2,7 @@ import { useReactToPrint } from "react-to-print";
 import Pagination from "../pagination/Pagination";
 import OptionsId from "../optionsId/OptionsId";
 import './actionsPage.css';
-const ActionsPage = ({ componentRef, promiseResolveRef, hideStyles, setIsPrinting, setCurrentPage, totalPages }) => {
+const ActionsPage = ({ componentRef, promiseResolveRef, showBack, hideStyles, setShowBack, setIsPrinting, currentPage, setCurrentPage, pages, setPages }) => {
     const print = useReactToPrint({
         content:() => componentRef.current,
         onBeforeGetContent:() => {
@@ -22,9 +22,16 @@ const ActionsPage = ({ componentRef, promiseResolveRef, hideStyles, setIsPrintin
         <div className="actions-page">
             <Pagination 
                 setCurrentPage={setCurrentPage}
-                totalPages={totalPages}
+                totalPages={pages.length}
             />
-            <OptionsId print={print} />
+            <OptionsId 
+                print={print}
+                currentPage={currentPage}
+                pages={pages}
+                setPages={setPages}
+                showBack={showBack}
+                setShowBack={setShowBack}
+            />
         </div>
     );
 }

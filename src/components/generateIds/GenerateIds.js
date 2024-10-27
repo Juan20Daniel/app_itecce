@@ -17,17 +17,42 @@ const GenerateIds = () => {
     const promiseResolveRef = useRef(null);
     const hideStyles = useRef(false);
     useLayoutEffect(() => {
-        let result = getLastItems(infoIdentityCard, offset);
-        let aux = [...result];
-        if(result.length > 10) aux.pop();
-        setPages(lastPages => ([...lastPages, [...aux]]));
-        if(result.length > 10) setOffset(count => count + 10);
+        let resultLastItems = getLastItems(infoIdentityCard, offset);
+        let resultLastItemsCopy = [...resultLastItems];
+        //Verificamos si hay más páginas con el último ítem, y después lo eliminamos para que no sobre en la página actual. 
+        if(resultLastItems.length > 10) resultLastItemsCopy.pop();
+        let LastItemsWithTypeCard = addTypeCard(resultLastItemsCopy);
+        setPages(lastPages => ([
+            ...lastPages,
+            {
+                page:[...LastItemsWithTypeCard],
+                reverse:resultLastItems.length >= 5 ? true : false,
+                printedFrondPage:false,
+                printedBackPage:false
+            }
+        ]));
+        if(resultLastItems.length > 10) setOffset(count => count + 10);
     },[infoIdentityCard, offset]);
+    const addTypeCard = (items) => {
+        if(items.length >= 5) return items;
+        let result = [...items];
+        for(let i=0; i<=items.length-1; i++) {
+            result.push({
+                name:items[i].name,
+                firstname:items[i].firstname,
+                lastname:items[i].lastname,
+                group_student:items[i].group_student,
+                idPerson:items[i].idPerson,
+                typeCard:'REVERSE',
+            });
+        }
+        return result;
+    }
     return (
         <div className="generate-ids">
             <BoxDetails 
                 totalIds={infoIdentityCard.length}
-                totalPages={pages.length}
+                pages={pages}
                 currentPage={currentPage}
             />
             <div className="box-pages">
@@ -38,6 +63,7 @@ const GenerateIds = () => {
                     promiseResolveRef={promiseResolveRef}
                     isPrinting={isPrinting}
                     hideStyles={hideStyles}
+                    showBack={showBack}
                 />
             </div>
             <ActionsPage
@@ -45,8 +71,10 @@ const GenerateIds = () => {
                 promiseResolveRef={promiseResolveRef}
                 showBack={showBack}
                 hideStyles={hideStyles}
+                currentPage={currentPage}
                 setCurrentPage={setCurrentPage}
-                totalPages={pages.length}
+                pages={pages}
+                setPages={setPages}
                 setShowBack={setShowBack}
                 setIsPrinting={setIsPrinting}
             />

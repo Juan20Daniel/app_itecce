@@ -31,6 +31,14 @@
 .options-id .btn-add-date:active {
     color: var(--black);
 }
+.options-id .disable-btn-reverse {
+    color: var(--gray);
+    pointer-events: none;
+    user-select: none;
+}
+.options-id .disable-btn-reverse {
+    color: var(--gray);
+}
 @media(min-width: 730px) {
     .options-id {
         grid-template-columns: 1fr 15rem 15rem;
