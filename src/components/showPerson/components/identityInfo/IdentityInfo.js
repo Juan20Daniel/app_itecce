@@ -9,17 +9,15 @@ import './showPrintDate.css';
 const IdentityInfo = ({idPerson}) => {
     const [ isLoading, setIsLoading ] = useState(true);
     const [ editPrintDate, setEditPrintDate ] = useState(false);
-    const [ editDeliveryDate, setEditDeliveryDate ] = useState(false);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const { year, month, day } = getDate();
-    const { priningDate, delivaryDate, setPriningDate, setDelivaryDate} = useContext(ModalShowPersonContext);
+    const { priningDate, setPriningDate } = useContext(ModalShowPersonContext);
     useEffect(() => {
         const getIdentityInfo = async () => {
             try {
                 setIsLoading(true);
                 const response = await axiosInstance.get(`/schoolIdentityCard/${idPerson}`);
-                setPriningDate(response.printed_at);
-                setDelivaryDate(response.delivered_at);
+                setPriningDate(response.data.printed_at);
             } catch (error) {
                 openCentralAlert('Error',error.message,'error');
             } finally {
@@ -27,7 +25,7 @@ const IdentityInfo = ({idPerson}) => {
             }
         }
         getIdentityInfo();
-    },[idPerson, setPriningDate, setDelivaryDate, openCentralAlert]);
+    },[idPerson, setPriningDate, openCentralAlert]);
     return (
         <>
             <h2 className='identity-sub-title'>Información de credencial</h2>
@@ -52,27 +50,6 @@ const IdentityInfo = ({idPerson}) => {
                             />
                         }
                     </ItemDate>
-                    {priningDate &&
-                        <ItemDate
-                            title='Estado de entrega'
-                            value={delivaryDate ? 'Entregada:' : 'Sin entregar'}
-                            date={delivaryDate}
-                            openModal={setEditDeliveryDate}
-                            note='Presiona en agregar para registrar la fecha de entrega de la credencial'
-                        >
-                            {editDeliveryDate &&
-                                <ModalEditDate
-                                    title='Fecha de entrega'
-                                    idPerson={idPerson}
-                                    camp='delivered_at'
-                                    action='update'
-                                    date={priningDate??`${year}-${month}-${day}`}
-                                    setDate={setDelivaryDate}
-                                    visible={setEditDeliveryDate}
-                                />
-                            }
-                        </ItemDate>
-                    }
                 </>
                 :
                 <p className='loading-identity-info'>Cargando...</p>

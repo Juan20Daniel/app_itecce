@@ -7,21 +7,37 @@
     height: 100%;
     background-color: #ffffff;
     z-index: 1;
-    padding-top: 6.4rem;
+    padding: 8.7rem 1rem;
     overflow: auto;
 }
 .show-person::-webkit-scrollbar {
     display: none;
 }
+.show-person .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    padding: 2rem 0 3rem;
+    display: block;
+}
 
-@media(min-width: 600px) {
-    .show-person {
-        display: grid;
-        grid-template-columns: minmax(30rem, 40rem) 1fr;
+@media(min-width: 400px) {
+    .show-person .title {
+        font-size: 2.4rem;
     }
 }
 @media(min-width: 900px) {
     .show-person {
-        grid-template-columns: minmax(40rem, 50rem) 1fr;
+        padding: 8.7rem 4rem 2.3rem 4rem;
+    }
+    .show-person .title {
+        font-size: 3rem;
+    }
+}
+@media(min-width: 1400px) {
+    .show-person {
+        padding: 8.7rem 9rem 2.3rem 9rem;
+    }
+    .show-person .box-person-info .title {
+        font-size: 3.5rem;
     }
 }

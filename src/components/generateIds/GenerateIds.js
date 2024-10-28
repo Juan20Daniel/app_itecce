@@ -1,9 +1,9 @@
 import { useContext, useRef, useState, useLayoutEffect } from "react";
+import { getLastItems } from "../../helpers/helpers";
 import GenerateIdContext from "../../context/generateId/GenerateIdContext";
 import BoxDetails from "./componets/boxDetails/BoxDetails";
 import Page from "./componets/page/Page";
 import ActionsPage from "./componets/actionsPage/ActionsPage";
-import { getLastItems } from "../../helpers/helpers";
 import './generateIds.css';
 const GenerateIds = () => {
     const [ pages, setPages ] = useState([]);

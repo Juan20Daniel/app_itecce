@@ -1,27 +1,27 @@
-.show-person .box-person-info .header {
+.show-person .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 1rem;
     border-bottom: solid 0.2rem #fff;
 }
-.show-person .box-person-info .header .box-id {
+.show-person .header .box-id {
     display: flex;
     align-items: center;
 }
-.show-person .box-person-info .header .box-id .label {
+.show-person .header .box-id .label {
     background-color: #6E0F0F;
     color: #fff;
     padding: 0.5rem 2rem;
     border-radius: 0.5rem;
     font-size: 1.2rem;
 }
-.show-person .box-person-info .header .box-id .value {
+.show-person .header .box-id .value {
     font-weight: bold;
     font-size: 1.5rem;
     margin-left: 1.5rem;
 }
-.show-person .box-person-info .header .box-id .btn-copy {
+.show-person .header .box-id .btn-copy {
     width: 7rem;
     height: 2rem;
     background: none;
@@ -36,13 +36,13 @@
     font-size: 1rem;
     color: rgb(129, 129, 129);
 }
-.show-person .box-person-info .header .box-id .id-copied {
+.show-person .header .box-id .id-copied {
     border: 0.1rem solid rgb(91, 212, 130);
 }
-.show-person .box-person-info .header .box-id .id-copied > span {
+.show-person .header .box-id .id-copied > span {
     color: rgb(91, 212, 130);
 }
-.show-person .box-person-info .header .btn-close {
+.show-person .header .btn-close {
     background: none;
     width: 2rem;
     height: 2rem;
@@ -50,10 +50,10 @@
     cursor: pointer;
 }
 @media(min-width: 800px) {
-    .show-person .box-person-info .header .box-id .label {
+    .show-person .header .box-id .label {
         font-size: 1.5rem;
     }
-    .show-person .box-person-info .header .box-id .value {
+    .show-person .header .box-id .value {
         font-size: 2rem;
     }
 }

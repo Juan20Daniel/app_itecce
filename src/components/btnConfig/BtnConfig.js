@@ -1,8 +1,8 @@
 import { IconConfig } from '../../assets/IconConfig';
 import './btnConfig.css';
-const BtnConfig = ({ showCount, setShowCount }) => {
+const BtnConfig = () => {
     return (
-        <button className="btn-config" type='button' onClick={() => setShowCount(!showCount)}>
+        <button className="btn-config" type='button'>
             <span>Configuración</span>
             <IconConfig size={18} />
         </button>

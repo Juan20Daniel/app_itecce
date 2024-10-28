@@ -1,30 +1,18 @@
-import { useReducer, useEffect } from "react";
+import { useReducer } from "react";
 import { reducerIds } from "../../reducer/reducerIds";
 import { types } from "../../types/types";
 import GenerateIdContext from "./GenerateIdContext";
 const initialstate = {
     data:[],
     images:[],
-    selectedPersons:[],
     infoSchool:[],
     infoIdentityCard:[],
     infoIdentityCardNotFound:[],
     removed:null,
     showFormAddPerson:false,
-    showSelectedPersons:false
 }
 const GenerateIdProvider = ({children}) => {
     const [ generateIdState, dispatch ] = useReducer(reducerIds, initialstate);
-    useEffect(() => {
-        //Cerrar el modal en caso de que no haya nada seleccionado
-        if(generateIdState.selectedPersons.length === 0) modalSelectedPersons(false);
-    },[generateIdState.selectedPersons]);
-    const addImage = (img_object) => {
-        dispatch({
-            type: types.addImage,
-            payload: img_object
-        });
-    }
     const addImages = (images) => {
         dispatch({
             type:types.addImages,
@@ -49,6 +37,12 @@ const GenerateIdProvider = ({children}) => {
             payload: persons
         });
     }
+    const addInfoSchool = (info) => {
+        dispatch({
+            type: types.addInfoSchool,
+            payload: info
+        });
+    }
     const addInfoIdentityCard = (info) => {
         dispatch({
             type: types.addInfoIdentityCard,
@@ -60,12 +54,6 @@ const GenerateIdProvider = ({children}) => {
             type: types.addInfoIdentityCardNotFound,
             payload: info
         })
-    }
-    const modalSelectedPersons = (visible) => {
-        dispatch({
-            type:types.modalSelectedPersons,
-            payload:visible
-        });
     }
     const addRemovePerson = (person) => {
         dispatch({
@@ -83,15 +71,14 @@ const GenerateIdProvider = ({children}) => {
         <GenerateIdContext.Provider value={{
             generateIdState,
             addImages,
-            addImage,
             removeImage,
             addSelectedPerson,
             addInfoIdentityCard,
             addInfoIdentityCardHotFound,
             removeSelectedPerson,
-            modalSelectedPersons,
             addRemovePerson,
-            formAddPerson
+            formAddPerson,
+            addInfoSchool
         }}>
             {children}
         </GenerateIdContext.Provider>

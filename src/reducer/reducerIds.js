@@ -21,11 +21,6 @@ export const reducerIds = (state, action) => {
                 ...state,
                 selectedPersons: action.payload
             }
-        case types.addInfoSchool:
-            return {
-                ...state,
-                infoSchool:[...state.infoSchool, ...action.payload]
-            }
         case types.modalSelectedPersons:
             return {
                 ...state,
@@ -56,11 +51,16 @@ export const reducerIds = (state, action) => {
                 ...state,
                 infoIdentityCard:action.payload
             }
-            case types.addInfoIdentityCardNotFound:
-                return {
-                    ...state,
-                    infoIdentityCardNotFound:action.payload
-                }
+        case types.addInfoIdentityCardNotFound:
+            return {
+                ...state,
+                infoIdentityCardNotFound:action.payload
+            }
+        case types.addInfoSchool: 
+        return {
+            ...state,
+            infoSchool:[...state.infoSchool, action.payload]
+        }
         default:
             return state;
     }

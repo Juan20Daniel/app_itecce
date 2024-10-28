@@ -1,8 +1,5 @@
-.box-sticky .box-options .actions {
-    display: flex;
-}
-.box-sticky .box-options .actions button {
-    display: inline-block;
+.box-btn-add {
+    width: 20rem;
 }
 .home-content-items {
     width: 100%;
@@ -10,10 +7,4 @@
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     grid-gap: 1rem;
     padding: 1rem 0;
-}
-
-@media(min-width:1400px) {
-    .box-sticky .box-options {
-        grid-template-columns: 33.5rem 1fr;
-    }
 }

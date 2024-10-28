@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
 import { getUser } from "../../helpers/helpers";
 import { useNavigate } from "react-router-dom";
-import './login.css';
 import Intro from '../../components/intro/Intro';
 import FormLogin from '../../components/formLogin/FormLogin';
+import './login.css';
 const Login = () => {
     const navigate = useNavigate();
     useEffect(() => {

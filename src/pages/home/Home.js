@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useContext } from "react";
 import { usePersonsDB } from "../../hooks/usePersonsDB";
-import { useSearchPersons } from "../../hooks/useSearchPersons";
 import { Link } from "react-router-dom";
 import { IconGo } from "../../assets/IconGo";
 import axiosInstance from "../../data/remote/axios.instance";
@@ -8,19 +7,17 @@ import TitleSection from "../../components/titleSection/TitleSection";
 import SearchFor from "../../components/searchFor/SearchFor";
 import Section from "../../components/section/Section";
 import SelectSection from "../../components/selectSection/SelectSection";
-import ActionButtonsGroup from "../../components/actions/ActionButtonsGroup";
 import ItemBox from "../../components/itemBox/ItemBox";
 import SectionNote from "../../components/sectionNote/SectionNote";
 import ColumnsInterseptor from "../../components/columnsInterseptor/ColumnsInterseptor";
 import ShowPerson from '../../components/showPerson/ShowPerson';
 import NotData from "../../components/notData/NotData";
-import Spin from "../../components/spin/Spin";
-import ShowSelectedPersons from "../../components/showSelectedPersons/ShowSelectedPersons";
 import GenerateIdContext from "../../context/generateId/GenerateIdContext";
 import ModalShowPersonContext from "../../context/modalShowPerson/ModalShowPersonContext";
 import FormaAddPerson from "../../components/formAddPerson/FormAddPerson";
 import BoxSticky from "../../components/boxSticky/BoxSticky";
 import BoxOptions from "../../components/boxOptions/BoxOptions";
+import BtnAction from "../../components/btnAction/BtnAction";
 import './home.css';
 const typeSections = {
     students:'alumnos',
@@ -29,33 +26,13 @@ const typeSections = {
 }
 const Home = () => {
     const [selectSection, setSelectSection] = useState('students');
-    const [idToSearch, setIdToSearch] = useState('');
-    const [nameToSearch, setNameToSearch] = useState('');
-    const [firstnameToSearch, setFirstnameToSearch] = useState('');
-    const [lastnameToSearch, setLastnameToSearch] = useState('');
-    const [searchBy, setSearchBy] = useState('search-by-id');
-    const [isSearching, setIsSearching] = useState(false);
     const [notData, setNotData] = useState(true);
     const [total, setTotal] = useState(0);
     const {showPerson} = useContext(ModalShowPersonContext);
     const {renderPersons,data,hasMorePersons,isLoadingPersons, remove} = usePersonsDB(selectSection);
-    const {generateIdState} = useContext(GenerateIdContext);
-    const {showSelectedPersons, showFormAddPerson} = generateIdState;
-    const {
-        searchResult,
-        isLoadingResults,
-        interseptorSearch,
-        showMoreResults,
-        removeItemSerach
-    } = useSearchPersons(selectSection,searchBy,idToSearch,nameToSearch,firstnameToSearch,lastnameToSearch);
+    const {generateIdState, formAddPerson} = useContext(GenerateIdContext);
+    const {showFormAddPerson} = generateIdState;
     const notDataRef = useRef(null);
-    useEffect(() => {
-        if(idToSearch !== '' || nameToSearch !== '' || firstnameToSearch !== '' || lastnameToSearch !== '') {
-            setIsSearching(true);
-        } else {
-            setIsSearching(false);
-        }
-    },[idToSearch,nameToSearch,firstnameToSearch,lastnameToSearch]);
     useEffect(() => {
         if(notDataRef.current) setNotData(notDataRef.current.children.length > 0);
     },[isLoadingPersons]);
@@ -70,67 +47,15 @@ const Home = () => {
         }
         getNumTotal();
     },[selectSection]);
-    const clearSearchInputs = () => {
-        setIdToSearch('');
-        setNameToSearch('');
-        setFirstnameToSearch('');
-        setLastnameToSearch('');
-    }
     return (
         <Section>
-            <TitleSection value="Generar Credenciales" />
+            <TitleSection value="Inicio" />
             <SectionNote 
-                value={"Selecciona a los estudiantes a quienes se les va a generar la credencial, maximo 10."} 
-                maxWidth={400}
+                value={"Presiona en ver para revisas la información del alumno, así como el estado de la credencial."} 
+                maxWidth={500}
             />
             <BoxSticky>
-                <SearchFor
-                    idToSearch={idToSearch}
-                    nameToSearch={nameToSearch}
-                    firstnameToSearch={firstnameToSearch}
-                    lastnameToSearch={lastnameToSearch}
-                    searchBy={searchBy}
-                    isSearching={isSearching}
-                    setSearchBy={setSearchBy}
-                    setIdToSearch={setIdToSearch}
-                    setNameToSearch={setNameToSearch}
-                    setFirstnameToSearch={setFirstnameToSearch}
-                    setLastnameToSearch={setLastnameToSearch}
-                    clearSearchInputs={clearSearchInputs}
-                >
-                    {/* Para pintar el resultado de la búsqueda de forma horizontal */}
-                    <div className='horizontal-scroll'>
-                        {!(searchResult.length === 0 && !isLoadingResults) ?
-                            <div className='box-results'>
-                                {searchResult.map(item => (
-                                    <ItemBox
-                                        key={item.idPerson} 
-                                        item={item}
-                                        remove={removeItemSerach}
-                                    />
-                                ))}
-                                {/* Para pintar un spinner cuando se carga por primera vez */}
-                                {(!showMoreResults.current && isLoadingResults) && 
-                                    <div className='render'>
-                                        <Spin size={30} />
-                                    </div>
-                                }
-                                {/* Para que no haya error cuando carge por primera ves y se puedan mostrar bajo demanda */}
-                                {showMoreResults.current &&
-                                    <div ref={interseptorSearch} className='render'>
-                                        {isLoadingResults && <Spin size={30} />}
-                                    </div>
-                                }
-                            </div>
-                        :
-                            <NotData>
-                                <p className="message">
-                                    No se encontro ningún registro que conincida con tu búsqueda en la seccion de <b>{typeSections[selectSection]}.</b>
-                                </p>
-                            </NotData>
-                        }
-                    </div>
-                </SearchFor>
+                <SearchFor />
                 <BoxOptions>
                     <SelectSection
                         data={data}
@@ -138,7 +63,13 @@ const Home = () => {
                         selectSection={selectSection} 
                         setSelectSection={setSelectSection} 
                     />
-                    <ActionButtonsGroup section={selectSection} />
+                    <div className="box-btn-add">
+                        <BtnAction 
+                            value='Agregar' 
+                            color='white' 
+                            action={() => formAddPerson(true)} 
+                        />
+                    </div>
                 </BoxOptions>
             </BoxSticky>
             {notData ? 
@@ -167,7 +98,6 @@ const Home = () => {
             }
             {showPerson && <ShowPerson section={selectSection} /> }
             {showFormAddPerson && <FormaAddPerson section={selectSection} />}
-            {showSelectedPersons && <ShowSelectedPersons />}
         </Section>
     );
 }

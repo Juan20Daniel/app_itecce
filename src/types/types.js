@@ -9,5 +9,6 @@ export const types = {
     removed: '[generateId] remove person',
     modalSelectedPersons: '[generateId] open or close modal of selected persons',
     formAddPerson: '[generateId] open or close form to add persons',
-    addImages: '[generateId] add images'
+    addImages: '[generateId] add images',
+    addInfoSchool: '[generateId] add Inforation school'
 }

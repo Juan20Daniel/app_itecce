@@ -5,11 +5,11 @@
     padding: 2rem 0 3rem;
     display: block;
 }
-.show-person .box-person-info .loading-identity-info {
+.show-person .loading-identity-info {
     font-size: 1.4rem;
 }
 @media(min-width: 900px) {
-    .show-person .box-person-info .loading-identity-info {
+    .show-person .loading-identity-info {
         font-size: 1.8rem;
     }
 }

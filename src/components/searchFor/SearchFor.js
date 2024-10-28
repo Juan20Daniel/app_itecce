@@ -1,26 +1,18 @@
 import { useState } from "react";
 import { select } from "../../functions";
-import { IconX } from '../../assets/iconX.js';
+// import { IconX } from '../../assets/iconX.js';
 import { IconNext } from '../../assets/IconNext.js';
 import iconSearch from '../../assets/iconSearch.png';
 import MenuPoint from '../menuPoint/MenuPoint';
 import './searchForStyles.css';
 var count = 1;
-const SearchFor = ({
-    idToSearch,
-    nameToSearch,
-    firstnameToSearch,
-    lastnameToSearch,
-    searchBy,
-    isSearching,
-    setSearchBy,
-    setIdToSearch,
-    setNameToSearch,
-    setFirstnameToSearch,
-    setLastnameToSearch,
-    clearSearchInputs,
-    children
-}) => {
+const SearchFor = () => {
+    const [idToSearch, setIdToSearch] = useState('');
+    const [nameToSearch, setNameToSearch] = useState('');
+    const [firstnameToSearch, setFirstnameToSearch] = useState('');
+    const [lastnameToSearch, setLastnameToSearch] = useState('');
+    const [isSearching, setIsSearching] = useState(false);
+    const [searchBy, setSearchBy] = useState('search-by-id');
     const [ fullname, setFullname ] = useState([
         { id:1, active:true },
         { id:2, active:false },
@@ -47,6 +39,9 @@ const SearchFor = ({
         count--;
         setFullname(select(fullname, count));
         if(count < 3) setBtnRigth(true);
+    }
+    const clearSearchInputs = () => {
+        console.log('clear')
     }
     return (
         <div className='search'>
@@ -103,20 +98,15 @@ const SearchFor = ({
                             </button>
                         </div>
                     }
-                    {isSearching &&
+                    {/* {isSearching &&
                         <div className='box-btn-clear-input'>
                             <button onClick={() => clearSearchInputs()} className='btn-clear-input' title='Limpiar'>
                                 <IconX size={16} />
                             </button>
                         </div>
-                    }
+                    } */}
                 </div>
            </div>
-            {isSearching && 
-                <div className='results'>
-                    {children}
-                </div>
-            }
         </div>
       
     );
