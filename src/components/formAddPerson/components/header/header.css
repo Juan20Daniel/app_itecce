@@ -1,8 +1,9 @@
 .header-form-add {
-    height: 14rem;
+    height: 100%;
     padding: 2rem 0 1rem 0;
     display: grid;
     align-content: center;
+    gap: 1rem;
 }
  .header-form-add .box-title {
     display: flex;

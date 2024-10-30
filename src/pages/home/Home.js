@@ -4,9 +4,7 @@ import { Link } from "react-router-dom";
 import { IconGo } from "../../assets/IconGo";
 import axiosInstance from "../../data/remote/axios.instance";
 import TitleSection from "../../components/titleSection/TitleSection";
-import SearchFor from "../../components/searchFor/SearchFor";
 import Section from "../../components/section/Section";
-import SelectSection from "../../components/selectSection/SelectSection";
 import ItemBox from "../../components/itemBox/ItemBox";
 import SectionNote from "../../components/sectionNote/SectionNote";
 import ColumnsInterseptor from "../../components/columnsInterseptor/ColumnsInterseptor";
@@ -15,10 +13,8 @@ import NotData from "../../components/notData/NotData";
 import GenerateIdContext from "../../context/generateId/GenerateIdContext";
 import ModalShowPersonContext from "../../context/modalShowPerson/ModalShowPersonContext";
 import FormaAddPerson from "../../components/formAddPerson/FormAddPerson";
-import BoxSticky from "../../components/boxSticky/BoxSticky";
-import BoxOptions from "../../components/boxOptions/BoxOptions";
-import BtnAction from "../../components/btnAction/BtnAction";
 import './home.css';
+import HomeOptions from "../../components/homeOptions/HomeOptions";
 const typeSections = {
     students:'alumnos',
     teachers:'profesores',
@@ -30,7 +26,7 @@ const Home = () => {
     const [total, setTotal] = useState(0);
     const {showPerson} = useContext(ModalShowPersonContext);
     const {renderPersons,data,hasMorePersons,isLoadingPersons, remove} = usePersonsDB(selectSection);
-    const {generateIdState, formAddPerson} = useContext(GenerateIdContext);
+    const {generateIdState} = useContext(GenerateIdContext);
     const {showFormAddPerson} = generateIdState;
     const notDataRef = useRef(null);
     useEffect(() => {
@@ -54,24 +50,7 @@ const Home = () => {
                 value={"Presiona en ver para revisas la información del alumno, así como el estado de la credencial."} 
                 maxWidth={500}
             />
-            <BoxSticky>
-                <SearchFor />
-                <BoxOptions>
-                    <SelectSection
-                        data={data}
-                        total={total}
-                        selectSection={selectSection} 
-                        setSelectSection={setSelectSection} 
-                    />
-                    <div className="box-btn-add">
-                        <BtnAction 
-                            value='Agregar' 
-                            color='white' 
-                            action={() => formAddPerson(true)} 
-                        />
-                    </div>
-                </BoxOptions>
-            </BoxSticky>
+            <HomeOptions />
             {notData ? 
                 <div className="home-content-items" ref={notDataRef}>
                     {data.map(item => (

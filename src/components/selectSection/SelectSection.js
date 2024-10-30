@@ -1,8 +1,8 @@
 import { IconPoint } from '../../assets/IconPoint';
 import './selectSection.css';
-const SelectSection = ({data, total, selectSection, setSelectSection}) => (
+const SelectSection = ({data, total, selectSection}) => (
     <div className="box-select-type">
-        <select className='select-type' title="Seleccionar tipo" value={selectSection} onChange={(e) => setSelectSection(e.target.value)}>
+        <select className='select-type' title="Seleccionar tipo" value={selectSection}>
             <option value='students'>Alumnos</option>
             <option value='teachers'>Profesores</option>
             <option value='collaborators'>Colaboradores</option>
