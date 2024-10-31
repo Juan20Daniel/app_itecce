@@ -5,12 +5,12 @@ import { store } from './redux/store';
 import MainLayout from './layouts/mainLayout/MainLayout';
 import AppLayout from './layouts/AppLayout/AppLayout';
 import Home from './pages/home/Home';
-import GenerateIdProvider from './context/generateId/GenerateIdProvider';
+import HomeProvider from './context/home/HomeProvider';
 import CentralAlertProvider from './context/centralAlert/CentralAlertProvider';
-import LoadImageProvider from './context/loadImages/LoadImageProvider';
+import GenerateIdsProvider from './context/generateIds/GenerateIdsProvider';
 import AddPersonalProvider from './context/addPersonal/AddPersonalProvider';
 const AddPersonal = lazy(() => import('./pages/addPersonal/AddPersonal'));
-const LoadImages = lazy(() => import('./pages/loadImages/LoadImages'));
+const LoadImages = lazy(() => import('./pages/generateIds/GenerateIds'));
 const GenerateReport = lazy(() => import('./pages/generateReport/GenerateReport'));
 const Login = lazy(() => import('./pages/login/Login'));
 const NotFound = lazy(() => import('./pages/notFound/NotFound'));
@@ -21,8 +21,8 @@ function App() {
     <Provider store={store}>
       <Suspense fallback={<div><span>Cargando...</span></div>}>
         <CentralAlertProvider>
-          <GenerateIdProvider>
-            <LoadImageProvider>
+          <HomeProvider>
+            <GenerateIdsProvider>
               <AddPersonalProvider>
                 <Routes>
                   <Route path='/' element={<MainLayout />}>
@@ -38,8 +38,8 @@ function App() {
                   <Route path='*' element={<NotFound />} />
                 </Routes>
               </AddPersonalProvider>
-            </LoadImageProvider>
-          </GenerateIdProvider>
+            </GenerateIdsProvider>
+          </HomeProvider>
         </CentralAlertProvider>
       </Suspense>
     </Provider>

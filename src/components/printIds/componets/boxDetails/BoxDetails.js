@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import PageDetails from "../pageDetails/PageDetails";
 import NotFounds from "../notFounds/NotFounds";
-import GenerateIdContext from "../../../../context/generateId/GenerateIdContext";
+import GenerateIdsContext from "../../../../context/generateIds/GenerateIdsContext";
 import './boxDetails.css';
 const BoxDetails = ({totalIds, pages, currentPage}) => {
-    const { generateIdState } = useContext(GenerateIdContext);
-    const { infoIdentityCardNotFound } = generateIdState;
+    const { infoIdentityCardNotFound } = useContext(GenerateIdsContext);
     return (
         <div className="box-details">
             <PageDetails 

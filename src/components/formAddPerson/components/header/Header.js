@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { IconX } from '../../../../assets/iconX';
-import GenerateIdContext from '../../../../context/generateId/GenerateIdContext';
+import HomeContext from '../../../../context/home/HomeContext';
 import './header.css';
 const typeSection = {
     students:'alumno',
@@ -8,7 +8,7 @@ const typeSection = {
     collaborators:'colaborador'
 }
 const Header = ({section}) => {
-    const { formAddPerson } = useContext(GenerateIdContext);
+    const { formAddPerson } = useContext(HomeContext);
     return (
         <div className='header-form-add'>
             <div className='box-title'>

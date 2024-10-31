@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import GenerateIdContext from "../../../../context/generateId/GenerateIdContext";
+import GenerateIdsContext from "../../../../context/generateIds/GenerateIdsContext";
 import './notFounds.css';
 const NotFounds = () => {
-    const { generateIdState } = useContext(GenerateIdContext);
-    const { infoIdentityCardNotFound } = generateIdState;
+    const { infoIdentityCardNotFound } = useContext(GenerateIdsContext);
+
     return (
         <div className="not-founds">
             <p className="title">No disponibles para hacer credencial</p>

@@ -4,7 +4,7 @@ import Header from './components/header/Header';
 import InputForm from './components/inputForm/InputForm';
 import Select from '../select/Select';
 import BtnAction from '../btnAction/BtnAction';
-import GenerateIdContext from '../../context/generateId/GenerateIdContext';
+import HomeContext from '../../context/home/HomeContext';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
 import axiosInstance from '../../data/remote/axios.instance';
 import './formAddPersons.css';
@@ -40,7 +40,7 @@ const FormaAddPerson = ({section}) => {
     const [ id, setId ] = useState({value:'', camp:'id', error:false, exp:/^[0-9]{7}$/});
     const [ area, setArea ] = useState({value:'', camp:'area', error:false, exp:/^[A-Z ÁÉÍÓÚ]{10,50}$/});
     const [ formValid, setFormValid ] = useState(false);
-    const { formAddPerson } = useContext(GenerateIdContext);
+    const { formAddPerson } = useContext(HomeContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const clearInputs = () => {
         setName({...name, value:''});

@@ -1,18 +1,17 @@
 import { useContext, useRef, useState, useLayoutEffect } from "react";
 import { getLastItems } from "../../helpers/helpers";
-import GenerateIdContext from "../../context/generateId/GenerateIdContext";
+import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
 import BoxDetails from "./componets/boxDetails/BoxDetails";
 import Page from "./componets/page/Page";
 import ActionsPage from "./componets/actionsPage/ActionsPage";
-import './generateIds.css';
-const GenerateIds = () => {
+import './printIds.css';
+const PrintIds = () => {
     const [ pages, setPages ] = useState([]);
     const [ currentPage, setCurrentPage ] = useState(0);
     const [ showBack, setShowBack ] = useState(false);
     const [ isPrinting, setIsPrinting ] = useState(false);
     const [ offset, setOffset ] = useState(0);
-    const { generateIdState } = useContext(GenerateIdContext);
-    const { infoIdentityCard } = generateIdState;
+    const { infoIdentityCard } = useContext(GenerateIdsContext);
     const componentRef = useRef();
     const promiseResolveRef = useRef(null);
     const hideStyles = useRef(false);
@@ -82,4 +81,4 @@ const GenerateIds = () => {
     );
 }
 
-export default GenerateIds;
+export default PrintIds;

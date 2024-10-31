@@ -1,15 +1,15 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import axiosInstance from '../../data/remote/axios.instance';
-import LoadImagesContext from "./LoadImageContext";
-import GenerateIdContext from "../generateId/GenerateIdContext";
+import GenerateIdsContext from "./GenerateIdsContext";
 import CentralAlertContext from "../centralAlert/CentralAlertContext";
-const LoadImageProvider = ({children}) => {
+const GenerateIdsProvider = ({children}) => {
     const [ images, setImages ] = useState(null);
     const [ inputValue, setInputValue ] = useState('');
     const [ isLoading, setIsLoading ] = useState(false);
-    const [ generateIds, setGenerateIds ] = useState(false);
+    const [ printIds, setPrintIds ] = useState(false);
     const [ lastRemoved, setLastRemoved ] = useState(null);
-    const { addImages, addInfoIdentityCard, addInfoIdentityCardHotFound } = useContext(GenerateIdContext);
+    const [ infoIdentityCard, setInfoIdentityCard] = useState([]);
+    const [ infoIdentityCardNotFound, setInfoIdentityCardNotFound] = useState([]);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const getUrl = (id) => {
         return axiosInstance.get(`/schoolIdentityCard/info-identity-card/${id}`);
@@ -25,10 +25,9 @@ const LoadImageProvider = ({children}) => {
                 if(response.data.isActive) toGenereteId.push(response.data);
                 else notFounds.push(response.data);
             });
-            addInfoIdentityCard(toGenereteId);
-            addInfoIdentityCardHotFound(notFounds);
-            addImages(images);
-            setGenerateIds(true);
+            setInfoIdentityCard(toGenereteId);
+            setInfoIdentityCardNotFound(notFounds);
+            setPrintIds(true);
         } catch (error) {
             openCentralAlert('Imagenes',error.message,'error');
         } finally {
@@ -42,18 +41,24 @@ const LoadImageProvider = ({children}) => {
         setImages(result);
     }
     const clear = () => {
+        setInfoIdentityCard([]);
+        setInfoIdentityCardNotFound([]);
         setLastRemoved(null);
         setInputValue('');
         setImages(null);
-        setGenerateIds(false);
+        setPrintIds(false);
     }
     return (
-        <LoadImagesContext.Provider value={{
+        <GenerateIdsContext.Provider value={{
             images,
             inputValue,
             isLoading,
-            generateIds,
+            printIds,
             lastRemoved,
+            infoIdentityCard,
+            infoIdentityCardNotFound,
+            setInfoIdentityCard,
+            setInfoIdentityCardNotFound,
             saveImages,
             setLastRemoved,
             removeImage,
@@ -62,8 +67,8 @@ const LoadImageProvider = ({children}) => {
             setImages
         }}>
             {children}
-        </LoadImagesContext.Provider>
+        </GenerateIdsContext.Provider>
     );
 }
 
-export default LoadImageProvider;
+export default GenerateIdsProvider;

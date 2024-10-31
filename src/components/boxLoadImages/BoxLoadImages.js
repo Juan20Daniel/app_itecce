@@ -1,11 +1,11 @@
 import { useContext, useState } from 'react';
 import imgLoadImages from '../../assets/img-load-images.png';
-import LoadImagesContext from '../../context/loadImages/LoadImageContext';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
+import GenerateIdsContext from '../../context/generateIds/GenerateIdsContext';
 import './boxLoadImages.css';
 const BoxLoadImages = () => {
     const [isLoading, setIsLoading] = useState(false);
-    const {  inputValue, setInputValue, setImages } = useContext(LoadImagesContext);
+    const {  inputValue, setInputValue, setImages } = useContext(GenerateIdsContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const handleChange = (event) => {
         setIsLoading(true);

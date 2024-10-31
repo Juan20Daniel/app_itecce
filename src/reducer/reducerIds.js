@@ -1,30 +1,10 @@
 import { types } from "../types/types";
 export const reducerIds = (state, action) => {
     switch (action.type) {
-        case types.addImage:
-            return {
-                ...state,
-                images:[...state.images, action.payload]
-            }
         case types.removeImage:
             return {
                 ...state,
                 images:action.payload
-            }
-        case types.addSelectPerson:
-            return {
-                ...state,
-                selectedPersons:[...state.selectedPersons, action.payload]
-            }
-        case types.removeSelectPerson:
-            return {
-                ...state,
-                selectedPersons: action.payload
-            }
-        case types.modalSelectedPersons:
-            return {
-                ...state,
-                showSelectedPersons:action.payload
             }
         case types.addPersons:
             return {
@@ -41,26 +21,11 @@ export const reducerIds = (state, action) => {
                 ...state,
                 showFormAddPerson:action.payload
             }
-        case types.addImages:
-            return {
-                ...state,
-                images:[...action.payload]
-            }
-        case types.addInfoIdentityCard:
-            return {
-                ...state,
-                infoIdentityCard:action.payload
-            }
-        case types.addInfoIdentityCardNotFound:
-            return {
-                ...state,
-                infoIdentityCardNotFound:action.payload
-            }
         case types.addInfoSchool: 
-        return {
-            ...state,
-            infoSchool:[...state.infoSchool, action.payload]
-        }
+            return {
+                ...state,
+                infoSchool:[...state.infoSchool, action.payload]
+            }
         default:
             return state;
     }

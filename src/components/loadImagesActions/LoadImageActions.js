@@ -1,10 +1,10 @@
 import { useContext } from 'react';
 import BtnAction from '../btnAction/BtnAction';
-import LoadImagesContext from '../../context/loadImages/LoadImageContext';
+import GenerateIdsContext from '../../context/generateIds/GenerateIdsContext';
 import './loadImagesActions.css';
 
 const LoadImageActions = () => {
-    const { isLoading, saveImages, clear } = useContext(LoadImagesContext);
+    const { isLoading, saveImages, clear } = useContext(GenerateIdsContext);
     return (
         <div className="load-images-actions">
             <div className='btn-load-images-save'>

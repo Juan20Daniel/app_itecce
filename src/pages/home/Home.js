@@ -10,11 +10,11 @@ import SectionNote from "../../components/sectionNote/SectionNote";
 import ColumnsInterseptor from "../../components/columnsInterseptor/ColumnsInterseptor";
 import ShowPerson from '../../components/showPerson/ShowPerson';
 import NotData from "../../components/notData/NotData";
-import GenerateIdContext from "../../context/generateId/GenerateIdContext";
 import ModalShowPersonContext from "../../context/modalShowPerson/ModalShowPersonContext";
 import FormaAddPerson from "../../components/formAddPerson/FormAddPerson";
-import './home.css';
 import HomeOptions from "../../components/homeOptions/HomeOptions";
+import HomeContext from "../../context/home/HomeContext";
+import './home.css';
 const typeSections = {
     students:'alumnos',
     teachers:'profesores',
@@ -26,7 +26,7 @@ const Home = () => {
     const [total, setTotal] = useState(0);
     const {showPerson} = useContext(ModalShowPersonContext);
     const {renderPersons,data,hasMorePersons,isLoadingPersons, remove} = usePersonsDB(selectSection);
-    const {generateIdState} = useContext(GenerateIdContext);
+    const {generateIdState} = useContext(HomeContext);
     const {showFormAddPerson} = generateIdState;
     const notDataRef = useRef(null);
     useEffect(() => {

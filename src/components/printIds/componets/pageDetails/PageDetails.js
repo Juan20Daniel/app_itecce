@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import BtnAction from "../../../btnAction/BtnAction";
-import LoadImagesContext from "../../../../context/loadImages/LoadImageContext";
+import GenerateIdsContext from "../../../../context/generateIds/GenerateIdsContext";
 import './pageDetails.css';
 const PageDetails = ({totalIds, pages, currentPage}) => {
-    const { clear } = useContext(LoadImagesContext);
+    const { clear } = useContext(GenerateIdsContext);
     return (
         <div className="page-details">
             <p className="title">Detalles</p>

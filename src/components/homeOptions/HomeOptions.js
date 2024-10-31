@@ -1,9 +1,7 @@
 import { useContext, useState } from "react";
 import BoxSticky from "../boxSticky/BoxSticky";
-import BtnAction from "../btnAction/BtnAction";
-import SelectSection from "../selectSection/SelectSection";
 import SearchFor from "../searchFor/SearchFor";
-import GenerateIdContext from "../../context/generateId/GenerateIdContext";
+import HomeContext from "../../context/home/HomeContext";
 import Select from "../select/Select";
 import './HomeOptions.css';
 import { IconPoint } from "../../assets/IconPoint";
@@ -14,7 +12,7 @@ const options = [
 ]
 const HomeOptions = () => {
     const [ section, setSection ] = useState({value:'Alumnos'});
-    const { formAddPerson } = useContext(GenerateIdContext);
+    const { formAddPerson } = useContext(HomeContext);
     return (
         <BoxSticky>
             <div className="home-options">

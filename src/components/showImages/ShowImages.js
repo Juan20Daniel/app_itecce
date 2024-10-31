@@ -1,14 +1,14 @@
 import { useContext, useEffect, useState, useCallback, useRef } from "react";
 import { getLastItems } from '../../helpers/helpers';
-import LoadImagesContext from "../../context/loadImages/LoadImageContext";
 import ItemImage from "../itemImage/ItemImage";
+import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
 import BtnShowMore from "../btnShowMore/BtnShowMore";
 import './showImages.css';
 const range = 43
 const ShowImages = () => {
     const [ data, setData ] = useState(null);
     const [ disableBtn, setDisableBtn ] = useState(false);
-    const { images, lastRemoved, setLastRemoved } = useContext(LoadImagesContext);
+    const { images, lastRemoved, setLastRemoved } = useContext(GenerateIdsContext);
     const offset = useRef(0);
     const getMoreData = useCallback(() => {
         let result = getLastItems(images, offset.current, range);

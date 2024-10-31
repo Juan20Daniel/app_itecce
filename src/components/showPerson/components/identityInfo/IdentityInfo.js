@@ -10,8 +10,8 @@ const IdentityInfo = ({idPerson}) => {
     const [ isLoading, setIsLoading ] = useState(true);
     const [ editPrintDate, setEditPrintDate ] = useState(false);
     const { openCentralAlert } = useContext(CentralAlertContext);
-    const { year, month, day } = getDate();
     const { priningDate, setPriningDate } = useContext(ModalShowPersonContext);
+    const { year, month, day } = getDate();
     useEffect(() => {
         const getIdentityInfo = async () => {
             try {

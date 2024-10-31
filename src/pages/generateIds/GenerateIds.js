@@ -1,38 +1,38 @@
+import { useContext } from "react";
 import Section from "../../components/section/Section";
 import TitleSection from "../../components/titleSection/TitleSection";
 import SectionNote from "../../components/sectionNote/SectionNote";
 import BoxLoadImages from "../../components/boxLoadImages/BoxLoadImages";
 import LoadImageActions from "../../components/loadImagesActions/LoadImageActions";
 import ShowImages from "../../components/showImages/ShowImages";
-import LoadImagesContext from "../../context/loadImages/LoadImageContext";
-import GenerateIds from "../../components/generateIds/GenerateIds";
-import { useContext } from "react";
-import './loadImages.css';
-const LoadImages = () => {
-    const { images, generateIds } = useContext(LoadImagesContext);
+import PrintIds from "../../components/printIds/PrintIds";
+import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
+import './generateIds.css';
+const GenerateIds = () => {
+    const { images, printIds } = useContext(GenerateIdsContext);
     return (
         <Section>
             <TitleSection value='Generar credenciales' />
             <SectionNote
-                value={!generateIds
+                value={!printIds
                     ? 'Arrastra y suelta todas las imagenes en el rectangulo o has clic sobre el para cargar las imagenes'
                     : 'Genera las credenciales de cada página con el botón de imprimir y captura la fecha de impresión para su posterior consulta.'
                 }
                 maxWidth={600}
             />
-            {(!images && !generateIds) && <BoxLoadImages />}
-            {(images && !generateIds) && 
+            {(!images && !printIds) && <BoxLoadImages />}
+            {(images && !printIds) && 
                 <>
                     <ShowImages />
                     <LoadImageActions />
                 </>
             }
-            {generateIds && <GenerateIds />}
+            {printIds && <PrintIds />}
         </Section>
     );
 }
 
-export default LoadImages;
+export default GenerateIds;
 
 
 

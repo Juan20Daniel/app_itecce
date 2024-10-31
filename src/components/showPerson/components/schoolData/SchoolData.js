@@ -3,7 +3,7 @@ import { IconSection } from "../../../../assets/IconSection";
 import { IconGroup } from "../../../../assets/IconGroup";
 import ItemInfo from "../itemInfo/ItemInfo";
 import axiosInstance from "../../../../data/remote/axios.instance";
-import GenerateIdContext from "../../../../context/generateId/GenerateIdContext";
+import HomeContext from "../../../../context/home/HomeContext";
 import CentralAlertContext from "../../../../context/centralAlert/CentralAlertContext";
 import './schoolData.css';
 const SchoolData = ({id}) => {
@@ -11,7 +11,7 @@ const SchoolData = ({id}) => {
     const [ group, setgroup ] = useState('');
     const [ isLoading, setIsLoading ] = useState(true);
     const { openCentralAlert } = useContext(CentralAlertContext);
-    const { generateIdState, addInfoSchool } = useContext(GenerateIdContext);
+    const { generateIdState, addInfoSchool } = useContext(HomeContext);
     const { infoSchool } = generateIdState;
     const getInfoschool = useCallback( async () => {
         try {
