@@ -11,3 +11,12 @@ export const getTokenLocalStorage = () => {
 export const removeTokenLocalStorage = () => {
     localStorage.removeItem('token');
 }
+
+export const saveSectionLocalStorage = (section) => {
+    localStorage.setItem('section', section);
+}
+
+export const getSectionLocalStorage = () => {
+    const section = localStorage.getItem('section');
+    return section;
+}
