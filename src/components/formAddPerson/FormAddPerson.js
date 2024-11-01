@@ -9,30 +9,30 @@ import CentralAlertContext from '../../context/centralAlert/CentralAlertContext'
 import axiosInstance from '../../data/remote/axios.instance';
 import './formAddPersons.css';
 const typeStudes = [
-    {id: 1, selected:false, name:"BACHILLERATO GENERAL"},
-    {id: 2, selected:false, name:"BACHILLERATO TÉCNICO EN SEGURIDAD PÚBLICA"},
-    {id: 3, selected:false, name:"BACHILLERATO TÉCNICO EN COMERCIO EXTERIOR"},
-    {id: 4, selected:false, name:"LICENCIATURA EN ADMINISTRACIÓN"},
-    {id: 5, selected:false, name:"LICENCIATURA EN ADUANAS Y COMERCIO EXTERIOR"},
-    {id: 6, selected:false, name:"LICENCIATURA EN DISEÑO GRÁFICO"},
-    {id: 7, selected:false, name:"LICENCIATURA EN DERECHO"},
-    {id: 8, selected:false, name:"LICENCIATURA EN NUTRICIÓN"},
-    {id: 9, selected:false, name:"LICENCIATURA EN CONTABILIDAD"},
-    {id: 10, selected:false, name:"LICENCIATURA EN CIENCIAS DE LA EDUCACIÓN"},
-    {id: 11, selected:false, name:"LICENCIATURA EN LENGUA INGLESA"},
-    {id: 12, selected:false, name:"MAESTRÍA EN GESTIÓN OPERACIÓN ADUANERA"},
-    {id: 13, selected:false, name:"MAESTRÍA EN DERECHO FAMILIAR"},
-    {id: 14, selected:false, name:"MAESTRÍA EN FISCAL"},
-    {id: 15, selected:false, name:"MAESTRÍA EN INVESTIGACIÓN EDUCATIVA"},
-    {id: 16, selected:false, name:"INGENIERIA MECANICA AUTOMOTRIZ"},
-    {id: 17, selected:false, name:"EGRESADOS"}
+    {id: 1, selected:false, value:"BACHILLERATO GENERAL"},
+    {id: 2, selected:false, value:"BACHILLERATO TÉCNICO EN SEGURIDAD PÚBLICA"},
+    {id: 3, selected:false, value:"BACHILLERATO TÉCNICO EN COMERCIO EXTERIOR"},
+    {id: 4, selected:false, value:"LICENCIATURA EN ADMINISTRACIÓN"},
+    {id: 5, selected:false, value:"LICENCIATURA EN ADUANAS Y COMERCIO EXTERIOR"},
+    {id: 6, selected:false, value:"LICENCIATURA EN DISEÑO GRÁFICO"},
+    {id: 7, selected:false, value:"LICENCIATURA EN DERECHO"},
+    {id: 8, selected:false, value:"LICENCIATURA EN NUTRICIÓN"},
+    {id: 9, selected:false, value:"LICENCIATURA EN CONTABILIDAD"},
+    {id: 10, selected:false, value:"LICENCIATURA EN CIENCIAS DE LA EDUCACIÓN"},
+    {id: 11, selected:false, value:"LICENCIATURA EN LENGUA INGLESA"},
+    {id: 12, selected:false, value:"MAESTRÍA EN GESTIÓN OPERACIÓN ADUANERA"},
+    {id: 13, selected:false, value:"MAESTRÍA EN DERECHO FAMILIAR"},
+    {id: 14, selected:false, value:"MAESTRÍA EN FISCAL"},
+    {id: 15, selected:false, value:"MAESTRÍA EN INVESTIGACIÓN EDUCATIVA"},
+    {id: 16, selected:false, value:"INGENIERIA MECANICA AUTOMOTRIZ"},
+    {id: 17, selected:false, value:"EGRESADOS"}
 ]
 const typeSections = {
-    students:'STUDENT',
-    teachers:'TEACHER',
-    collaborators:'COLABORATOR'
+    Alumnos:'STUDENT',
+    Profesores:'TEACHER',
+    Colaboradores:'COLABORATOR'
 }
-const FormaAddPerson = ({section}) => {
+const FormaAddPerson = () => {
     const [ name, setName ] = useState({value:'', camp:'name', error:false, exp:/^[A-Z ÁÉÍÓÚÑ]{5,20}$/});
     const [ firstname, setFirstname ] = useState({value:'', camp:'firstname', error:false, exp:/^[A-Z ÁÉÍÓÚÑ]{5,20}$/});
     const [ lastname, setLastname ] = useState({value:'', camp:'lastname', error:false, exp:/^[A-Z ÁÉÍÓÚÑ]{5,20}$/});
@@ -40,7 +40,8 @@ const FormaAddPerson = ({section}) => {
     const [ id, setId ] = useState({value:'', camp:'id', error:false, exp:/^[0-9]{7}$/});
     const [ area, setArea ] = useState({value:'', camp:'area', error:false, exp:/^[A-Z ÁÉÍÓÚ]{10,50}$/});
     const [ formValid, setFormValid ] = useState(false);
-    const { formAddPerson } = useContext(HomeContext);
+    const { formAddPerson, homeState } = useContext(HomeContext);
+    const { sectionSelected } = homeState;
     const { openCentralAlert } = useContext(CentralAlertContext);
     const clearInputs = () => {
         setName({...name, value:''});
@@ -59,11 +60,11 @@ const FormaAddPerson = ({section}) => {
                 lastname:lastname.value,
                 area:area.value === '' ? false : area.value,
                 group:group.value === '' ? false : group.value,
-                typePerson:typeSections[section]
+                typePerson:typeSections[sectionSelected]
             }
             if(!person.area) delete person.area;
             if(!person.group) delete person.group;
-            const response = await axiosInstance.post(`/${section}/insert-person`, {person});
+            const response = await axiosInstance.post(`/students/insert-person`, {person});
             openCentralAlert(
                 'Guardado',
                 response.message,
@@ -100,15 +101,15 @@ const FormaAddPerson = ({section}) => {
         !firstname.exp.test(firstname.value) ||
         !lastname.exp.test(lastname.value) ||
         !id.exp.test(id.value)) return setFormValid(false);
-        if(section !== 'alumno') return setFormValid(true);
+        if(sectionSelected !== 'Alumnos') return setFormValid(true);
         if(!group.exp.test(group.value) && !area.exp.test(area.value)) return setFormValid(false);
         setFormValid(true);
-    },[name, firstname, lastname, group, id, area, section]);
+    },[name, firstname, lastname, group, id, area, sectionSelected]);
     return (
         <BoxModalLeft>
             <div className='form-add-person'>
                 <form className='form-scroll' onSubmit={handleSubmit}>
-                    <Header section={section} />
+                    <Header />
                     <div className='box-form'>
                         <div className='box-input-name'>
                             <InputForm
@@ -133,7 +134,7 @@ const FormaAddPerson = ({section}) => {
                             placeholder='Apellido materno'
                             messageError='El apellido no es válido'
                         />
-                        {section === 'students' &&
+                        {sectionSelected === 'Alumnos' &&
                             <>
                                 <div className='box-select'>
                                     <Select

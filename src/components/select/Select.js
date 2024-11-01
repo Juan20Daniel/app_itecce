@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { IconDown } from '../../assets/IconDown';
 import './select.css';
-const Select = ({ state, setState, options:initialState, label }) => {
+const Select = ({ state, setState, options:initialState, label, action=null }) => {
     const [ options, setOptions ] = useState(initialState??[]);
     const [ showOptions, setShowOptions ] = useState(false);
     const elementRef = useRef(null);
@@ -13,7 +13,7 @@ const Select = ({ state, setState, options:initialState, label }) => {
     },[]);
     useEffect(() => {
         const opSelected = options.find(item => item.selected);
-        if(opSelected) setState(state => ({...state, value:opSelected.name}));
+        if(opSelected) setState(state => ({...state, value:opSelected.value}));
         else setState(state => ({...state, value:''}));
     },[label, options, setState]);
     const handleShowOptions = () => {
@@ -25,7 +25,8 @@ const Select = ({ state, setState, options:initialState, label }) => {
         }
     }
     const handleValue = (option) => {
-        setState({...state, value:option.name});
+        if(action) action(option);
+        setState({...state, value:option.value});
         setOptions(options.map(item => item.id === option.id ? {...item, selected:true} : {...item, selected:false}));
         handleShowOptions();
     }
@@ -44,7 +45,7 @@ const Select = ({ state, setState, options:initialState, label }) => {
                                 className={`${option.selected && 'active'}`}
                                 onClick={() => handleValue(option)}
                             >
-                                {option.name}
+                                {option.value}
                             </button>
                         </li>
                     ))}

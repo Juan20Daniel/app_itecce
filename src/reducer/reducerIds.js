@@ -26,6 +26,11 @@ export const reducerIds = (state, action) => {
                 ...state,
                 infoSchool:[...state.infoSchool, action.payload]
             }
+        case types.getSectionSelected:
+            return {
+                ...state,
+                sectionSelected:action.payload
+            }
         default:
             return state;
     }

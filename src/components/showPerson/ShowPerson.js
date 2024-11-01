@@ -7,20 +7,23 @@ import SchoolData from './components/schoolData/SchoolData';
 import IdentityInfo from './components/identityInfo/IdentityInfo';
 import ModalShowPersonContext from '../../context/modalShowPerson/ModalShowPersonContext';
 import './showPerson.css';
+import HomeContext from '../../context/home/HomeContext';
 const typeSection = {
-    students:'alumno',
-    teachers:'profesor',
-    collaborator:'colaborador'
+    Alumnos:'alumno',
+    Profesores:'profesor',
+    Colaboradores:'colaborador'
 }
-const ShowPerson = ({section}) => {
+const ShowPerson = () => {
     const {personInfo} = useContext(ModalShowPersonContext);
+    const {homeState} = useContext(HomeContext);
+    const {sectionSelected} = homeState;
     const { idPerson, name, firstname, lastname } = personInfo;
     return (
         <div className='show-person'>
             <Header idPerson={idPerson} />
-            <h2 className='title'>Información del {typeSection[section]}</h2>
+            <h2 className='title'>Información del {typeSection[sectionSelected]}</h2>
             <ItemInfo
-                title={`Nombre del ${typeSection[section]}`}
+                title={`Nombre del ${typeSection[sectionSelected]}`}
                 value={name+' '+firstname+' '+lastname}
             >
                 <IconUser />
@@ -31,7 +34,7 @@ const ShowPerson = ({section}) => {
             >
                 <IconId />
             </ItemInfo>
-            {section === 'students' &&
+            {sectionSelected === 'Alumnos' &&
                 <SchoolData
                     id={idPerson} 
                 />

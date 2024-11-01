@@ -1,6 +1,7 @@
 export const types = {
-    addPersons: '[generateId] add persons',
-    removed: '[generateId] remove person',
-    formAddPerson: '[generateId] open or close form to add persons',
-    addInfoSchool: '[generateId] add Inforation school'
+    addPersons: '[home] add persons',
+    removed: '[home] remove person',
+    formAddPerson: '[home] open or close form to add persons',
+    addInfoSchool: '[home] add Inforation school',
+    getSectionSelected: '[home] get the section selected by the user'
 }

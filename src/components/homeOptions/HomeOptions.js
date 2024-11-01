@@ -1,27 +1,39 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
+import { getOptionsLocalStorage, saveOptionsLocalStorage } from "../../data/local/localStorage";
 import { IconPoint } from "../../assets/IconPoint";
 import BoxSticky from "../boxSticky/BoxSticky";
 import SearchFor from "../searchFor/SearchFor";
 import HomeContext from "../../context/home/HomeContext";
 import Select from "../select/Select";
 import './HomeOptions.css';
-const options = [
-    {id: 1, selected:true, name:"Alumnos"},
-    {id: 2, selected:false, name:"Profesores"},
-    {id: 3, selected:false, name:"Colaboradores"},
+const initialOptions = [
+    {id: 1, selected:true, value:"Alumnos"},
+    {id: 2, selected:false, value:"Profesores"},
+    {id: 3, selected:false, value:"Colaboradores"},
 ]
 const HomeOptions = () => {
-    const [ section, setSection ] = useState({value:'Alumnos'});
-    const { formAddPerson } = useContext(HomeContext);
+    const { formAddPerson, getSectionSelected } = useContext(HomeContext);
+    const options = useRef(getOptionsLocalStorage()??initialOptions);
+    const [ optionSelected, setOptionSelected ] = useState({value:options.current.find(option => option.selected).value});
+    useEffect(() => {
+        let updateOptionSelected = options.current.map(option => {
+            if(option.value===optionSelected.value) return {...option, selected:true}
+            else return {...option, selected: false}
+        });
+        saveOptionsLocalStorage(updateOptionSelected);
+    },[optionSelected.value]);
+    const handleOption = (state) => {
+        getSectionSelected(state.value);
+    }
     return (
         <BoxSticky>
             <div className="home-options">
                 <div className="box-select">
-                    
                     <Select
-                        state={section}
-                        setState={setSection}
-                        options={options}
+                        state={optionSelected}
+                        setState={setOptionSelected}
+                        options={options.current}
+                        action={handleOption}
                     />
                 </div>
                 <div className="total">

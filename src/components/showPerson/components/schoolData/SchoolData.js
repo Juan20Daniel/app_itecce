@@ -11,8 +11,8 @@ const SchoolData = ({id}) => {
     const [ group, setgroup ] = useState('');
     const [ isLoading, setIsLoading ] = useState(true);
     const { openCentralAlert } = useContext(CentralAlertContext);
-    const { generateIdState, addInfoSchool } = useContext(HomeContext);
-    const { infoSchool } = generateIdState;
+    const { homeState, addInfoSchool } = useContext(HomeContext);
+    const { infoSchool } = homeState;
     const getInfoschool = useCallback( async () => {
         try {
             const result = await axiosInstance.get(`/students/info-school/${id}`);
