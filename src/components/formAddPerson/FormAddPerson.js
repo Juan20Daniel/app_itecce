@@ -4,9 +4,9 @@ import Header from './components/header/Header';
 import InputForm from './components/inputForm/InputForm';
 import Select from '../select/Select';
 import BtnAction from '../btnAction/BtnAction';
-import HomeContext from '../../context/home/HomeContext';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
 import axiosInstance from '../../data/remote/axios.instance';
+import SectionContext from '../../context/Section/SectionContext';
 import './formAddPersons.css';
 const typeStudes = [
     {id: 1, selected:false, value:"BACHILLERATO GENERAL"},
@@ -32,7 +32,7 @@ const typeSections = {
     Profesores:'TEACHER',
     Colaboradores:'COLABORATOR'
 }
-const FormaAddPerson = () => {
+const FormaAddPerson = ({setFormAddPerson}) => {
     const [ name, setName ] = useState({value:'', camp:'name', error:false, exp:/^[A-Z ÁÉÍÓÚÑ]{5,20}$/});
     const [ firstname, setFirstname ] = useState({value:'', camp:'firstname', error:false, exp:/^[A-Z ÁÉÍÓÚÑ]{5,20}$/});
     const [ lastname, setLastname ] = useState({value:'', camp:'lastname', error:false, exp:/^[A-Z ÁÉÍÓÚÑ]{5,20}$/});
@@ -40,8 +40,7 @@ const FormaAddPerson = () => {
     const [ id, setId ] = useState({value:'', camp:'id', error:false, exp:/^[0-9]{7}$/});
     const [ area, setArea ] = useState({value:'', camp:'area', error:false, exp:/^[A-Z ÁÉÍÓÚ]{10,50}$/});
     const [ formValid, setFormValid ] = useState(false);
-    const { formAddPerson, homeState } = useContext(HomeContext);
-    const { sectionSelected } = homeState;
+    const { sectionSelected } = useContext(SectionContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const clearInputs = () => {
         setName({...name, value:''});
@@ -109,7 +108,7 @@ const FormaAddPerson = () => {
         <BoxModalLeft>
             <div className='form-add-person'>
                 <form className='form-scroll' onSubmit={handleSubmit}>
-                    <Header />
+                    <Header setFormAddPerson={setFormAddPerson} />
                     <div className='box-form'>
                         <div className='box-input-name'>
                             <InputForm
@@ -175,7 +174,7 @@ const FormaAddPerson = () => {
                         <BtnAction
                             value='Cancelar'
                             color='gray'
-                            action={() => formAddPerson(false)}
+                            action={() => setFormAddPerson(false)}
                         />
                     </div>
                 </form>

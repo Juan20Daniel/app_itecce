@@ -1,12 +1,12 @@
 import { useState, useContext } from 'react';
 import axiosInstance from '../../../../data/remote/axios.instance';
-import ModalShowPersonContext from '../../../../context/modalShowPerson/ModalShowPersonContext';
+import ShowPersonContext from '../../../../context/showPerson/ShowPersonContext';
 import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
 import BtnAction from '../../../btnAction/BtnAction';
 import './modalEditdate.css';
 const ModalEditDate = ({title, date, idPerson, camp, action, setDate, visible}) => {
     const [ newDate, setNewDate ] = useState(date);
-    const { setDelivaryDate } = useContext(ModalShowPersonContext);
+    const { setDelivaryDate } = useContext(ShowPersonContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const updateDate = async () => {
         let response = {}

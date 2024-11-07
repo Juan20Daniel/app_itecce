@@ -1,11 +1,11 @@
 import { useState } from "react";
-import ModalShowPersonContext from "./ModalShowPersonContext";
-const ModalShowPersonProvider = ({children}) => {
+import ShowPersonContext from "./ShowPersonContext";
+const ShowPersonProvider = ({children}) => {
     const [ showPerson, setShowPerson ] = useState(false);
     const [ personInfo, setPersonInfo ] = useState(null); 
     const [ priningDate, setPriningDate ] = useState(null);
     return (
-        <ModalShowPersonContext.Provider value={{
+        <ShowPersonContext.Provider value={{
             showPerson,
             personInfo,
             priningDate,
@@ -14,8 +14,8 @@ const ModalShowPersonProvider = ({children}) => {
             setPriningDate
         }}>
             {children}
-        </ModalShowPersonContext.Provider>
+        </ShowPersonContext.Provider>
     );
 }
 
-export default ModalShowPersonProvider;
+export default ShowPersonProvider;

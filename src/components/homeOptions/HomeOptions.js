@@ -3,16 +3,16 @@ import { getOptionsLocalStorage, saveOptionsLocalStorage } from "../../data/loca
 import { IconPoint } from "../../assets/IconPoint";
 import BoxSticky from "../boxSticky/BoxSticky";
 import SearchFor from "../searchFor/SearchFor";
-import HomeContext from "../../context/home/HomeContext";
 import Select from "../select/Select";
+import SectionContext from "../../context/Section/SectionContext";
 import './HomeOptions.css';
 const initialOptions = [
     {id: 1, selected:true, value:"Alumnos"},
     {id: 2, selected:false, value:"Profesores"},
     {id: 3, selected:false, value:"Colaboradores"},
 ]
-const HomeOptions = () => {
-    const { formAddPerson, getSectionSelected } = useContext(HomeContext);
+const HomeOptions = ({setFormAddPerson}) => {
+    const { setSectionSelected } = useContext(SectionContext);
     const options = useRef(getOptionsLocalStorage()??initialOptions);
     const [ optionSelected, setOptionSelected ] = useState({value:options.current.find(option => option.selected).value});
     useEffect(() => {
@@ -23,7 +23,7 @@ const HomeOptions = () => {
         saveOptionsLocalStorage(updateOptionSelected);
     },[optionSelected.value]);
     const handleOption = (state) => {
-        getSectionSelected(state.value);
+        setSectionSelected(state.value);
     }
     return (
         <BoxSticky>
@@ -40,7 +40,7 @@ const HomeOptions = () => {
                     <IconPoint size={5} />
                     <p>{2003} de {30002}</p>
                 </div>
-                <button className="box-btn-add" type="button" onClick={() => formAddPerson(true)}>
+                <button className="box-btn-add" type="button" onClick={() => setFormAddPerson(true)}>
                     <p>Agregar alumno</p>
                 </button>
                 <SearchFor />

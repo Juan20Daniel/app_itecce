@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import MenuPoint from '../menuPoint/MenuPoint';
-import ModalShowPersonContext from '../../context/modalShowPerson/ModalShowPersonContext';
+import ShowPersonContext from '../../context/showPerson/ShowPersonContext';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
 import './itemBox.css';
 const typesPerson = {
@@ -9,7 +9,7 @@ const typesPerson = {
     COLLABORATOR:'Colaborador'
 }
 const ItemBox = ({ item, remove }) => {
-    const { setShowPerson, setPersonInfo } = useContext(ModalShowPersonContext);
+    const { setShowPerson, setPersonInfo } = useContext(ShowPersonContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const { idPerson, name, firstname, lastname, typePerson, avatar } = item;
     const showInfo = () => {

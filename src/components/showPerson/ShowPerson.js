@@ -5,18 +5,17 @@ import ItemInfo from './components/itemInfo/ItemInfo';
 import Header from './components/header/Header';
 import SchoolData from './components/schoolData/SchoolData';
 import IdentityInfo from './components/identityInfo/IdentityInfo';
-import ModalShowPersonContext from '../../context/modalShowPerson/ModalShowPersonContext';
+import ShowPersonContext from '../../context/showPerson/ShowPersonContext';
+import SectionContext from '../../context/Section/SectionContext';
 import './showPerson.css';
-import HomeContext from '../../context/home/HomeContext';
 const typeSection = {
     Alumnos:'alumno',
     Profesores:'profesor',
     Colaboradores:'colaborador'
 }
 const ShowPerson = () => {
-    const {personInfo} = useContext(ModalShowPersonContext);
-    const {homeState} = useContext(HomeContext);
-    const {sectionSelected} = homeState;
+    const {personInfo} = useContext(ShowPersonContext);
+    const {sectionSelected} = useContext(SectionContext);
     const { idPerson, name, firstname, lastname } = personInfo;
     return (
         <div className='show-person'>

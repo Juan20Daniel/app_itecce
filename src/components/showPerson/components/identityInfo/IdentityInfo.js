@@ -3,14 +3,14 @@ import { getDate } from '../../../../helpers/helpers';
 import ItemDate from '../itemDate/ItemDate';
 import ModalEditDate from '../modalEditDate/ModalEditDate';
 import axiosInstance from '../../../../data/remote/axios.instance';
-import ModalShowPersonContext from '../../../../context/modalShowPerson/ModalShowPersonContext';
+import ShowPersonContext from '../../../../context/showPerson/ShowPersonContext';
 import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
 import './showPrintDate.css';
 const IdentityInfo = ({idPerson}) => {
     const [ isLoading, setIsLoading ] = useState(true);
     const [ editPrintDate, setEditPrintDate ] = useState(false);
     const { openCentralAlert } = useContext(CentralAlertContext);
-    const { priningDate, setPriningDate } = useContext(ModalShowPersonContext);
+    const { priningDate, setPriningDate } = useContext(ShowPersonContext);
     const { year, month, day } = getDate();
     useEffect(() => {
         const getIdentityInfo = async () => {

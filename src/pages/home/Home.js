@@ -1,21 +1,41 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import TitleSection from "../../components/titleSection/TitleSection";
 import Section from "../../components/section/Section";
 import SectionNote from "../../components/sectionNote/SectionNote";
 import ShowPerson from '../../components/showPerson/ShowPerson';
-import ModalShowPersonContext from "../../context/modalShowPerson/ModalShowPersonContext";
+import ShowPersonContext from "../../context/showPerson/ShowPersonContext";
 import FormaAddPerson from "../../components/formAddPerson/FormAddPerson";
 import HomeOptions from "../../components/homeOptions/HomeOptions";
-import HomeContext from "../../context/home/HomeContext";
-import './home.css';
+import HomeItems from "../../components/homeItems/HomeItems";
 
 const Home = () => {
-    // const [notData, setNotData] = useState(true);
-    // const [total, setTotal] = useState(0);
-    const {showPerson} = useContext(ModalShowPersonContext);
-    const {homeState} = useContext(HomeContext);
-    const {showFormAddPerson} = homeState;
-    // const notDataRef = useRef(null);
+    const [ formAddPerson, setFormAddPerson ] = useState(false);
+    const {showPerson} = useContext(ShowPersonContext);
+    return (
+        <Section>
+            <TitleSection value="Inicio" />
+            <SectionNote
+                value={"Presiona en ver para revisas la información del alumno, así como el estado de la credencial."} 
+                maxWidth={500}
+            />
+            <HomeOptions
+                setFormAddPerson={setFormAddPerson}
+            />
+            <HomeItems />
+            {showPerson && <ShowPerson /> }
+            {formAddPerson &&
+                <FormaAddPerson setFormAddPerson={setFormAddPerson} />
+            }
+        </Section>
+    );
+}
+
+export default Home;
+
+
+// const [notData, setNotData] = useState(true);
+    // const [total, setTotal] = useState(0);   
+ // const notDataRef = useRef(null);
     // useEffect(() => {
     //     if(notDataRef.current) setNotData(notDataRef.current.children.length > 0);
     // },[isLoadingPersons]);
@@ -30,15 +50,8 @@ const Home = () => {
     //     }
     //     getNumTotal();
     // },[selectSection]);
-    return (
-        <Section>
-            <TitleSection value="Inicio" />
-            <SectionNote 
-                value={"Presiona en ver para revisas la información del alumno, así como el estado de la credencial."} 
-                maxWidth={500}
-            />
-            <HomeOptions />
-            {/* {notData ? 
+
+    {/* {notData ? 
                 <div className="home-content-items" ref={notDataRef}>
                     {data.map(item => (
                         <ItemBox
@@ -62,10 +75,3 @@ const Home = () => {
                     </Link>
                 </NotData> */
             }
-            {showPerson && <ShowPerson /> }
-            {showFormAddPerson && <FormaAddPerson />}
-        </Section>
-    );
-}
-
-export default Home;

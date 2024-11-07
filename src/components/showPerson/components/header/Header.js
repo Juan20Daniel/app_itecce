@@ -2,11 +2,11 @@ import { useContext, useState } from 'react';
 import { IconX } from '../../../../assets/iconX';
 import { IconCopy } from '../../../../assets/IconCopy';
 import { IconDobbleCheck } from '../../../../assets/IconDobbleCheck';
-import ModalShowPersonContext from '../../../../context/modalShowPerson/ModalShowPersonContext';
+import ShowPersonContext from '../../../../context/showPerson/ShowPersonContext';
 import './header.css';
 const Header = ({idPerson}) => {
     const [ isCopying, setIsCopying ] = useState(false);
-    const { setShowPerson } = useContext(ModalShowPersonContext);
+    const { setShowPerson } = useContext(ShowPersonContext);
     const copyId = () => {
         navigator.clipboard.writeText(idPerson);
         setIsCopying(true);

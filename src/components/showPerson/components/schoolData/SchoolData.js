@@ -3,20 +3,18 @@ import { IconSection } from "../../../../assets/IconSection";
 import { IconGroup } from "../../../../assets/IconGroup";
 import ItemInfo from "../itemInfo/ItemInfo";
 import axiosInstance from "../../../../data/remote/axios.instance";
-import HomeContext from "../../../../context/home/HomeContext";
 import CentralAlertContext from "../../../../context/centralAlert/CentralAlertContext";
 import './schoolData.css';
 const SchoolData = ({id}) => {
     const [ schoolsection, setSchoolSection ] = useState('');
     const [ group, setgroup ] = useState('');
+    const [ infoSchool, setInfoSchool ] = useState([]);
     const [ isLoading, setIsLoading ] = useState(true);
     const { openCentralAlert } = useContext(CentralAlertContext);
-    const { homeState, addInfoSchool } = useContext(HomeContext);
-    const { infoSchool } = homeState;
     const getInfoschool = useCallback( async () => {
         try {
             const result = await axiosInstance.get(`/students/info-school/${id}`);
-            addInfoSchool(result.data);
+            setInfoSchool(result.data);
             setSchoolSection(result.data[0].seccion);
             setgroup(result.data[0].group_student);
             
@@ -25,7 +23,7 @@ const SchoolData = ({id}) => {
         } finally {
             setIsLoading(false);
         }
-    },[id, addInfoSchool, openCentralAlert]);
+    },[id, openCentralAlert]);
     useEffect(() => {
         if(infoSchool.length === 0) getInfoschool();
         else {
