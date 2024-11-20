@@ -11,7 +11,7 @@ const BoxLoadImages = () => {
         setIsLoading(true);
         setInputValue(event.target.value);
         const files = Array.from(event.target.files);
-        const validImgs = files.map(file => /^[0-9]{7}.(jpg|JPG)$/.test(file.name) ? true : false);
+        const validImgs = files.map(file => /^[0-9]{7}.(jpg|JPG|png|PNG)$/.test(file.name) ? true : false);
         if(validImgs.includes(false)) {
             openCentralAlert(
                 'Error al cargar las imagenes',
@@ -37,7 +37,7 @@ const BoxLoadImages = () => {
             }
             <input
                 type='file'
-                accept='.jpg'
+                accept='.jpg, .png'
                 className='input-load-images'
                 onChange={handleChange}
                 multiple

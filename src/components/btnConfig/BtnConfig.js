@@ -1,11 +1,12 @@
+import { Link } from 'react-router-dom';
 import { IconConfig } from '../../assets/IconConfig';
 import './btnConfig.css';
 const BtnConfig = () => {
     return (
-        <button className="btn-config" type='button'>
+        <Link to='/config' className="btn-config">
             <span>Configuración</span>
             <IconConfig size={18} />
-        </button>
+        </Link>
     );
 }
 export default BtnConfig;

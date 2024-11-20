@@ -1,3 +1,4 @@
+import React from 'react';
 import Section from "../../components/section/Section";
 import TitleSection from "../../components/titleSection/TitleSection";
 import SectionNote from "../../components/sectionNote/SectionNote";

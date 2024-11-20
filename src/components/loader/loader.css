@@ -1,0 +1,21 @@
+.box-loader,
+.box-loader .center-box-loader {
+    display: flex;
+    align-items: center;
+}
+.box-loader {
+    grid-column: 1 / -1;
+    justify-content: center;
+}
+.box-loader .center-box-loader {
+    flex-direction: column;
+    gap: 1rem;
+}
+.box-loader .center-box-loader p {
+    font-size: 1.5rem;
+}
+@media(min-width:800px) {
+    .box-loader .center-box-loader p {
+        font-size: 2rem;
+    }  
+}

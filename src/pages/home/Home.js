@@ -12,7 +12,7 @@ const Home = () => {
     const [ formAddPerson, setFormAddPerson ] = useState(false);
     const {showPerson} = useContext(ShowPersonContext);
     return (
-        <Section>
+        <Section idElement="id-home">
             <TitleSection value="Inicio" />
             <SectionNote
                 value={"Presiona en ver para revisas la información del alumno, así como el estado de la credencial."} 

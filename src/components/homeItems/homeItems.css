@@ -5,3 +5,6 @@
     grid-gap: 1rem;
     padding: 1rem 0;
 }
+.home-items .message-data-emty {
+    font-size: 2rem;
+}

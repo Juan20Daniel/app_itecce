@@ -17,12 +17,9 @@ const Header = () => (
                 <li>
                     <NavLink to="/add-personal" value="Agregar personal" />
                 </li>
-                <li>
-                    <NavLink to="/generate-report" value="Generar reporte" />
-                </li>
-                <li>
+                {/* <li>
                     <NavLink to="/help" value="Ayuda" />
-                </li>
+                </li> */}
                 <li>
                     <BtnConfig />
                 </li>

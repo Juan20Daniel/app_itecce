@@ -1,4 +1,5 @@
 import { getTokenLocalStorage } from "../data/local/localStorage";
+import { animateScroll as scroll } from "react-scroll";
 import { jwtDecode } from "jwt-decode";
 const expretions = {
     user:/^[a-zA-Z0-9ñÑóÓáÁéÉíÍúÚ ]{6,20}$/,
@@ -41,4 +42,16 @@ export const reverseText = (text) => {
 export const getLastItems = (array_items, offset, range=11) => {
     let result = array_items.slice(offset, offset+range);
     return result;
+}
+export const scrollToTop = (idElement) => {
+    scroll.scrollToTop({
+        containerId:idElement,
+        duration:0
+    });
+}
+export const getGeneralExpireDate = () => {
+    const months = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
+    const date = new Date();
+    const year = date.getFullYear().toString().replace(/^[0-9]{2}/,'');
+    return months[date.getMonth()]+'/'+year;
 }

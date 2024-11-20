@@ -1,6 +1,6 @@
 import './section.css';
-const Section = ({children}) => (
-    <section className='section-page'>
+const Section = ({idElement='section', children}) => (
+    <section id={idElement} className='section-page'>
         {children}
     </section>
 );
