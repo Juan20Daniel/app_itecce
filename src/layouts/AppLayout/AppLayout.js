@@ -3,8 +3,6 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { getUser } from "../../helpers/helpers";
 import { useDispatch } from "react-redux";
 import { saveUser } from "../../redux/dataSlice";
-import ShowPersonProvider from "../../context/showPerson/ShowPersonProvider";
-import HomeProvider from '../../context/Section/SectionProvider';
 import GenerateIdsProvider from '../../context/generateIds/GenerateIdsProvider';
 import AddPersonalProvider from '../../context/addPersonal/AddPersonalProvider';
 import Header from "../../components/header/Header";
@@ -22,20 +20,16 @@ const AppLayout = () => {
         verifyUser();
     },[navigate, dispatch]);
     return (
-        <HomeProvider>
-            <GenerateIdsProvider>
-                <AddPersonalProvider>
-                    <ShowPersonProvider>
-                        <div className="home">
-                            <Header /> 
-                            <div className="content">
-                                <Outlet />
-                            </div>
-                        </div>
-                    </ShowPersonProvider>
-                </AddPersonalProvider>
-            </GenerateIdsProvider>
-        </HomeProvider>
+        <GenerateIdsProvider>
+            <AddPersonalProvider>
+                <div className="home">
+                    <Header /> 
+                    <div className="content">
+                        <Outlet />
+                    </div>
+                </div>
+            </AddPersonalProvider>
+        </GenerateIdsProvider>
     );
 }
 export default AppLayout;

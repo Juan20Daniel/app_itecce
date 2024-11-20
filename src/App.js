@@ -4,11 +4,9 @@ import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import MainLayout from './layouts/mainLayout/MainLayout';
 import AppLayout from './layouts/AppLayout/AppLayout';
-import Home from './pages/home/Home';
 import CentralAlertProvider from './context/centralAlert/CentralAlertProvider';
 const AddPersonal = lazy(() => import('./pages/addPersonal/AddPersonal'));
-const LoadImages = lazy(() => import('./pages/generateIds/GenerateIds'));
-const GenerateReport = lazy(() => import('./pages/generateReport/GenerateReport'));
+const GenerateIds = lazy(() => import('./pages/generateIds/GenerateIds'));
 const Login = lazy(() => import('./pages/login/Login'));
 const NotFound = lazy(() => import('./pages/notFound/NotFound'));
 const Config = lazy(() => import('./pages/config/Config'));
@@ -21,10 +19,8 @@ function App() {
           <Routes>
             <Route path='/' element={<MainLayout />}>
               <Route path='/' element={<AppLayout />} >
-                <Route index element={<Home />} />
+                <Route index element={<GenerateIds />} />
                 <Route path="/add-personal" element={<AddPersonal />} />
-                <Route path="/generate-ids" element={<LoadImages />} />
-                <Route path='/generate-report' element={<GenerateReport />} />
                 <Route path='/config' element={<Config />} />
               </Route>
               <Route path='/login' element={<Login />} />

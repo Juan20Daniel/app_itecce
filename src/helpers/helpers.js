@@ -52,6 +52,7 @@ export const scrollToTop = (idElement) => {
 export const getGeneralExpireDate = () => {
     const months = ['ENE','FEB','MAR','ABR','MAY','JUN','JUL','AGO','SEP','OCT','NOV','DIC'];
     const date = new Date();
-    const year = date.getFullYear().toString().replace(/^[0-9]{2}/,'');
-    return months[date.getMonth()]+'/'+year;
+    const nextYear = date.getFullYear()+1;
+    const getExpireYear = nextYear.toString().replace(/^[0-9]{2}/,'');
+    return months[date.getMonth()]+'/'+getExpireYear;
 }

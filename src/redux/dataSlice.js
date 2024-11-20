@@ -3,7 +3,6 @@ const credencialesSlice = createSlice({
     name:'credenciales',
     initialState: {
         user:false,
-        modalShowFile: false,
     },
     reducers: {
         saveUser:(state, action) => {

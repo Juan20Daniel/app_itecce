@@ -14,7 +14,7 @@
     padding: 0 2rem;
     background: none;
 }
-.btn-config:active {
+.btn-config-active {
     background-color: var(--blue-font);
     color: var(--white);
     border: 0.1rem solid var(--blue-font);
@@ -22,6 +22,6 @@
 .btn-config svg {
     fill: #4F4F4F;
 }
-.btn-config:active > svg {
+.btn-config-active > svg {
     fill: #ffffff;
 }

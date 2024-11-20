@@ -16,7 +16,7 @@ const GenerateIds = () => {
             <SectionNote
                 value={!printIds
                     ? 'Arrastra y suelta todas las imagenes en el rectangulo o has clic sobre el para cargar las imagenes'
-                    : 'Genera las credenciales de cada página con el botón de imprimir y captura la fecha de impresión para su posterior consulta.'
+                    : 'Genera las credenciales de cada página con el botón de imprimir y marca la hoja como impresa'
                 }
                 maxWidth={600}
             />

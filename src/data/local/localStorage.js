@@ -11,13 +11,3 @@ export const getTokenLocalStorage = () => {
 export const removeTokenLocalStorage = () => {
     localStorage.removeItem('token');
 }
-
-export const saveOptionsLocalStorage = (sections) => {
-    localStorage.setItem('section', JSON.stringify(sections));
-}
-
-export const getOptionsLocalStorage = () => {
-    const result = localStorage.getItem('section');
-    if(!result) return null;
-    return JSON.parse(result);
-}

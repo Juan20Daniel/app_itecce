@@ -1,11 +1,11 @@
-import iconX from '../../assets/iconX.png';
+import { IconX } from '../../assets/iconX';
 import NameExcel from '../nameExcel/NameExcel';
 import './headerFileContent.css';
 const HeaderFileContent = ({fileContent, nameExcel, close}) => (
     <div className='header'>
         <NameExcel totalItems={fileContent.length} nameExcel={nameExcel} />
         <button className="btn-close-modal" onClick={() => close()}>
-            <img src={iconX} alt="Icon close" className="icon-close" />
+            <IconX size={20} />
         </button>
     </div>
 );

@@ -9,10 +9,7 @@ const Header = () => (
         <nav>
             <ul className="links">
                 <li>
-                    <NavLink to="/" value="Inicio" />
-                </li>
-                <li>
-                    <NavLink to="/generate-ids" value="Generar credenciales" />
+                    <NavLink to="/" value="Generar credenciales" />
                 </li>
                 <li>
                     <NavLink to="/add-personal" value="Agregar personal" />
