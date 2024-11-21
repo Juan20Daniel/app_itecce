@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 import MainLayout from './layouts/mainLayout/MainLayout';
@@ -9,7 +9,6 @@ import Loader from './components/loader/Loader';
 const AddPersonal = lazy(() => import('./pages/addPersonal/AddPersonal'));
 const GenerateIds = lazy(() => import('./pages/generateIds/GenerateIds'));
 const Login = lazy(() => import('./pages/login/Login'));
-const NotFound = lazy(() => import('./pages/notFound/NotFound'));
 const Config = lazy(() => import('./pages/config/Config'));
 
 function App() {
@@ -26,7 +25,7 @@ function App() {
               </Route>
               <Route path='/login' element={<Login />} />
             </Route>
-            <Route path='*' element={<NotFound />} />
+            <Route path='*' element={<Navigate to='/' replace={true}/>} />
           </Routes>
         </CentralAlertProvider>
       </Suspense>
