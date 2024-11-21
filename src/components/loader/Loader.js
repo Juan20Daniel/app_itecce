@@ -2,8 +2,8 @@ import React from 'react';
 import Spin from '../spin/Spin';
 import './loader.css';
 
-const Loader = ({ heigthBox, sizeSpinner, message=null }) => (
-    <div className='box-loader' style={{height:heigthBox??'auto'}}>
+const Loader = ({sizeSpinner, message=null }) => (
+    <div className='box-loader'>
         <div className='center-box-loader'>
             <Spin size={sizeSpinner} />
             {message && <p>{message}</p>}

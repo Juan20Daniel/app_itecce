@@ -4,7 +4,8 @@
     align-items: center;
 }
 .box-loader {
-    grid-column: 1 / -1;
+    width: 100%;
+    height: 100vh;
     justify-content: center;
 }
 .box-loader .center-box-loader {
