@@ -6,7 +6,7 @@ const UploadFile = () => {
     return (
         <div className="upload-file">
             <h2>Selecciona la lista a cargar</h2>
-            <p>Selecciona la lista de alumnos, profesores o colaboradores en excel, haciendo clic en el botón azul.</p>
+            <p>Selecciona la lista de alumnos, profesores o colaboradores en Excel, haciendo clic en el botón azul.</p>
             <button onClick={() => setInputValue('')}>
                 <input 
                     type="file" 

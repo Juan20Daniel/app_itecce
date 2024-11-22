@@ -6,13 +6,15 @@ import SectionNote from "../../components/sectionNote/SectionNote";
 import OptionsLoadFiles from "../../components/optionsLoadFiles/OptionsLoadFiles";
 import UploadFile from "../../components/uploadFile/UploadFile";
 import AddPersonalContext from '../../context/addPersonal/AddPersonalContext';
-import './addPersonal.css';
 const AddPersonal = () => {
     const { fileContent } = useContext(AddPersonalContext);
     return (
         <Section>
             <TitleSection value="Agregar personal" />
-            <SectionNote value="Selecciona el tipo de personas que hay en el archivo de excel que se va a cargar." />
+            <SectionNote 
+                value="Selecciona el tipo de personas que hay en el archivo de Excel que se va a cargar."
+                maxWidth={500}
+            />
             <OptionsLoadFiles />
             <UploadFile />
             {fileContent.length > 0 && <ShowFileContent />}

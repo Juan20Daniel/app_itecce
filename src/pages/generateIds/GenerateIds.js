@@ -7,7 +7,6 @@ import LoadImageActions from "../../components/loadImagesActions/LoadImageAction
 import ShowImages from "../../components/showImages/ShowImages";
 import PrintIds from "../../components/printIds/PrintIds";
 import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
-import './generateIds.css';
 const GenerateIds = () => {
     const { images, printIds } = useContext(GenerateIdsContext);
     return (
@@ -15,7 +14,7 @@ const GenerateIds = () => {
             <TitleSection value='Generar credenciales' />
             <SectionNote
                 value={!printIds
-                    ? 'Arrastra y suelta todas las imagenes en el rectangulo o has clic sobre el para cargar las imagenes'
+                    ? 'Arrastra y suelta todas las imágenes en el rectángulo o haz clic sobre él para cargar las imágenes'
                     : 'Genera las credenciales de cada página con el botón de imprimir y marca la hoja como impresa'
                 }
                 maxWidth={600}

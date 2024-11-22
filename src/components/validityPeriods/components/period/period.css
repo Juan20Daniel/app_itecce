@@ -1,0 +1,26 @@
+.period {
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+.period label {
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-light);
+}
+.period input {
+    border: none;
+    width: 5rem;
+    outline: none;
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-normal);
+}
+@media(min-width:600px) {
+    .period label {
+        font-size: 1.7rem;
+    }
+    .period input {
+        width: 5.8rem;
+        font-size: 1.5rem;
+    }
+}

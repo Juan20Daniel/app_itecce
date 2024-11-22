@@ -4,11 +4,9 @@ import CentralAlertContext from '../../context/centralAlert/CentralAlertContext'
 import GenerateIdsContext from '../../context/generateIds/GenerateIdsContext';
 import './boxLoadImages.css';
 const BoxLoadImages = () => {
-    const [isLoading, setIsLoading] = useState(false);
     const {  inputValue, setInputValue, setImages } = useContext(GenerateIdsContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const handleChange = (event) => {
-        setIsLoading(true);
         setInputValue(event.target.value);
         const files = Array.from(event.target.files);
         const validImgs = files.map(file => /^[0-9]{7}.(jpg|JPG|png|PNG)$/.test(file.name) ? true : false);
@@ -27,14 +25,10 @@ const BoxLoadImages = () => {
             }
         });
         setImages(imagesArray);
-        setIsLoading(false);
     }
     return (
         <div className="box-load-images">
-            {isLoading 
-                ? <p>Cargando...</p>
-                : <img src={imgLoadImages} alt='Ilustration' className='ilustration-load-images' />
-            }
+            <img src={imgLoadImages} alt='Ilustration' className='ilustration-load-images' />
             <input
                 type='file'
                 accept='.jpg, .png'

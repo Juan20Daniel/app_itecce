@@ -13,6 +13,7 @@
     justify-content: space-between;
     padding: 0 2rem;
     background: none;
+    font-weight: var(--font-weight-light);
 }
 .btn-config-active {
     background-color: var(--blue-font);
