@@ -1,4 +1,3 @@
-import { Navigate } from 'react-router-dom';
 import React from 'react';
 import Section from "../../components/section/Section";
 import TitleSection from "../../components/titleSection/TitleSection";
@@ -14,7 +13,6 @@ const Config = () => {
                 maxWidth={600}    
             />
             <IdSettings />
-            <Navigate to='/' replace={true} />
         </Section>
     );
 }

@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 import { saveUser } from "../../redux/dataSlice";
 import GenerateIdsProvider from '../../context/generateIds/GenerateIdsProvider';
 import AddPersonalProvider from '../../context/addPersonal/AddPersonalProvider';
+import ValidityPeriodsProvider from "../../context/validityPeriods/ValidityPeriodsProvider";
 import Header from "../../components/header/Header";
 import './appLayout.css';
 
@@ -22,12 +23,14 @@ const AppLayout = () => {
     return (
         <GenerateIdsProvider>
             <AddPersonalProvider>
-                <div className="home">
-                    <Header /> 
-                    <div className="content">
-                        <Outlet />
+                <ValidityPeriodsProvider>
+                    <div className="home">
+                        <Header /> 
+                        <div className="content">
+                            <Outlet />
+                        </div>
                     </div>
-                </div>
+                </ValidityPeriodsProvider>
             </AddPersonalProvider>
         </GenerateIdsProvider>
     );

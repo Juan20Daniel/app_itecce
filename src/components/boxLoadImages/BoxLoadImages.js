@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import imgLoadImages from '../../assets/img-load-images.png';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
 import GenerateIdsContext from '../../context/generateIds/GenerateIdsContext';

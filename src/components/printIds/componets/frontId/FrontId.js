@@ -27,12 +27,11 @@ const sections = {
 const fontImg = {
     'STUDENT':imgStudent,
     'TEACHER':imgTeacher,
-    'COLLABORATOR':imgCollaborator,
+    'COLABORATOR':imgCollaborator,
     'REVERSE':imgReverse
 }
 const FrontId = ({item}) => {
     const { image } = useGetPersonImg(item.idPerson);
-   
     return (
         <figure className='box-front-id'>
             <img className='front-id-img' src={fontImg[item.typePerson]} alt='img id' />     
