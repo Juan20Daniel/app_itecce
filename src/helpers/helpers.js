@@ -1,10 +1,11 @@
 import { getTokenLocalStorage } from "../data/local/localStorage";
 import { animateScroll as scroll } from "react-scroll";
 import { jwtDecode } from "jwt-decode";
-const expretions = {
+export const expretions = {
     user:/^[a-zA-Z0-9ñÑóÓáÁéÉíÍúÚ ]{6,20}$/,
     password:/^.{8,20}$/,
-    imgName:/^[0-9]{7}.(jpg|JPG)$/
+    imgClient:/^[0-9]{7}.(jpg|JPG|png|PNG)$/,
+    imgTamplate:/^[a-zA-Z0-9-. áéíúóÁÉÍÓÚñÑ]+.(jpg|JPG|png|PNG)$/
 }
 export const check = (camp, value) => {
     if(expretions[camp].test(value)) return true;

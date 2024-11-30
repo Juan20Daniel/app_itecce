@@ -1,0 +1,21 @@
+.box-upload-template .box-loade-template label {
+    display: block;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+}
+.box-upload-template .box-loade-template label:active {
+    background: var(--gray-active);
+}
+.box-upload-template .box-loade-template input {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+}

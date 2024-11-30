@@ -1,0 +1,32 @@
+.box-upload-template {
+    width: 29.5rem;
+    height: 22.9rem;
+    background-color: var(--white);
+    display: grid;
+    grid-template-rows: 1fr 4.5rem;
+}
+.box-upload-template .box-loade-template {
+    height: 18.4rem;
+    position: relative;
+    box-shadow: 0 0 0.5rem var(--box-shadow);
+    border-radius: 2rem;
+}
+.box-upload-template .box-loade-template .img-tamplate {
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+}
+.box-upload-template .name-loader {
+    font-size: 2rem;
+    text-align: center;
+    align-self: flex-end;
+}
+@media(min-width: 370px) {
+    .box-upload-template {
+        width: 32.5rem;
+        height: 25rem;
+    }
+    .box-upload-template .box-loade-template {
+        height: 20.5rem;
+    }
+}

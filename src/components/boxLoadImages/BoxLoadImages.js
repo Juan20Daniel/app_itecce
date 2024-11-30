@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { expretions } from '../../helpers/helpers';
 import imgLoadImages from '../../assets/img-load-images.png';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
 import GenerateIdsContext from '../../context/generateIds/GenerateIdsContext';
@@ -9,7 +10,7 @@ const BoxLoadImages = () => {
     const handleChange = (event) => {
         setInputValue(event.target.value);
         const files = Array.from(event.target.files);
-        const validImgs = files.map(file => /^[0-9]{7}.(jpg|JPG|png|PNG)$/.test(file.name) ? true : false);
+        const validImgs = files.map(file => expretions.imgClient.test(file.name) ? true : false);
         if(validImgs.includes(false)) {
             openCentralAlert(
                 'Error al cargar las imagenes',

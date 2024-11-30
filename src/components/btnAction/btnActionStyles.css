@@ -42,6 +42,8 @@
 }
 .white {
     background-color: #fff;
-    color: #2f86d8;
-    border: 1px solid #2f86d8;
+    color: var(--black);
+}
+.white:active {
+    background-color: var(--gray-active);
 }
