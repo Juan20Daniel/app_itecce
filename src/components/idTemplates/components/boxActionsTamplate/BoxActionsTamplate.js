@@ -1,4 +1,4 @@
-import './actionsTamplate.css';
+import './boxActionsTamplate.css';
 
 const BoxActionsTamplate = ({children}) => {
     return (

@@ -40,9 +40,10 @@ const PrintIds = () => {
                 name:items[i].name,
                 firstname:items[i].firstname,
                 lastname:items[i].lastname,
-                group_student:items[i].group_student,
-                idPerson:items[i].idPerson,
-                typeCard:'REVERSE',
+                groupStudent:items[i].groupStudent,
+                idClient:items[i].idClient,
+                typeClient:items[i].typeClient,
+                typeCard:'reverse',
             });
         }
         return result;

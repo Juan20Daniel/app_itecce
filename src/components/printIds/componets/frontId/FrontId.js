@@ -25,29 +25,29 @@ const sections = {
     "EGRESADOS":"EGRESADOS"
 }
 const fontImg = {
-    'STUDENT':imgStudent,
-    'TEACHER':imgTeacher,
-    'COLABORATOR':imgCollaborator,
-    'REVERSE':imgReverse
+    'student':imgStudent,
+    'teacher':imgTeacher,
+    'collaborator':imgCollaborator,
+    'reverse':imgReverse
 }
 const FrontId = ({item}) => {
-    const { image } = useGetPersonImg(item.idPerson);
+    const { image } = useGetPersonImg(item.idClient);
     return (
         <figure className='box-front-id'>
-            <img className='front-id-img' src={fontImg[item.typePerson]} alt='img id' />     
+            <img className='front-id-img' src={fontImg[item.typeClient]} alt='img id' />     
             <img className='img-Studen' src={image} alt='img' />
             <div className='box-name'>
                 <p className='name'>{item.name}</p>
                 <p className='name'>{item.firstname}</p>
                 <p className='name'>{item.lastname}</p>
             </div>
-            {item.typePerson === "STUDENT" &&
+            {item.typeClient === 'student' &&
                 <div className='isStuding'>
                     <p>{sections[item.seccion]}</p>
                 </div>
             }
             <div className='mtc'>
-                <p>{item.idPerson}</p>
+                <p>{item.idClient}</p>
             </div>
         </figure>
     );

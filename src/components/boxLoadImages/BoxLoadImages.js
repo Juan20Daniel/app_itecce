@@ -21,8 +21,8 @@ const BoxLoadImages = () => {
         }
         const imagesArray = files.map(file => {
             return {
-                idPerson:parseInt(file.name.split('.')[0]),
-                personImage:URL.createObjectURL(file)
+                idClient:parseInt(file.name.split('.')[0]),
+                image:URL.createObjectURL(file)
             }
         });
         setImages(imagesArray);

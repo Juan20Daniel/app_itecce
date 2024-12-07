@@ -2,16 +2,14 @@ import { useContext, useState } from "react";
 import ValidityPeriodsContext from "../../../../../../context/validityPeriods/ValidityPeriodsContext";
 import './inputExpireDate.css';
 const typeClients = {
-    "STUDENT":'students',
-    "TEACHER":'teachers',
-    "COLABORATOR":'collaborators'
+    'student':'students',
+    'teacher':'teachers',
+    'collaborator':'collaborators'
 }
 const InputExpireDate = ({item, hideStyles}) => {
     const validityPeriods  = useContext(ValidityPeriodsContext);
-    const [ expireDate, setExpireDate ] = useState(validityPeriods[typeClients[item.typePerson]]);
-    const expiryDateEdited = (e) => {
-        setExpireDate(e.target.value)
-    }
+    const [ expireDate, setExpireDate ] = useState(validityPeriods[typeClients[item.typeClient]]);
+    const expiryDateEdited = (e) => setExpireDate(e.target.value);
     return (
         <input
             className={`expireId ${!hideStyles.current && 'input-edit-expire-date'}`} 

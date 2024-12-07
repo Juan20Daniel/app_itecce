@@ -24,14 +24,14 @@ const ShowImages = () => {
     //En caso de que se elimine una imagen.
     useEffect(() => {
         if(!lastRemoved) return;
-        const result = data.filter(item => item.idPerson !== lastRemoved);
+        const result = data.filter(item => item.idClient !== lastRemoved);
         setData(result);
         setLastRemoved(null);
     },[lastRemoved, data, setLastRemoved]);
     return (
         <ul className="show-images">
             {data?.map(image => (
-                <ItemImage data={image} key={image.idPerson}/>
+                <ItemImage data={image} key={image.idClient}/>
             ))}
             {!disableBtn && <BtnShowMore action={getMoreData} />}
         </ul>

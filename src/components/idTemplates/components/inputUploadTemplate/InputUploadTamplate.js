@@ -1,6 +1,6 @@
 import { IconAdd } from '../../../../assets/IconAdd';
 import './inputUploadTamplate.css';
-const InputUploadTamplate = ({id, valueInput, handleTaamplate}) => {
+const InputUploadTamplate = ({id, valueInput, handleTemplate}) => {
     return (
         <>
             <label htmlFor={id}>
@@ -10,8 +10,9 @@ const InputUploadTamplate = ({id, valueInput, handleTaamplate}) => {
                 id={id}
                 type='file'
                 accept='.jpg,.JPG,.png,.PNG'
-                onChange={handleTaamplate}
+                onChange={handleTemplate}
                 value={valueInput}
+                className='input-upload-tamplate'
             />
         </>
     );

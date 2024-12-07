@@ -5,8 +5,8 @@ export const useGetPersonImg = (id) => {
     const [ image, setImage ] = useState(null);
     const { images } = useContext(GenerateIdsContext);
     useEffect(() => {
-        const resultImg = images?.find(img => img.idPerson === id);
-        setImage(resultImg ? resultImg.personImage : null);
+        const resultImg = images?.find(img => img.idClient === id);
+        setImage(resultImg ? resultImg.image : null);
     },[id, images]);
 
     return { image }

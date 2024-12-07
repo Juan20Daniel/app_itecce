@@ -15,7 +15,7 @@ const Page = React.forwardRef((props, ref) => {
             {pages[currentPage]?.page.map((infoIdentity, index) => {
                 //La primera validación es para imprimir el reverso de cada hoja cuando hay 5 o más credenciales.
                 //la segunda validación es para juntar la parte delanteras con la trasera en una sola hoja, lo cual sucede cuando son 4 o menos credenciales.
-                if((showBack && pages[currentPage]?.reverse) || (infoIdentity.typeCard === 'REVERSE' && !pages[currentPage]?.reverse)) {
+                if((showBack && pages[currentPage]?.reverse) || (infoIdentity.typeCard === 'reverse' && !pages[currentPage]?.reverse)) {
                     return <BackId 
                         item={infoIdentity} 
                         position={(!pages[currentPage]?.reverse && pages[currentPage]?.page.length === 6 ) ? index+1 : index}

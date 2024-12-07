@@ -8,10 +8,10 @@ const ItemImage = ({data}) => {
         <li className='item-image'>
             <img
                 alt='img'
-                key={data.idPerson}
-                src={data.personImage}
+                key={data.idClient}
+                src={data.image}
             />
-            <button type='button' onClick={() => removeImage(data.idPerson)} className='btn-remove-img' title='Quitar'>
+            <button type='button' onClick={() => removeImage(data.idClient)} className='btn-remove-img' title='Quitar'>
                 <IconX
                     size={10}
                     color='white'

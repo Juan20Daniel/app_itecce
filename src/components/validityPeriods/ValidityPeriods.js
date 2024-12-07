@@ -6,7 +6,7 @@ import BtnSavePeriod from './components/btnSavePeriod/BtnSavePeriod';
 import ValidityPeriodsContext from '../../context/validityPeriods/ValidityPeriodsContext';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
 import './validityPeriods.css';
-const expretion = /^[A-Z]{3}\/[0-9]{2}$/;
+const expretion = /^[a-zA-Z]{3}\/[0-9]{2}$/;
 const ValidityPeriods = () => {
     const {
         students,
@@ -42,10 +42,8 @@ const ValidityPeriods = () => {
         try {
             setIsLoading(true);
             const response = await axiosInstance.put('/validityPeriods',values);
-            console.log(response);
             openCentralAlert('Actualización de vigencia', response.message, 'success');
         } catch (error) {
-            console.log(error);
             openCentralAlert('Error', error.message, 'error');
         } finally {
             setIsLoading(false);
@@ -54,7 +52,11 @@ const ValidityPeriods = () => {
     const handleSubmit = e => {
         e.preventDefault();
         if(!verifyPeriods()) return openCentralAlert('Error', 'Hay campos inválidos al colocar la fecha de vencimiento', 'error');
-        const newValidityPeriods = {students,teachers,collaborators}
+        const newValidityPeriods = {
+            students:students.toUpperCase(),
+            teachers:teachers.toUpperCase(),
+            collaborators:collaborators.toUpperCase()
+        }
         updateValidityPeriods(newValidityPeriods);
     }
     return (

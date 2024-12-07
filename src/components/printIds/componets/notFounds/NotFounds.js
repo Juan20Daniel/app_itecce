@@ -9,9 +9,9 @@ const NotFounds = () => {
             <p className="title">No disponibles para hacer credencial</p>
             <div className="scroll">
                 {infoIdentityCardNotFound.map((item, index) => (
-                    <span key={item.idPerson}>
+                    <span key={item.idClient}>
                         <b>{index+1}: </b>
-                        {item.idPerson}
+                        {item.idClient}
                     </span>
                 ))}
             </div>

@@ -17,7 +17,7 @@ const GenerateIdsProvider = ({children}) => {
     const saveImages = async () => {
         try {
             setIsLoading(true);
-            const getUrlRequests = images.map(image => getUrl(image.idPerson));
+            const getUrlRequests = images.map(image => getUrl(image.idClient));
             const responses = await Promise.all(getUrlRequests);
             let toGenereteId = [];
             let notFounds = [];
@@ -36,7 +36,7 @@ const GenerateIdsProvider = ({children}) => {
     }
     const removeImage = (id) => {
         setLastRemoved(id);
-        const result = images.filter(image => image.idPerson !== id);
+        const result = images.filter(image => image.idClient !== id);
         if(result.length === 0) return clear();
         setImages(result);
     }
