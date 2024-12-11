@@ -16,9 +16,8 @@ const IdTamplatesProvider = ({children}) => {
             setStudentTemplates(tamplatesBase64[0]);
             setSTeacherTemplates(tamplatesBase64[1]);
             setCollaboratorTemplates(tamplatesBase64[2]);
-            // setImg(`data:image/jpeg;base64,${response.base64}`);
+            setErrorLoadingTamplates(false);
         } catch (error) {
-            console.log(error);
             setErrorLoadingTamplates(true);
             openCentralAlert('Plantillas de credenciales','Error al optener las plantillas de credenciales', 'error');
         } finally {
@@ -37,7 +36,8 @@ const IdTamplatesProvider = ({children}) => {
             errorLoadingTamplates,
             setStudentTemplates,
             setSTeacherTemplates,
-            setCollaboratorTemplates
+            setCollaboratorTemplates,
+            getTemplates
         }}>
             {children}
         </IdTamplatesContext.Provider>

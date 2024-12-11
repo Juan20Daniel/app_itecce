@@ -32,6 +32,7 @@ const fontImg = {
 }
 const FrontId = ({item}) => {
     const { image } = useGetPersonImg(item.idClient);
+    console.log(item)
     return (
         <figure className='box-front-id'>
             <img className='front-id-img' src={fontImg[item.typeClient]} alt='img id' />     

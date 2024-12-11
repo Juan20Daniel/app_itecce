@@ -9,63 +9,56 @@ import './boxUploadTemplate.css';
 const BoxUploadTemplate = ({name, type, id, imageTamplate, idSectionIdTemp}) => {
     const [ image, setImage ] = useState(imageTamplate ? `data:image/jpeg;base64,${imageTamplate}`:null);
     const [ valueInput, setValueInput ] = useState('');
-    const { openCentralAlert, closeCentralAlert } = useContext(CentralAlertContext);
-    const updateTamplateDataBase = async (formData, id) => {
+    const { openCentralAlert } = useContext(CentralAlertContext);
+    const updateTamplateDB = async (values, id) => {
         try {
+            const keys = Object.keys(values);
+            const formData = new FormData();
+            keys.forEach(key => {
+                formData.append([key], values[key]);
+            });
             const response = await axiosInstance.patch(`/templates/${id}`, formData);
-            console.log(response);
-            openCentralAlert('Nueva plantilla',response.message,'success');
-            return true;
+            return response;
         } catch (error) {
             console.log(error);
-            openCentralAlert('Error al cargar la plantilla',error.message,'error');
             return false;
         }
     }
     const handleTemplate = async (e) => {
-        const formData = new FormData();
-        formData.append('image', e.target.files[0]);
-        formData.append('type', type);
-        const result = await updateTamplateDataBase(formData, idSectionIdTemp);
-        if(result) {
-            const render = new FileReader();
-            render.readAsDataURL(e.target.files[0]);
-            setValueInput(e.target.value);
-            render.onload = (e) => {
-                setImage(e.target.result);
-            }
+        const file =  e.target.files[0];
+        setValueInput(e.target.value);
+        if(!expretions.imgTamplate.test(file.name)) {
+            let errorMessage = `Hay un problema con la plantilla que se intenta cargar, 
+            verifica que sea .jpg y si caracteres especiales en el nombre`;
+            return openCentralAlert('Error al cargar la plantilla',errorMessage,'error');
+        }
+        const data = {image:file, type}
+        const result = await updateTamplateDB(data, idSectionIdTemp);
+        if(!result) {
+            setValueInput('');
+            let errorMessage = 'No se logro eliminar la plantilla por un problema en el servidor'
+            return openCentralAlert('Error al eliminar la plantilla',errorMessage,'error');
+        }
+        const render = new FileReader();
+        render.readAsDataURL(file);
+        render.onload = (e) => {
+            setImage(e.target.result);
+            openCentralAlert('Nueva plantilla',result.message,'success');
         }
     }
-    // const handleTemplate = async (e) => {
-    //     const nameFile = e.target.files[0].name;
-    //     if(!expretions.imgTamplate.test(nameFile)) {
-    //         const messageError = `Hay un problema con la plantilla que se intenta cargar, 
-    //         verifica que sea .jpg y si caracteres especiales en el nombre`;
-    //         return openCentralAlert('Error al cargar la plantilla',messageError,'error');
-    //     }
-    //     const formData = new FormData();
-    //     formData.append('image', e.target.files[0]);
-    //     formData.append('type', type);
-    //     console.log(e.target.files[0])
-    //     const result = await updateTamplateDB(formData, idSectionIdTemp);
-    //     if(result) {
-    //         const render = new FileReader();
-    //         render.readAsDataURL(e.target.files[0]);
-    //         setValueInput(e.target.value);
-    //         render.onload = (e) => {
-    //             setImage(e.target.result);
-    //         }
-    //     }
-    // }
-    const removeImage = () => {
-        console.log('removing...')
+    const removeImage = async () => {
+        const result = await updateTamplateDB({type}, idSectionIdTemp);
+        if(!result) {
+            let errorMessage = 'No se logro eliminar la plantilla por un problema en el servidor'
+            return openCentralAlert('Error al eliminar la plantilla',errorMessage,'error');
+        }
         setImage(null);
         setValueInput('');
-        closeCentralAlert();
+        openCentralAlert('Eliminación de plantilla','La plantilla se ha eliminado.','success')
     }
     const confirmRemoveImg = () => {
-        const alertMessage = '¿Seguro que quieres eliminar la plantilla de credenciales?'
-        openCentralAlert('¿Eliminación de plantilla?',alertMessage,'confirm',removeImage);
+        const confirmMessage = '¿Seguro que quieres eliminar la plantilla de credenciales?'
+        openCentralAlert('¿Eliminación de plantilla?',confirmMessage,'confirm',removeImage);
     }
     return (
         <div className='box-upload-template'>

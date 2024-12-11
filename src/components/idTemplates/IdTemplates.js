@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import UploadTemplates from './components/uploadTemplates/UploadTemplates';
 import BoxUploadTemplate from './components/boxUploadTemplate/BoxUploadTemplate';
 import IdTamplatesContext from '../../context/idTamplates/IdTamplatesContext';
+import BtnTryAgain from '../btnTryAgain/BtnTryAgain';
 import './idTemplates.css';
 const IdTemplates = () => {
     const {
@@ -9,12 +10,18 @@ const IdTemplates = () => {
         errorLoadingTamplates,
         studentTemplates,
         teacherTemplates,
-        collaboratorTemplates
+        collaboratorTemplates,
+        getTemplates
     } = useContext(IdTamplatesContext);
     return (
         <div className='id-tamplates'>
             {loadingTemplates && <p>Cargando plantillas...</p>}
-            {(!loadingTemplates && errorLoadingTamplates) && <p>Error al cargar las plantillas.</p>}
+            {(!loadingTemplates && errorLoadingTamplates) && 
+                <>
+                    <p className='message-error'>Error al cargar las plantillas.</p>
+                    <BtnTryAgain action={getTemplates}/>
+                </>
+            }
             {(!loadingTemplates && !errorLoadingTamplates) &&
                 <>
                     <UploadTemplates title='Plantilla de credencial de alumno'>

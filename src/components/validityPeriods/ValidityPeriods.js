@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import axiosInstance from '../../data/remote/axios.instance';
-import BtnAction from '../btnAction/BtnAction';
+import BtnTryAgain from '../btnTryAgain/BtnTryAgain';
 import Period from './components/period/Period';
 import BtnSavePeriod from './components/btnSavePeriod/BtnSavePeriod';
 import ValidityPeriodsContext from '../../context/validityPeriods/ValidityPeriodsContext';
@@ -85,13 +85,7 @@ const ValidityPeriods = () => {
             />
             <div className='box-buttons'>
                 <BtnSavePeriod isLoading={isLoading}/>
-                {errorPeriods && <div className='box-btn-try-again'>
-                    <BtnAction
-                        value='Volver a intentar'
-                        color='gray'
-                        action={validityPeriods}
-                    />
-                </div>}
+                {errorPeriods && <BtnTryAgain action={validityPeriods} />}
             </div>
         </form>
     );
