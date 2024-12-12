@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { expretions } from '../../../../helpers/helpers';
 import axiosInstance from '../../../../data/remote/axios.instance';
 import BoxActionsTamplate from '../boxActionsTamplate/BoxActionsTamplate';
@@ -6,10 +6,11 @@ import BtnAction from '../../../btnAction/BtnAction';
 import InputUploadTamplate from '../inputUploadTemplate/InputUploadTamplate';
 import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
 import './boxUploadTemplate.css';
-const BoxUploadTemplate = ({name, type, id, imageTamplate, idSectionIdTemp}) => {
+const BoxUploadTemplate = ({name, type, id, imageTamplate, idSectionIdTemp, tamplateState, setState }) => {
     const [ image, setImage ] = useState(imageTamplate ? `data:image/jpeg;base64,${imageTamplate}`:null);
     const [ valueInput, setValueInput ] = useState('');
     const { openCentralAlert } = useContext(CentralAlertContext);
+    console.log('exce')
     const updateTamplateDB = async (values, id) => {
         try {
             const keys = Object.keys(values);
@@ -18,6 +19,7 @@ const BoxUploadTemplate = ({name, type, id, imageTamplate, idSectionIdTemp}) => 
                 formData.append([key], values[key]);
             });
             const response = await axiosInstance.patch(`/templates/${id}`, formData);
+            setState({...tamplateState,[type]:response.data});
             return response;
         } catch (error) {
             console.log(error);

@@ -6,7 +6,7 @@ const IdTamplatesProvider = ({children}) => {
     const [ loadingTemplates, setLoadingTemplates ] = useState(true);
     const [ errorLoadingTamplates, setErrorLoadingTamplates ] = useState(false);
     const [ studentTemplates, setStudentTemplates ] = useState(null);
-    const [ teacherTemplates, setSTeacherTemplates ] = useState(null);
+    const [ teacherTemplates, setTeacherTemplates ] = useState(null);
     const [ collaboratorTemplates, setCollaboratorTemplates ] = useState(null);
     const { openCentralAlert } = useContext(CentralAlertContext);
     const getTemplates = useCallback( async () => {
@@ -14,7 +14,7 @@ const IdTamplatesProvider = ({children}) => {
             const response = await axiosInstance.get('/templates');
             const { tamplatesBase64 } = response;
             setStudentTemplates(tamplatesBase64[0]);
-            setSTeacherTemplates(tamplatesBase64[1]);
+            setTeacherTemplates(tamplatesBase64[1]);
             setCollaboratorTemplates(tamplatesBase64[2]);
             setErrorLoadingTamplates(false);
         } catch (error) {
@@ -35,7 +35,7 @@ const IdTamplatesProvider = ({children}) => {
             loadingTemplates,
             errorLoadingTamplates,
             setStudentTemplates,
-            setSTeacherTemplates,
+            setTeacherTemplates,
             setCollaboratorTemplates,
             getTemplates
         }}>

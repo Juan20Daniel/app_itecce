@@ -11,6 +11,9 @@ const IdTemplates = () => {
         studentTemplates,
         teacherTemplates,
         collaboratorTemplates,
+        setStudentTemplates,
+        setTeacherTemplates,
+        setCollaboratorTemplates,
         getTemplates
     } = useContext(IdTamplatesContext);
     return (
@@ -31,6 +34,8 @@ const IdTemplates = () => {
                             id='tamplate-front-student'
                             imageTamplate={studentTemplates.imgFront}
                             idSectionIdTemp={studentTemplates.idSectionIdTemp}
+                            tamplateState={studentTemplates}
+                            setState={setStudentTemplates}
                         />
                         <BoxUploadTemplate 
                             name='Reverso' 
@@ -38,6 +43,8 @@ const IdTemplates = () => {
                             id='tamplate-back-student'
                             imageTamplate={studentTemplates.imgReverse}
                             idSectionIdTemp={studentTemplates.idSectionIdTemp}
+                            tamplateState={studentTemplates}
+                            setState={setStudentTemplates}
                         />
                     </UploadTemplates>
                     <UploadTemplates title='Plantilla de credencial de profesor'>
@@ -47,6 +54,8 @@ const IdTemplates = () => {
                             id='tamplate-front-teacher'
                             imageTamplate={teacherTemplates.imgFront}
                             idSectionIdTemp={teacherTemplates.idSectionIdTemp}
+                            tamplateState={teacherTemplates}
+                            setState={setTeacherTemplates}
                         />
                         <BoxUploadTemplate 
                             name='Reverso' 
@@ -54,6 +63,8 @@ const IdTemplates = () => {
                             id='tamplate-back-teacher'
                             imageTamplate={teacherTemplates.imgReverse}
                             idSectionIdTemp={teacherTemplates.idSectionIdTemp}
+                            tamplateState={teacherTemplates}
+                            setState={setTeacherTemplates}
                         />
                     </UploadTemplates>
                     <UploadTemplates title='Plantilla de credencial de colaborador'>
@@ -63,6 +74,8 @@ const IdTemplates = () => {
                             id='tamplate-front-collaborator'
                             imageTamplate={collaboratorTemplates.imgFront}
                             idSectionIdTemp={collaboratorTemplates.idSectionIdTemp}
+                            tamplateState={collaboratorTemplates}
+                            setState={setCollaboratorTemplates}
                         />
                         <BoxUploadTemplate 
                             name='Reverso' 
@@ -70,6 +83,8 @@ const IdTemplates = () => {
                             id='tamplate-back-collaborator'
                             imageTamplate={collaboratorTemplates.imgReverse}
                             idSectionIdTemp={collaboratorTemplates.idSectionIdTemp}
+                            tamplateState={collaboratorTemplates}
+                            setState={setCollaboratorTemplates}
                         />
                     </UploadTemplates>
                 </> 

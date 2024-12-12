@@ -1,8 +1,6 @@
 import { useGetPersonImg } from '../../../../hooks/useGetPersonImg';
-import imgStudent from '../../../../assets/studens.jpg';
-import imgTeacher from '../../../../assets/teachers.jpg';
-import imgCollaborator from '../../../../assets/collaborators.jpg';
-import imgReverse from '../../../../assets/reverse.jpg';
+import { useContext } from 'react';
+import IdTamplatesContext from '../../../../context/idTamplates/IdTamplatesContext';
 import './frontId.css';
 const sections = {
     "BACHILLERATO GENERAL":"NIVEL MEDIO SUPERIOR",
@@ -24,18 +22,18 @@ const sections = {
     "INGENIERIA MECANICA AUTOMOTRIZ":"ING. MECANICA AUTOMOTRIZ",
     "EGRESADOS":"EGRESADOS"
 }
-const fontImg = {
-    'student':imgStudent,
-    'teacher':imgTeacher,
-    'collaborator':imgCollaborator,
-    'reverse':imgReverse
+const tamplateOptions = {
+    'student':'studentTemplates',
+    'teacher':'teacherTemplates',
+    'collaborator':'collaboratorTemplates',
 }
 const FrontId = ({item}) => {
     const { image } = useGetPersonImg(item.idClient);
-    console.log(item)
+    const { imgFront } = useContext(IdTamplatesContext)[tamplateOptions[item.typeClient]];
+   
     return (
         <figure className='box-front-id'>
-            <img className='front-id-img' src={fontImg[item.typeClient]} alt='img id' />     
+            <img className='front-id-img' src={`data:image/jpeg;base64,${imgFront}`} alt='img id' />     
             <img className='img-Studen' src={image} alt='img' />
             <div className='box-name'>
                 <p className='name'>{item.name}</p>
