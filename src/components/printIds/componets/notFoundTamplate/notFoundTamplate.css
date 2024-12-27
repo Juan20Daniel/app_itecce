@@ -1,0 +1,15 @@
+.box-not-tamplate {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: var(--gray-low);
+    border-radius: 1rem;
+}
+.text-error {
+    position: absolute;
+    color: var(--red);
+    font-size: 1.5rem;
+    padding: 1rem;
+    z-index: 5;
+    bottom: 0;
+}

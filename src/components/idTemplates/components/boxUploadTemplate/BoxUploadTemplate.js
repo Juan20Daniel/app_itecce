@@ -10,7 +10,6 @@ const BoxUploadTemplate = ({name, type, id, imageTamplate, idSectionIdTemp, tamp
     const [ image, setImage ] = useState(imageTamplate ? `data:image/jpeg;base64,${imageTamplate}`:null);
     const [ valueInput, setValueInput ] = useState('');
     const { openCentralAlert } = useContext(CentralAlertContext);
-    console.log('exce')
     const updateTamplateDB = async (values, id) => {
         try {
             const keys = Object.keys(values);

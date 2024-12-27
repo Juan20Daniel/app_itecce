@@ -16,6 +16,7 @@ const PrintIds = () => {
     const promiseResolveRef = useRef(null);
     const hideStyles = useRef(false);
     useLayoutEffect(() => {
+        console.log('Verificar porque se ejecuta cadaves que cambio de pestaña exce')
         let resultLastItems = getLastItems(infoIdentityCard, offset);
         let resultLastItemsCopy = [...resultLastItems];
         //Verificamos si hay más páginas con el último ítem, y después lo eliminamos para que no sobre en la página actual. 
