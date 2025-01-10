@@ -26,6 +26,11 @@ const Page = React.forwardRef((props, ref) => {
                 }
                 return <FrontId item={infoIdentity} key={index} />
             })}
+            {pages[currentPage]?.page.length === 0 &&
+                <div className='credentials-not-found'>
+                    <p>No hay credenciales para imprimir</p>
+                </div>
+            }
         </div>
     );
 })

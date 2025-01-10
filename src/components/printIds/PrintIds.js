@@ -1,4 +1,4 @@
-import { useContext, useRef, useState, useLayoutEffect } from "react";
+import { useContext, useRef, useState, useLayoutEffect, useEffect } from "react";
 import { getLastItems } from "../../helpers/helpers";
 import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
 import BoxDetails from "./componets/boxDetails/BoxDetails";
@@ -15,8 +15,10 @@ const PrintIds = () => {
     const componentRef = useRef();
     const promiseResolveRef = useRef(null);
     const hideStyles = useRef(false);
+    useEffect(() => {
+        console.log(pages);
+    },[pages]);
     useLayoutEffect(() => {
-        console.log('Verificar porque se ejecuta cadaves que cambio de pestaña exce')
         let resultLastItems = getLastItems(infoIdentityCard, offset);
         let resultLastItemsCopy = [...resultLastItems];
         //Verificamos si hay más páginas con el último ítem, y después lo eliminamos para que no sobre en la página actual. 
@@ -67,18 +69,20 @@ const PrintIds = () => {
                     showBack={showBack}
                 />
             </div>
-            <ActionsPage
-                componentRef={componentRef}
-                promiseResolveRef={promiseResolveRef}
-                showBack={showBack}
-                hideStyles={hideStyles}
-                currentPage={currentPage}
-                setCurrentPage={setCurrentPage}
-                pages={pages}
-                setPages={setPages}
-                setShowBack={setShowBack}
-                setIsPrinting={setIsPrinting}
-            />
+            {pages[0]?.page.length !== 0 &&
+                <ActionsPage
+                    componentRef={componentRef}
+                    promiseResolveRef={promiseResolveRef}
+                    showBack={showBack}
+                    hideStyles={hideStyles}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                    pages={pages}
+                    setPages={setPages}
+                    setShowBack={setShowBack}
+                    setIsPrinting={setIsPrinting}
+                />
+            }
         </div>
     );
 }

@@ -52,9 +52,8 @@ const ShowFileContent = () => {
         formData.append('excel', fileToLoad);
         formData.append('section', section);
         try {
-            const result = await axiosInstance.post(`/${section}`, formData);
-            console.log(result);
-            setInserts(result.registered);
+            const result = await axiosInstance.post(`/processExcel`, formData);
+            setInserts(result.news);
             setUpdates(result.updateds);
             setFaileds(result.inOtherSection);
             setIsLoading(false);

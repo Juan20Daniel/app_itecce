@@ -11,6 +11,10 @@ const GenerateIds = lazy(() => import('./pages/generateIds/GenerateIds'));
 const Login = lazy(() => import('./pages/login/Login'));
 const Config = lazy(() => import('./pages/config/Config'));
 
+//Actividades
+//Colocar le un mejor color al loader del login
+//Colocar un guard para que no me cargue las rutas de la app
+
 function App() {
   return (
     <Provider store={store}>
