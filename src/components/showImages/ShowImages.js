@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, useCallback, useRef } from "react";
-import { getLastItems } from '../../helpers/helpers';
+import { getLastItems } from '../../helpers/getLastItems';
 import ItemImage from "../itemImage/ItemImage";
 import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
 import BtnShowMore from "../btnShowMore/BtnShowMore";

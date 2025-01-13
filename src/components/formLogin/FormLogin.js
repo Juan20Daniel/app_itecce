@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { check } from '../../helpers/helpers';
+import { check } from '../../helpers/check';
 import { saveTokenLocalStorage } from '../../data/local/localStorage';
 import axiosInstance from '../../data/remote/axios.instance';
 import logoItecce from '../../assets/logoItecce.png';

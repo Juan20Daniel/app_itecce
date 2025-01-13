@@ -1,5 +1,5 @@
 import React, {  useEffect } from 'react';
-import { getGeneralExpireDate } from '../../../../helpers/helpers';
+import { getGeneralExpireDate } from '../../../../helpers/getGeneralExpireDate';
 import FrontId from '../frontId/FrontId';
 import BackId from '../backId/BackId';
 import './page.css';

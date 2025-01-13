@@ -1,5 +1,5 @@
 import { useContext, useRef, useState, useLayoutEffect, useEffect } from "react";
-import { getLastItems } from "../../helpers/helpers";
+import { getLastItems } from "../../helpers/getLastItems";
 import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
 import BoxDetails from "./componets/boxDetails/BoxDetails";
 import Page from "./componets/page/Page";

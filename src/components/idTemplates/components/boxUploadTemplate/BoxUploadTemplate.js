@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { expretions } from '../../../../helpers/helpers';
+import { expretions } from '../../../../helpers/expretions';
 import axiosInstance from '../../../../data/remote/axios.instance';
 import BoxActionsTamplate from '../boxActionsTamplate/BoxActionsTamplate';
 import BtnAction from '../../../btnAction/BtnAction';

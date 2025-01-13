@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import iconSuccess from '../../assets/iconSuccess.png';
-import { downloadExcel } from "../../functions";
+import { downloadExcel } from "../../helpers/excel";
 import './footerFileContent.css';
 const FooterFileContent = ({uploadedFile, nameExcel, inserts, updates, faileds,section, loadFile, close, isLoading}) => {
     const navigate = useNavigate();

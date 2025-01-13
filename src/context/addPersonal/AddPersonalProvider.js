@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
-import { verifyCamps, transformExcel, addTempAvatar } from '../../functions';
+import { verifyCamps } from '../../helpers/verifyCamps';
+import { transformExcel } from '../../helpers/excel';
+import { addTempAvatar } from '../../helpers/addTempAvatar';
 import AddPersonalContext from "./AddPersonalContext";
 import CentralAlertContext from "../centralAlert/CentralAlertContext";
 const validExtentionFile = /^.+[.xls XLS xlsx XLSX]{3,4}$/;
