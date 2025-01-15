@@ -1,12 +1,22 @@
-.input-group {
-    width: 27.5rem;
-    height: 4.5rem;
-    margin-bottom: 1.5rem;
+.input-group-setting-pass,
+.input-group-setting,
+.input-group-login {
+    margin-bottom: 1rem;
     background: var(--white);
-    border-radius: 5rem;
-    border: 0.1rem solid var(--gray);
     display: grid;
+    border: 0.1rem solid var(--white);
+}
+.input-group-login {
+    border-radius: 5rem;
+    height: 4.5rem;
+    width: 27.5rem;
+    margin-bottom: 1.5rem;
+    border-color: var(--gray);
     grid-template-columns: 4rem 1fr;
+}
+.input-group-setting-pass,
+.input-group-setting {
+    max-width: 40rem;
 }
 .input-err {
     border: 0.1rem solid var(--red);
@@ -14,23 +24,32 @@
 .pass {
     grid-template-columns: 4rem 1fr 4rem;
 }
-.input-group svg {
+.input-group-setting label,
+.input-group-setting-pass svg,
+.input-group-setting svg,
+.input-group-login svg {
     align-self: center;
     justify-self: center;
 }
-.input-group input {
+.input-group-setting-pass input,
+.input-group-setting input,
+.input-group-login input {
     display: block;
     border: none;
+    outline: none;
+    height: 100%;
+}
+.input-group-login input {
     height: 90%;
     border-radius: 0 5rem 5rem 0;
     align-self: center;
-    outline: none;
     padding: 0 1rem 0 0;
 }
 .input-err input::placeholder {
     color: var(--red);
 }
-.input-group .btn-show-pass {
+.input-group-setting-pass .btn-show-pass,
+.input-group-login .btn-show-pass {
     border: none;
     border-radius: 0 5rem 5rem 0;
     width: 100%;
@@ -42,11 +61,40 @@
     cursor: pointer;
     outline: none;
 }
-.input-group .btn-show-pass svg {
+.input-group-login .btn-show-pass svg {
     height: 1.8rem;
 }
+.input-group-setting {
+    grid-template-columns: 4rem 5rem 1fr;
+}
+.input-group-setting-pass,
+.input-group-setting {
+    align-items: center;
+    height: 3.5rem;
+}
+.input-group-setting label {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--dark-neutral-gray);
+}
+@media(min-width: 600px)  {
+    .input-group-setting-pass,
+    .input-group-setting {
+        margin-bottom: 1.5rem;
+    }
+    .input-group-setting {
+        grid-template-columns: 4rem 7rem 1fr;
+    }
+    .input-group-setting label {
+        font-size: 1.7rem;
+    }
+    .input-group-setting-pass input,
+    .input-group-setting input {
+       font-size: 1.7rem;
+    }
+}
 @media(min-width: 1000px) and (min-height: 800px) {
-    .input-group {
+    .input-group-login {
         width: 35rem;
         height: 4.5rem;
         margin-bottom: 2.5rem;

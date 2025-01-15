@@ -1,0 +1,15 @@
+.btns-settings {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+.btns-settings .box-btn-settings {
+    width: 14.5rem;
+    height: 3.5rem;
+}
+@media(min-width:600px) {
+    .btns-settings .box-btn-settings {
+        width: 18rem;
+        height: 4rem;
+    }
+}

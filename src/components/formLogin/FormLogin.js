@@ -2,11 +2,12 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { check } from '../../helpers/check';
 import { saveTokenLocalStorage } from '../../data/local/localStorage';
+import { IconUser } from '../../assets/IconUser';
+import { IconPassword } from '../../assets/IconPassword';
 import axiosInstance from '../../data/remote/axios.instance';
 import logoItecce from '../../assets/logoItecce.png';
 import InputGroup from '../inputGroup/InputGroup';
 import BtnLogin from '../btnLogin/BtnLogin';
-import IconsSvg from '../../assets/IconsSvg';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
 import './formLogin.css';
 const errorMesages = {
@@ -60,27 +61,32 @@ const FormLogin = () => {
             <img src={logoItecce} alt="Logo universidad itecce" />
             <form onSubmit={login}>
                 <h1>INICIAR SESIÓN</h1>
-                <InputGroup 
-                    placeholder="USUARIO"
+                <InputGroup
+                    id='user'
+                    inputStyle='input-group-login'
+                    placeholder='USUARIO'
                     camp={userCamp}
-                    type="text"
+                    type='text'
                     setValue={setUserCamp}
                 >
-                    <IconsSvg 
-                        type="user" 
-                        size={16} 
+                    <IconUser
+                        type='user'
+                        width={16}
+                        height={16}
+                        size={16}
                         color={userCamp.state === 'normal' ? '#979797' : '#AC3636'}
                     />
                 </InputGroup>
-                <InputGroup 
-                    placeholder="CONTRASEÑA"
+                <InputGroup
+                    id='pass'
+                    inputStyle='input-group-login'
+                    placeholder='CONTRASEÑA'
                     camp={password}
-                    type="password"
+                    type='password'
                     setValue={setPassword}
                 >
-                    <IconsSvg 
-                        type="password" 
-                        size={16} 
+                    <IconPassword 
+                        size={20} 
                         color={password.state === 'normal' ? '#979797' : '#AC3636'}
                     />
                 </InputGroup>

@@ -1,3 +1,4 @@
+import { typeSections } from "./utils";
 const normalizeText = (arrayCamps) => {
     const convertText = JSON.stringify(arrayCamps);
     const debugText = convertText.replace(/[^a-zA-Z,óí ]/g, '');

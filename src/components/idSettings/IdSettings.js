@@ -4,7 +4,7 @@ import IdTemplates from "../idTemplates/IdTemplates";
 import './idSettings.css';
 const IdSettings = () => {
     return (
-        <SettingBox title="Credenciales">
+        <SettingBox title='Credenciales'>
             <ValidityPeriods />
             <IdTemplates />
         </SettingBox>

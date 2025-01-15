@@ -14,8 +14,16 @@
     gap: 1rem;
     padding-top: 1.5rem;
 }
+.box-btn-period {
+    width: 12.5rem;
+    height: 3.5rem;
+}
 @media(min-width:600px) {
     .validity-periods .sub-title {
         font-size: 2rem;
+    }
+    .box-btn-period {
+        width: 16rem;
+        height: 4rem;
     }
 }

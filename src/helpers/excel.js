@@ -1,26 +1,6 @@
 import * as XLSX from 'xlsx';
-const typeSections = {
-    students:[
-        "Matrícula",
-        "Nombre",
-        "Apellido paterno",
-        "Apellido materno",
-        "Sección",
-        "Grupo",
-    ],
-    teachers: [
-        "Matrícula",
-        "Nombre",
-        "Apellido paterno",
-        "Apellido materno",
-    ],
-    collaborators: [
-        "Matrícula",
-        "Nombre",
-        "Apellido paterno",
-        "Apellido materno",
-    ]
-}
+import { typeSections } from './utils';
+
 export function transformExcel(excel) {
     const workbook = XLSX.read(excel,{type:"buffer"});
     const workSheetName = workbook.SheetNames[0];

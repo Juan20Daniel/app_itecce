@@ -1,5 +1,5 @@
 import Spin from '../spin/Spin';
-import './btnActionStyles.css';
+import './btnAction.css';
 const BtnAction = ({ value, color, action, type='button', isLoading=false }) => {
     return (
         <>
