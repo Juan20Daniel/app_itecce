@@ -1,0 +1,28 @@
+.box-message-error {
+    width: 18rem;
+    position: absolute;
+    bottom: -1rem;
+    left: 4rem;
+}
+.box-message-error p {
+    color: var(--red);
+}
+@media(min-width:600px) {
+    .box-message-error {
+        bottom: -1.6rem;
+        left: 4rem;
+    }
+    .box-message-error p {
+        font-size: 1.3rem;
+    }
+}
+@media(min-width:830px) {
+    .box-message-error {
+        bottom: calc(50% - 0.7rem);
+        left: auto;
+        right: -50%;
+    }
+    .box-message-error p {
+        font-size: 1.3rem;
+    }
+}

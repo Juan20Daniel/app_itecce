@@ -1,24 +1,56 @@
+import { useLayoutEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { removeTokenLocalStorage } from "../../data/local/localStorage";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IconUser } from "../../assets/IconUser";
 import { IconEmail } from "../../assets/IconEmail";
 import { IconPassword } from "../../assets/IconPassword";
 import { IconSave } from "../../assets/IconSave";
+import { check } from '../../helpers/check';
+import { tokenDecoded } from "../../helpers/jwt";
+import { IconLogout } from "../../assets/IconLogout";
 import SettingBox from "../settingBox/SettingBox";
 import InputGroup from "../inputGroup/InputGroup";
+import ErrorMessage from "./components/customError/ErrorMessage";
 import Button from '../button/Button';
+import CentralAlertContext from "../../context/centralAlert/CentralAlertContext";
 import './countSettings.css';
+
 const CountSettings = () => {
     const [ email, setEmail ] = useState({ value:'asistentesistemas@itecce.edu.mx', name:'email', state:'normal'});
     const [ user, setUser ] = useState({ value:'Sistemas', name:'user', state:'normal'});
     const [ password, setPassword ] = useState({ value:'', name:'password', state:'normal'});
     const [ confirmPass, setConfirmPass ] = useState({ value:'', name:'password', state:'normal'});
+    const { openCentralAlert } = useContext(CentralAlertContext);
     const navigate = useNavigate();
+    useLayoutEffect(() => {
+        tokenDecoded();
+    },[]);
     const handleSubmit = (e) => {
         e.preventDefault();
+        verifyCountData();
         console.log('guardando...')
     }
+    const verifyCountData = () => {
+            let checkResults = [];
+            let resultEmail = check(email.name, email.value);
+            let resultUser = check(user.name, user.value);
+            checkResults = [resultEmail, resultUser]
+            setEmail({...email, state:resultEmail ? 'normal' : 'error'});
+            setUser({...user, state:resultUser ? 'normal' : 'error'});
+            if(password.value !== '') {
+                let resultPass = check(password.name, password.value);
+                checkResults.push(resultPass);
+                setPassword({...password, state:resultPass ? 'normal' : 'error'});
+                const comparePasswords = password.value === confirmPass.value;
+                console.log(comparePasswords)
+                checkResults.push(comparePasswords);
+                setConfirmPass({...confirmPass, state:comparePasswords ? 'normal' : 'error'});
+            }
+            console.log(checkResults);
+            if(checkResults.includes(false)) return false;
+            return true;
+        }
     const closeSession = () => {
         removeTokenLocalStorage();
         navigate('/login', {replace:true});
@@ -35,7 +67,10 @@ const CountSettings = () => {
                     setValue={setEmail}
                 >
                     <IconEmail size={20} color={email.state === 'normal' ? '#5C5C5C' : '#AC3636'} />
-                    <label htmlFor='email'>Correo:</label>
+                    <label htmlFor='email' style={{color:email.state === 'normal' ? '#5C5C5C' : '#AC3636'}}>
+                        Correo:
+                    </label>
+                    {email.state === 'error' && <ErrorMessage message='El correo no es válido' />}
                 </InputGroup>
                 <InputGroup
                     id='new-user'
@@ -46,7 +81,10 @@ const CountSettings = () => {
                     setValue={setUser}
                 >
                     <IconUser width={16} height={17} color={user.state === 'normal' ? '#5C5C5C' : '#AC3636'} />
-                    <label htmlFor='new-user'>Usuario:</label>
+                    <label htmlFor='new-user' style={{color:user.state === 'normal' ? '#5C5C5C' : '#AC3636'}}>
+                        Usuario:
+                    </label>
+                   {user.state === 'error' && <ErrorMessage message='El usuario no es válido' />}
                 </InputGroup>
                 <InputGroup
                     id='new-pass'
@@ -57,6 +95,7 @@ const CountSettings = () => {
                     setValue={setPassword}
                 >   
                     <IconPassword size={22} color={password.state === 'normal' ? '#5C5C5C' : '#AC3636'} />
+                    {password.state === 'error' && <ErrorMessage message='La contraseña no es válida' />}
                 </InputGroup>
                 <InputGroup
                     id='confirm-new-pass'
@@ -67,6 +106,7 @@ const CountSettings = () => {
                     setValue={setConfirmPass}
                 >   
                     <IconPassword size={22} color={confirmPass.state === 'normal' ? '#5C5C5C' : '#AC3636'} />
+                    {confirmPass.state === 'error' && <ErrorMessage message='Las contraseñas no coinciden' />}
                 </InputGroup>
                 <div className="btns-settings">
                     <div className="box-btn-settings">
@@ -85,7 +125,7 @@ const CountSettings = () => {
                             btnStyle='btn-with-icon'
                             action={closeSession}
                         >
-                            <IconSave size={20} color="#000000" />
+                            <IconLogout size={20} color="#000000" />
                         </Button>
                     </div>
                 </div>

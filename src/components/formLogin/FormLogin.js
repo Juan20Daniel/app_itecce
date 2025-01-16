@@ -24,24 +24,23 @@ const FormLogin = () => {
     const navigate = useNavigate();
     const login = async e => {
         e.preventDefault();
-        if(!verifyInfo()) return;
+        if(!verifyUserData()) return;
         try {
             setIsLoading(true);
             const result = await axiosInstance.get(`/auth/${userCamp.value}/${password.value}`);
             saveTokenLocalStorage(result.token);
             setIsLoading(false);
             navigate('/', {replace:true});
-
         } catch (error) {
             setIsLoading(false);
             openCentralAlert(
                 'Error de acceso', 
                 error.message,
-                'success',
+                'error',
             );
         }
     }
-    const verifyInfo = () => {
+    const verifyUserData = () => {
         let resultUser = check(userCamp.name, userCamp.value);
         let resultPass = check(password.name, password.value);
         setUserCamp({...userCamp, state:resultUser ? 'normal' : 'error'});

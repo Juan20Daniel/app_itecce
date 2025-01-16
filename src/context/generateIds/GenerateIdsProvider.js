@@ -29,7 +29,7 @@ const GenerateIdsProvider = ({children}) => {
             setInfoIdentityCardNotFound(notFounds);
             setPrintIds(true);
         } catch (error) {
-            openCentralAlert('Imagenes',error.message,'error');
+            openCentralAlert('Error al procesar la imagenes',error.message,'error');
         } finally {
             setIsLoading(false);
         }

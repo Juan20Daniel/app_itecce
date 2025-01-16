@@ -1,6 +1,7 @@
 .input-group-setting-pass,
 .input-group-setting,
 .input-group-login {
+    position: relative;
     margin-bottom: 1rem;
     background: var(--white);
     display: grid;
@@ -25,6 +26,11 @@
     grid-template-columns: 4rem 1fr 4rem;
 }
 .input-group-setting label,
+.input-group-setting-pass svg,
+.input-group-setting svg,
+.input-group-login svg {
+    align-self: center;
+}
 .input-group-setting-pass svg,
 .input-group-setting svg,
 .input-group-login svg {
@@ -75,7 +81,6 @@
 .input-group-setting label {
     display: block;
     font-size: 1.2rem;
-    color: var(--dark-neutral-gray);
 }
 @media(min-width: 600px)  {
     .input-group-setting-pass,
