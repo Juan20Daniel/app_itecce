@@ -28,29 +28,27 @@ const CountSettings = () => {
     },[]);
     const handleSubmit = (e) => {
         e.preventDefault();
-        verifyCountData();
+        if(!verifyCountData()) return;
         console.log('guardando...')
     }
     const verifyCountData = () => {
-            let checkResults = [];
-            let resultEmail = check(email.name, email.value);
-            let resultUser = check(user.name, user.value);
-            checkResults = [resultEmail, resultUser]
-            setEmail({...email, state:resultEmail ? 'normal' : 'error'});
-            setUser({...user, state:resultUser ? 'normal' : 'error'});
-            if(password.value !== '') {
-                let resultPass = check(password.name, password.value);
-                checkResults.push(resultPass);
-                setPassword({...password, state:resultPass ? 'normal' : 'error'});
-                const comparePasswords = password.value === confirmPass.value;
-                console.log(comparePasswords)
-                checkResults.push(comparePasswords);
-                setConfirmPass({...confirmPass, state:comparePasswords ? 'normal' : 'error'});
-            }
-            console.log(checkResults);
-            if(checkResults.includes(false)) return false;
-            return true;
+        let checkResults = [];
+        let resultEmail = check(email.name, email.value);
+        let resultUser = check(user.name, user.value);
+        setEmail({...email, state:resultEmail ? 'normal' : 'error'});
+        setUser({...user, state:resultUser ? 'normal' : 'error'});
+        checkResults = [resultEmail, resultUser];
+        if(password.value !== '') {
+            let resultPass = check(password.name, password.value);
+            checkResults.push(resultPass);
+            setPassword({...password, state:resultPass ? 'normal' : 'error'});
+            const comparePasswords = password.value === confirmPass.value;
+            checkResults.push(comparePasswords);
+            setConfirmPass({...confirmPass, state:comparePasswords ? 'normal' : 'error'});
         }
+        if(checkResults.includes(false)) return false;
+        return true;
+    }
     const closeSession = () => {
         removeTokenLocalStorage();
         navigate('/login', {replace:true});
