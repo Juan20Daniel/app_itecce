@@ -1,10 +1,11 @@
-import BtnAction from '../btnAction/BtnAction';
+import Button from '../button/Button';
 import './btnTryAgain.css';
 const BtnTryAgain = ({action}) => (
     <div className='box-btn-try-again'>
-        <BtnAction
+        <Button
             value='Volver a intentar'
             color='gray'
+            btnStyle='btn-try-again'
             action={action}
         />
     </div>

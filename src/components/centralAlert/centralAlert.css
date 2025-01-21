@@ -35,6 +35,7 @@
     font-size: 1.2rem;
     max-width: 35rem;
     text-align: center;
+    margin-bottom: 3rem;
 }
 .central-alert .box-content .box-btns-confirm {
     display: grid;
@@ -42,27 +43,50 @@
     gap: 1rem;
     margin-top: 3rem;
 }
-.central-alert .box-content .box-btns-confirm .btn-not,
-.central-alert .box-content .box-btns-confirm .btn-yes {
+.central-alert .box-content .btn-success,
+.central-alert .box-content .btn-confirm,
+.central-alert .box-content .btn-cancel,
+.central-alert .box-content .btn-error {
     width: 10rem;
     height: 3rem;
+    background-color: var(--gray-low);
+    color: var(--white);
 }
-.central-alert .box-content .box-btns-confirm .btn-not {
+.central-alert .box-content .btn-cancel {
+    color: var(--black);
     grid-column: 1 / 2;
     grid-row: 1 / 2;
 }
-.central-alert .box-content .btn-ok {
-    margin-top: 3rem;
-    width: 15rem;
-    height: 4rem;
+.central-alert .box-content .btn-cancel:active {
+    background-color: var(--gray-active);
+}
+.central-alert .box-content .btn-success {
+    background-color: var(--blue-font);
+}
+.central-alert .box-content .btn-success:active {
+    background-color: var(--blue-active);
+}
+.central-alert .box-content .btn-confirm {
+    background-color: var(--yellow);
+}
+.central-alert .box-content .btn-confirm:active {
+    background-color: var(--yellow-active);
+}
+.central-alert .box-content .btn-error {
+    background-color: var(--red);
+}
+.central-alert .box-content .btn-error:active {
+    background-color: var(--red-active);
 }
 @media(min-width: 600px) {
     .central-alert .box-content {
         max-width: 55rem;
         padding: 4rem;
     }
-    .central-alert .box-content .box-btns-confirm .btn-not,
-    .central-alert .box-content .box-btns-confirm .btn-yes {
+    .central-alert .box-content .btn-success,
+    .central-alert .box-content .btn-confirm,
+    .central-alert .box-content .btn-cancel,
+    .central-alert .box-content .btn-error {
         width: 13rem;
         height: 3.5rem;
     }
@@ -81,14 +105,13 @@
         max-width: 70rem;
         text-align: center;
     }
-    .central-alert .box-content .btn-ok {
-        width: 20rem;
-    }
 }
 @media(min-width: 1200px) {
-    .central-alert .box-content .box-btns-confirm .btn-not,
-    .central-alert .box-content .box-btns-confirm .btn-yes {
+    .central-alert .box-content .btn-success,
+    .central-alert .box-content .btn-confirm,
+    .central-alert .box-content .btn-cancel,
+    .central-alert .box-content .btn-error {
         width: 15rem;
-        height: 4rem;
+        height: 5rem;
     }
 }

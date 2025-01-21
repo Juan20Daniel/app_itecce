@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import BtnAction from "../../../btnAction/BtnAction";
+import Button from '../../../button/Button';
 import GenerateIdsContext from "../../../../context/generateIds/GenerateIdsContext";
 import './pageDetails.css';
 const PageDetails = ({totalIds, pages, currentPage}) => {
@@ -22,11 +22,12 @@ const PageDetails = ({totalIds, pages, currentPage}) => {
                         </>
                     : <li className="item">Estado de la página: {pages[currentPage]?.printedFrondPage ? 'Impresa' : 'Sin imprimir'}</li>
                 }
-                <div className='box-btn-out'>
-                    <BtnAction
+                <div className='box-btn-out-generator'>
+                    <Button
                         value='Salir'
-                        color='gray'
-                        action={() => clear()}
+                        type='button'
+                        btnStyle='btn-out-generator'
+                        action={clear}
                     />
                 </div>
             </ul>

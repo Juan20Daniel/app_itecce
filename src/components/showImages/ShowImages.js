@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState, useCallback, useRef } from "react";
 import { getLastItems } from '../../helpers/getLastItems';
+import Button from "../button/Button";
 import ItemImage from "../itemImage/ItemImage";
 import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
-import BtnShowMore from "../btnShowMore/BtnShowMore";
 import './showImages.css';
 const range = 43
 const ShowImages = () => {
@@ -33,7 +33,16 @@ const ShowImages = () => {
             {data?.map(image => (
                 <ItemImage data={image} key={image.idClient}/>
             ))}
-            {!disableBtn && <BtnShowMore action={getMoreData} />}
+            {!disableBtn && 
+                <div className='box-btn-show-more'>
+                    <Button
+                        value='Mostrar más'
+                        btnStyle='btn-show-more'
+                        type='button'
+                        action={getMoreData}
+                    />
+                </div>
+            }
         </ul>
     );
 }

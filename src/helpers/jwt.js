@@ -4,5 +4,5 @@ export const tokenDecoded = () => {
     const token = getTokenLocalStorage();
     if(!token) return null;
     const decode = jwtDecode(token);
-    console.log(decode);
+    return decode.data;
 }

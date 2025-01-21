@@ -7,7 +7,7 @@ import { IconPassword } from '../../assets/IconPassword';
 import axiosInstance from '../../data/remote/axios.instance';
 import logoItecce from '../../assets/logoItecce.png';
 import InputGroup from '../inputGroup/InputGroup';
-import BtnLogin from '../btnLogin/BtnLogin';
+import Button from '../button/Button';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
 import './formLogin.css';
 const errorMesages = {
@@ -17,7 +17,7 @@ const errorMesages = {
     la contraseña entre 8 y 20 caracteres.`
 }
 const FormLogin = () => {
-    const [ userCamp, setUserCamp ] = useState({ value:'', name:'user', state:'normal'});
+    const [ username, setUsername ] = useState({ value:'', name:'username', state:'normal'});
     const [ password, setPassword ] = useState({ value:'', name:'password', state:'normal'});
     const [ isLoading, setIsLoading ] = useState(false);
     const { openCentralAlert } = useContext(CentralAlertContext);
@@ -27,7 +27,12 @@ const FormLogin = () => {
         if(!verifyUserData()) return;
         try {
             setIsLoading(true);
-            const result = await axiosInstance.get(`/auth/${userCamp.value}/${password.value}`);
+            const result = await axiosInstance.get(`/auth`, {
+                params: {
+                    username:username.value,
+                    password:password.value
+                }
+            });
             saveTokenLocalStorage(result.token);
             setIsLoading(false);
             navigate('/', {replace:true});
@@ -41,14 +46,18 @@ const FormLogin = () => {
         }
     }
     const verifyUserData = () => {
-        let resultUser = check(userCamp.name, userCamp.value);
+        let resultUser = check(username.name, username.value);
         let resultPass = check(password.name, password.value);
-        setUserCamp({...userCamp, state:resultUser ? 'normal' : 'error'});
+        setUsername({...username, state:resultUser ? 'normal' : 'error'});
         setPassword({...password, state:resultPass ? 'normal' : 'error'});
         if(!resultUser || !resultPass) {
             openCentralAlert(
                 'Error en uno de los campos', 
-                !resultUser && !resultPass ? errorMesages.userAndPass : !resultUser ? errorMesages.user : errorMesages.password,
+                !resultUser && !resultPass 
+                    ? errorMesages.userAndPass 
+                    : !resultUser 
+                        ? errorMesages.user 
+                        : errorMesages.password,
                 'error',
             );
             return false;
@@ -64,16 +73,16 @@ const FormLogin = () => {
                     id='user'
                     inputStyle='input-group-login'
                     placeholder='USUARIO'
-                    camp={userCamp}
+                    camp={username}
                     type='text'
-                    setValue={setUserCamp}
+                    setValue={setUsername}
                 >
                     <IconUser
                         type='user'
                         width={16}
                         height={16}
                         size={16}
-                        color={userCamp.state === 'normal' ? '#979797' : '#AC3636'}
+                        color={username.state === 'normal' ? '#979797' : '#AC3636'}
                     />
                 </InputGroup>
                 <InputGroup
@@ -89,7 +98,14 @@ const FormLogin = () => {
                         color={password.state === 'normal' ? '#979797' : '#AC3636'}
                     />
                 </InputGroup>
-                <BtnLogin isLoading={isLoading} />
+                <div className='box-btn-login'>
+                    <Button
+                        value='ENTRAR'
+                        type='submit'
+                        btnStyle='btn-login'
+                        isLoading={isLoading}
+                    />
+                </div>
                 <Link to="/" className='recover-pass'>Recuperar contraseña</Link>
             </form>
         </div>

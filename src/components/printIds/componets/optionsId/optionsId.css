@@ -11,13 +11,11 @@
 .options-id .btn-show-reverse {
     justify-self: start;
     background: none;
-    border: none;
-    cursor: pointer;
     color: var(--black);
 }
 .options-id .btn-add-date,
 .options-id .btn-show-reverse,
-.options-id .btn-action {
+.options-id .btn-print {
     font-size: 1.5rem;
 }
 .options-id .btn-add-date {
@@ -39,12 +37,20 @@
 .options-id .disable-btn-reverse {
     color: var(--gray);
 }
+.btn-print {
+    background-color: var(--blue-font);
+    color: var(--white);
+}
+.btn-print:active {
+    background-color: var(--blue-active);
+}
 @media(min-width: 730px) {
     .options-id {
         grid-template-columns: 1fr 15rem 15rem;
         grid-template-rows: 4rem;
     }
     .options-id .btn-add-date {
+        width: auto;
         grid-column: span 1;
     }
 }
@@ -55,7 +61,7 @@
     }
     .options-id .btn-add-date,
     .options-id .btn-show-reverse,
-    .options-id .btn-action {
+    .options-id .btn-print {
         font-size: 1.8rem;
     }
 }

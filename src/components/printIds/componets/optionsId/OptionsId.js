@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import BtnAction from '../../../btnAction/BtnAction';
+import Button from '../../../button/Button';
 import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
 import './optionsId.css';
 
@@ -20,15 +20,22 @@ const OptionsId = ({print, currentPage, pages, setPages, showBack, setShowBack})
     }
     return (
         <div className='options-id'>
-            <button className='btn-add-date' onClick={() => printedSheet()}>
-                Registrar impresión de hoja
-            </button>
-            <button className={`btn-show-reverse ${!pages[currentPage]?.reverse && 'disable-btn-reverse'}`} onClick={() => showReverse()}>
-                {showBack ? 'Ver anverso' : 'Ver reverso'}
-            </button>
-            <BtnAction
+            <Button 
+                value='Registrar impresión de hoja'
+                btnStyle='btn-add-date'
+                type='button'
+                action={printedSheet}
+            />
+            <Button
+                value={showBack ? 'Ver anverso' : 'Ver reverso'}
+                type='button'
+                btnStyle={`btn-show-reverse ${!pages[currentPage]?.reverse && 'disable-btn-reverse'}`} 
+                action={showReverse}
+            />
+            <Button
                 value='Imprimir'
-                color='blue'
+                type='button'
+                btnStyle='btn-print'
                 action={print}
             />
         </div>

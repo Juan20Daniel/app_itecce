@@ -5,9 +5,7 @@ const OptionLoadFile = ({ type, ilustration, id, active, options, setOptions }) 
     return (
         <li className={`option ${active && "option-active"}`}>
             <button onClick={() => selectOption()}>
-                {active &&
-                    <span className='marker'>Seleccionado</span>
-                }
+                {active && <span className='marker'>Seleccionado</span>}
                 <div className='box-ilustration'>
                     <img className='ilustration' src={ilustration} alt="Ilustración" />
                 </div>

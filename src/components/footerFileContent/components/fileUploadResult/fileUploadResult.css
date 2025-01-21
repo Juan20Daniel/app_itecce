@@ -1,0 +1,48 @@
+.file-upload-result .db-results {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.file-upload-result .db-results p,
+.file-upload-result .db-results span {
+    font-size: 1.2rem;
+}
+.file-upload-result .db-results .amount {
+    font-weight: bold;
+}
+.file-upload-result .failed-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+.file-upload-result .failed-results p {
+    text-align: center;
+    font-size: 1.2rem;
+    max-width: 60rem;
+    padding: 0 2rem;
+}
+.file-upload-result .failed-results .box-btn-download {
+    width: 20rem;
+    height: 4rem;
+}
+.file-upload-result .failed-results .box-btn-download .btn-download {
+    border: 0.1rem solid var(--gray-active);
+    border-radius: 1rem;
+}
+
+.file-upload-result .failed-results .box-btn-download .btn-download:hover {
+    background-color: var(--gray-active);
+}
+.file-upload-result .failed-results .box-btn-download .btn-download:active {
+    background: none;
+}
+@media(min-width:600px)  {
+    .file-upload-result .db-results p,
+    .file-upload-result .db-results span,
+    .file-upload-result .failed-results p {
+        font-size: 1.6rem;
+    }
+}

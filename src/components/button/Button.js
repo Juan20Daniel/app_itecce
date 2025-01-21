@@ -7,7 +7,7 @@ const Button = ({
     type='button',
     isLoading=false, 
     colorSpinner='white', 
-    sizeSpinner=15, 
+    sizeSpinner=15,
     children
     }) => {
     const handleAction = () => {
@@ -19,12 +19,11 @@ const Button = ({
             onClick={() => handleAction()}
             type={type}
         >
-            {isLoading
-                ? <Spin size={sizeSpinner} color={colorSpinner} />
-                : <>
-                    <span>{value}</span>
-                    {children}
-                </>
+            {children 
+                ? children
+                : isLoading 
+                    ? <Spin size={sizeSpinner} color={colorSpinner} />
+                    : <span>{value}</span>
             }
         </button>
     );

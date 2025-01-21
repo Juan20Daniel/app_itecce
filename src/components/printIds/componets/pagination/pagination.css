@@ -14,19 +14,15 @@
     user-select: none;
 }
 .pagination .btn-pagination {
-    width: 100%;
     min-width: 10rem;
     max-width: 11rem;
     height: 3.5rem;
     font-size: 1.4rem;
-    cursor: pointer;
     border: none;
-    border-radius: 1rem;
     justify-self: center;
-    display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 0 1.5rem;
+    background-color: var(--gray-low);
 }
 .pagination .btn-pagination:active {
     background-color: var(--gray-active);

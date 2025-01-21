@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
 import { expretions } from '../../../../helpers/expretions';
 import axiosInstance from '../../../../data/remote/axios.instance';
-import BoxActionsTamplate from '../boxActionsTamplate/BoxActionsTamplate';
-import BtnAction from '../../../btnAction/BtnAction';
 import InputUploadTamplate from '../inputUploadTemplate/InputUploadTamplate';
 import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
+import Button from '../../../button/Button';
 import './boxUploadTemplate.css';
 const BoxUploadTemplate = ({name, type, id, imageTamplate, idSectionIdTemp, tamplateState, setState }) => {
     const [ image, setImage ] = useState(imageTamplate ? `data:image/jpeg;base64,${imageTamplate}`:null);
@@ -77,14 +76,14 @@ const BoxUploadTemplate = ({name, type, id, imageTamplate, idSectionIdTemp, tamp
                     handleTemplate={handleTemplate}
                 />
             </div>
-            {image && <BoxActionsTamplate>
-                    <BtnAction
+            {image && <div className='box-btn-save-tamplate'>
+                    <Button
                         value='Eliminar'
-                        color='error'
+                        btnStyle='btn-delete-tamplate'
                         type='button'
                         action={confirmRemoveImg}                    
                     />
-                </BoxActionsTamplate>}
+                </div>}
             <span className='name-loader'>{name}</span>
         </div>
     );

@@ -1,0 +1,15 @@
+.btn-close-modal {
+    width: 4rem;
+    height: 4rem;
+    border: none;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: none;
+    cursor: pointer;
+}
+.btn-close-modal:hover {
+    box-shadow: 0 0 0.5rem var(--box-shadow);
+}
+.btn-close-modal:active {
+    box-shadow: none;
+}

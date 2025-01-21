@@ -13,6 +13,17 @@
     width: 10rem;
     height: 3rem;
 }
+.page-details .box-btn-out-generator {
+    margin-top: 2rem;
+    width: 10rem;
+    height: 3rem;
+}
+.page-details .box-btn-out-generator .btn-out-generator {
+    background-color: var(--gray-low);
+}
+.page-details .box-btn-out-generator .btn-out-generator:active {
+    background-color: var(--gray-active);
+}
 @media(min-width: 1000px) {
     .page-details .title {
         font-size: 4rem;
@@ -21,7 +32,7 @@
         font-size: 2.2rem;
         margin-bottom: 1rem;
     }
-    .page-details .box-btn-out {
+    .page-details .box-btn-out-generator {
         max-width: 13rem;
         height: 4rem;
     }

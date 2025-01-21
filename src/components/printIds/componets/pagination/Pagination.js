@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { IconNext } from '../../../../assets/IconNext';
+import Button from '../../../button/Button';
 import './pagination.css';
 const Pagination = ({setCurrentPage, totalPages}) => {
     const [ btnBack, setBtnBack ] = useState(false);
@@ -25,14 +26,22 @@ const Pagination = ({setCurrentPage, totalPages}) => {
     return (
         <div className='pagination'>
             <p>Página {counter.current+1}/{totalPages}</p>
-            <button className={`btn-pagination btn-back ${!btnBack && 'btn-disable'}`} type='button' onClick={() => decrement()}>
+            <Button 
+                btnStyle={`btn-pagination btn-back ${!btnBack && 'btn-disable'}`} 
+                type='button' 
+                action={decrement}
+            >
                 <IconNext size={9} />
                 <span>Átras</span>
-            </button>
-            <button className={`btn-pagination btn-next ${!btnNext && 'btn-disable'}`} type='button' onClick={() => increment()}>
+            </Button>
+            <Button 
+                btnStyle={`btn-pagination btn-next ${!btnNext && 'btn-disable'}`} 
+                type='button' 
+                action={increment}
+            >
                 <span>Siguiente</span>
                 <IconNext size={9} />
-            </button>
+            </Button>
         </div>
     );
 }

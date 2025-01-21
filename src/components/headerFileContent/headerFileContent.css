@@ -7,24 +7,6 @@
     border-bottom: 0.1rem solid var(--gray-low);
     padding: 1rem 1rem 1.5rem 1rem;
 }
-.file-content .header .btn-close-modal {
-    width: 4rem;
-    height: 4rem;
-    border: none;
-    padding: 1rem;
-    border-radius: 1rem;
-    background: none;
-    cursor: pointer;
-}
-.file-content .header .btn-close-modal:hover {
-    box-shadow: 0 0 0.5rem var(--box-shadow);
-}
-.file-content .header .btn-close-modal:active {
-    box-shadow: none;
-}
-.file-content .header .icon-close {
-    width: 2rem;
-}
 
 @media(min-width:900px) {
     .file-content .header {

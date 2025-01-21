@@ -6,3 +6,21 @@
     gap: 2rem;
     margin-top: 2rem;
 }
+.box-btn-show-more {
+    grid-column: 1 / -1;
+    height: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.box-btn-show-more .btn-show-more {
+    max-width: 50rem;
+    height: auto;
+    margin: 0 2rem;
+    padding: 1rem 0;
+    border: 0.1rem solid var(--gray);
+    border-radius: 1.2rem;
+}
+.box-btn-show-more .btn-show-more:active {
+    background: var(--gray-low);
+}

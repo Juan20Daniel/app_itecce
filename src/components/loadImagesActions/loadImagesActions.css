@@ -19,9 +19,18 @@
 
 .load-images-actions .btn-load-images-save {
     align-self: flex-end;
+    background-color: var(--blue-font);
+    color: var(--white);
+}
+.load-images-actions .btn-load-images-save:active {
+    background-color: var(--blue-active);
 }
 .load-images-actions .btn-load-images-cancel {
     align-self: start;
+    background-color: var(--gray-low);
+}
+.load-images-actions .btn-load-images-cancel:active {
+    background-color: var(--gray-active);
 }
 @media(min-width: 430px) {
     .load-images-actions {

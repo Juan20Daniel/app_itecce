@@ -5,7 +5,7 @@ import BtnTryAgain from '../btnTryAgain/BtnTryAgain';
 import Period from './components/period/Period';
 import ValidityPeriodsContext from '../../context/validityPeriods/ValidityPeriodsContext';
 import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
-import Button from '../button/Button';
+import BtnSetting from '../btnSetting/BtnSetting';
 import './validityPeriods.css';
 const expretion = /^[a-zA-Z]{3}\/[0-9]{2}$/;
 const ValidityPeriods = () => {
@@ -85,16 +85,13 @@ const ValidityPeriods = () => {
                 validPeriods={validPeriods}
             />
             <div className='box-buttons'>
-                <div className="box-btn-period">
-                    <Button
-                        value='Guardar'
-                        type="submit"
-                        btnStyle='btn-with-icon'
-                        isLoading={isLoading}
-                    >
-                        <IconSave size={20} color="#000000" />
-                    </Button>
-                </div>
+                <BtnSetting
+                    value='Guardar'
+                    type="submit"
+                    isLoading={isLoading}
+                >
+                    <IconSave size={20} color='#000000' />
+                </BtnSetting>
                 {errorPeriods && <BtnTryAgain action={validityPeriods} />}
             </div>
         </form>
