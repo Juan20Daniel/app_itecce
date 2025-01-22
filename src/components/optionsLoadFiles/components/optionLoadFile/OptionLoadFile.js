@@ -1,5 +1,5 @@
 import './optionLoadFile.css';
-import { select } from '../../helpers/select';
+import { select } from '../../../../helpers/select';
 const OptionLoadFile = ({ type, ilustration, id, active, options, setOptions }) => {
     const selectOption = () => setOptions(select(options, id));
     return (

@@ -1,8 +1,10 @@
-import { useState, useEffect } from 'react';
-import { IconFile } from '../../../../assets/IconFile'
-import { recordText } from '../../../../helpers/recordText';
+import { useState, useEffect, useContext } from 'react';
+import { IconFile } from '../../../../../../assets/IconFile'
+import { recordText } from '../../../../../../helpers/recordText';
 import './nameExcel.css';
-const NameExcel = ({totalItems, nameExcel}) => {
+import AddPersonalContext from '../../../../../../context/addPersonal/AddPersonalContext';
+const NameExcel = () => {
+  const { fileContent, nameExcel } = useContext(AddPersonalContext);
   const [anchoPantalla, setAnchoPantalla] = useState(window.innerWidth);
   const actualizarAnchoPantalla = () => setAnchoPantalla(window.innerWidth);
   useEffect(() => {
@@ -21,7 +23,7 @@ const NameExcel = ({totalItems, nameExcel}) => {
         <span className="name" title={recordText(nameExcel, anchoPantalla).length !== nameExcel.length ? nameExcel : ''}>
           {recordText(nameExcel, anchoPantalla)}
         </span>
-        <p className='total'>Total de registros: {totalItems}</p>
+        <p className='total'>Total de registros: {fileContent.length}</p>
       </div>
     </div>
   );

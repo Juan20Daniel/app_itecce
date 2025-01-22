@@ -1,6 +1,6 @@
 import logoItecce from '../../assets/logoItecce.png';
 import NavLink from '../navLink/NavLink';
-import BtnConfig from '../btnConfig/BtnConfig';
+import BtnConfig from './components/btnConfig/BtnConfig';
 import './header.css';
 
 const Header = () => (
@@ -14,9 +14,6 @@ const Header = () => (
                 <li>
                     <NavLink to="/add-personal" value="Agregar personal" />
                 </li>
-                {/* <li>
-                    <NavLink to="/help" value="Ayuda" />
-                </li> */}
                 <li>
                     <BtnConfig />
                 </li>

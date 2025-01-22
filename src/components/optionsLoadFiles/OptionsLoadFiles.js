@@ -1,12 +1,12 @@
 import { useContext } from 'react';
-import OptionLoadFile from "../optionLoadFile/OptionLoadFile";
+import OptionLoadFile from "./components/optionLoadFile/OptionLoadFile";
 import ilustrationOpStudend from '../../assets/ilustrationOpStudend.png';
 import ilustrationOpTeacher from '../../assets/ilustrationOpTeacher.png';
 import ilustrationOpCollaborators from '../../assets/ilustrationOpCollaborators.png';
-import AddPersonalContext from '../../context/addPersonal/AddPersonalContext'
+import SectionOptionsContext from '../../context/sectionOptions/SectionOptionsContext';
 import './optionsLoadFiles.css';
 const OptionsLoadFiles = () => {
-    const {options, setOptions} = useContext(AddPersonalContext);
+    const {options, setOptions} = useContext(SectionOptionsContext);
     return (
         <ul className="options-load-files">
             <OptionLoadFile

@@ -1,5 +1,5 @@
-import { downloadExcel } from "../../../../helpers/excel";
-import Button from '../../../button/Button';
+import { downloadExcel } from "../../../../../../helpers/excel";
+import Button from '../../../../../button/Button';
 import './fileUploadResult.css';
 
 const FileUploadResult = ({inserts, updates, faileds, section}) => {

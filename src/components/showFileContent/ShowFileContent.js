@@ -1,10 +1,11 @@
 import { useContext, useState, useEffect, useRef } from "react";
 import AddPersonalContext from "../../context/addPersonal/AddPersonalContext";
-import HeaderFileContent from '../headerFileContent/HeaderFileContent';
-import ItemsFileContent from '../contentFileContent/ItemsFileContent';
-import FooterFileContent from '../footerFileContent/FooterFileContent';
+import HeaderFileContent from './components/headerFileContent/HeaderFileContent';
+import FileContent from './components/fileContent/FileContent';
+import FooterFileContent from './components/footerFileContent/FooterFileContent';
 import axiosInstance from "../../data/remote/axios.instance";
 import CentralAlertContext from "../../context/centralAlert/CentralAlertContext";
+import SectionOptionsContext from "../../context/sectionOptions/SectionOptionsContext";
 import './showFileContent.css';
 const ShowFileContent = () => {
     const [ offset, setOffset ] = useState(0);
@@ -17,7 +18,8 @@ const ShowFileContent = () => {
     const [ faileds, setFaileds ] = useState([]);
     const [ section, setSection ] = useState('');
     const { openCentralAlert, closeCentralAlert } = useContext(CentralAlertContext);
-    const { fileContent, nameExcel, options, fileToLoad, setFileContent, setInputValue } = useContext(AddPersonalContext);
+    const { options } = useContext(SectionOptionsContext);
+    const { fileContent, fileToLoad, setFileContent, setInputValue } = useContext(AddPersonalContext);
     const elementRef = useRef();
     useEffect(() => {
         const optionSelected = options.find(option => option.active);
@@ -65,20 +67,14 @@ const ShowFileContent = () => {
     }
     return (
         <div className='file-content'>
-            <HeaderFileContent 
-               fileContent={fileContent}
-               nameExcel={nameExcel}
-               close={close}
-            />
-            <ItemsFileContent 
+            <HeaderFileContent close={close} />
+            <FileContent 
                 listSelected={listSelected}
-                fileContent={fileContent}
                 elementRef={elementRef}
                 data={data}
             />
             <FooterFileContent 
                 uploadedFile={uploadedFile}
-                nameExcel={nameExcel}
                 inserts={inserts}
                 updates={updates}
                 faileds={faileds}
