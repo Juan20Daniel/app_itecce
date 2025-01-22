@@ -1,4 +1,5 @@
 .generate-ids {
+    position: relative;
     display: grid;
     margin-top: 4rem;
     gap: 3rem;

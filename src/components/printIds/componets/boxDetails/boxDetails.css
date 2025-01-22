@@ -1,3 +1,13 @@
 .box-details {
+    position: static;
+    top: 3rem;
     margin-left: 2.5rem;
+    height: auto;
+    align-self: start;
+}
+@media(min-width: 1250px) {
+    .box-details {
+        position: sticky;
+        align-self: start;
+    }
 }
