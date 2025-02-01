@@ -1,0 +1,12 @@
+.setting-box .sub-title {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-normal);
+    margin-bottom: 1rem;
+}
+
+@media(min-width:600px) {
+    .setting-box .sub-title {
+        font-size: 2rem;
+    }
+}

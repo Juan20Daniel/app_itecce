@@ -1,13 +1,16 @@
 import { useContext, useState } from 'react';
-import { IconSave } from '../../assets/IconSave';
-import axiosInstance from '../../data/remote/axios.instance';
-import BtnTryAgain from '../btnTryAgain/BtnTryAgain';
+import { IconSave } from '../../../../assets/IconSave';
+import axiosInstance from '../../../../data/remote/axios.instance';
+import BtnTryAgain from '../../../btnTryAgain/BtnTryAgain';
 import Period from './components/period/Period';
-import ValidityPeriodsContext from '../../context/validityPeriods/ValidityPeriodsContext';
-import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
-import BtnSetting from '../btnSetting/BtnSetting';
+import ValidityPeriodsContext from '../../../../context/validityPeriods/ValidityPeriodsContext';
+import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
+import BtnSetting from '../../../btnSetting/BtnSetting';
+import Subtitle from '../subTitle/SubTitle';
+import BoxForm from '../boxForm/BoxForm';
+import { expretions } from '../../../../helpers/expretions';
 import './validityPeriods.css';
-const expretion = /^[a-zA-Z]{3}\/[0-9]{2}$/;
+
 const ValidityPeriods = () => {
     const {
         students,
@@ -28,9 +31,10 @@ const ValidityPeriods = () => {
         'Colaboradores':true
     });
     const verifyPeriods = () => {
-        const verifyStudents = expretion.test(students);
-        const verifyTeachers = expretion.test(teachers);
-        const verifyCollaborators = expretion.test(collaborators);
+        const {periods} = expretions;
+        const verifyStudents = periods.test(students);
+        const verifyTeachers = periods.test(teachers);
+        const verifyCollaborators = periods.test(collaborators);
         setValidPeriods({
             'Alumnos':verifyStudents,
             'Profesores':verifyTeachers,
@@ -45,14 +49,14 @@ const ValidityPeriods = () => {
             const response = await axiosInstance.put('/validityPeriods',values);
             openCentralAlert('Actualización de vigencia', response.message, 'success');
         } catch (error) {
-            openCentralAlert('Error', error.message, 'error');
+            openCentralAlert('Error al actualizar la vigencia', error.message, 'error');
         } finally {
             setIsLoading(false);
         }
     }
     const handleSubmit = e => {
         e.preventDefault();
-        if(!verifyPeriods()) return openCentralAlert('Error', 'Hay campos inválidos al colocar la fecha de vencimiento', 'error');
+        if(!verifyPeriods()) return openCentralAlert('Error al actualizar la vigencia', 'Hay campos inválidos al colocar la fecha de vencimiento', 'error');
         const newValidityPeriods = {
             students:students.toUpperCase(),
             teachers:teachers.toUpperCase(),
@@ -61,8 +65,8 @@ const ValidityPeriods = () => {
         updateValidityPeriods(newValidityPeriods);
     }
     return (
-        <form className='validity-periods' onSubmit={handleSubmit}>
-            <span className="sub-title">Vigencia general</span>
+        <BoxForm submit={handleSubmit}>
+            <Subtitle value='Vigencia general' />
             <Period 
                 label='Alumnos'
                 value={students}
@@ -94,7 +98,7 @@ const ValidityPeriods = () => {
                 </BtnSetting>
                 {errorPeriods && <BtnTryAgain action={validityPeriods} />}
             </div>
-        </form>
+        </BoxForm>
     );
 }
 

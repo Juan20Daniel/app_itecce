@@ -4,5 +4,6 @@ export const expretions = {
     password:/^.{8,20}$/,
     imgClient:/^[0-9]{7}.(jpg|JPG|png|PNG)$/,
     imgTamplate:/^[a-zA-Z0-9-. áéíúóÁÉÍÓÚñÑ]+.(jpg|JPG|jpeg|JPEG)$/,
-    validExtentionFile:/^.+[.xls XLS xlsx XLSX]{3,4}$/
+    validExtentionFile:/^.+[.xls XLS xlsx XLSX]{3,4}$/,
+    periods:/^[a-zA-Z]{3}\/[0-9]{2}$/
 }

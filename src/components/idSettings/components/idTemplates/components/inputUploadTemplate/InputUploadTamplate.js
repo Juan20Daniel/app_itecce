@@ -1,4 +1,4 @@
-import { IconAdd } from '../../../../assets/IconAdd';
+import { IconAdd } from '../../../../../../assets/IconAdd';
 import './inputUploadTamplate.css';
 const InputUploadTamplate = ({id, valueInput, handleTemplate}) => {
     return (

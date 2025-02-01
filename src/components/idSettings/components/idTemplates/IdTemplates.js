@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import UploadTemplates from './components/uploadTemplates/UploadTemplates';
 import BoxUploadTemplate from './components/boxUploadTemplate/BoxUploadTemplate';
-import IdTamplatesContext from '../../context/idTamplates/IdTamplatesContext';
-import BtnTryAgain from '../btnTryAgain/BtnTryAgain';
+import IdTamplatesContext from '../../../../context/idTamplates/IdTamplatesContext';
+import BtnTryAgain from '../../../btnTryAgain/BtnTryAgain';
 import './idTemplates.css';
 const IdTemplates = () => {
     const {

@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { expretions } from '../../../../helpers/expretions';
-import axiosInstance from '../../../../data/remote/axios.instance';
+import { expretions } from '../../../../../../helpers/expretions';
+import axiosInstance from '../../../../../../data/remote/axios.instance';
 import InputUploadTamplate from '../inputUploadTemplate/InputUploadTamplate';
-import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
-import Button from '../../../button/Button';
+import CentralAlertContext from '../../../../../../context/centralAlert/CentralAlertContext';
+import Button from '../../../../../button/Button';
 import './boxUploadTemplate.css';
 const BoxUploadTemplate = ({name, type, id, imageTamplate, idSectionIdTemp, tamplateState, setState }) => {
     const [ image, setImage ] = useState(imageTamplate ? `data:image/jpeg;base64,${imageTamplate}`:null);

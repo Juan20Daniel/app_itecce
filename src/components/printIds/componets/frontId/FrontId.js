@@ -31,6 +31,7 @@ const tamplateOptions = {
 const FrontId = ({item}) => {
     const { image } = useGetPersonImg(item.idClient);
     const { imgFront } = useContext(IdTamplatesContext)[tamplateOptions[item.typeClient]];
+    console.log(sections[item.seccion])
     return (
         <figure className='box-front-id'>
             {imgFront 

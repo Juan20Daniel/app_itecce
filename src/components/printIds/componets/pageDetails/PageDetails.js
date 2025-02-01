@@ -1,9 +1,15 @@
 import { useContext } from "react";
 import Button from '../../../button/Button';
 import GenerateIdsContext from "../../../../context/generateIds/GenerateIdsContext";
+
 import './pageDetails.css';
+import CentralAlertContext from "../../../../context/centralAlert/CentralAlertContext";
 const PageDetails = ({totalIds, pages, currentPage}) => {
+    const { openCentralAlert } = useContext(CentralAlertContext);
     const { clear } = useContext(GenerateIdsContext);
+    const exit = () => {
+        openCentralAlert('Salir del generador', '¿Seguro que quieres salir del generador de credenciales?', 'confirm', clear)
+    }
     return (
         <div className="page-details">
             <p className="title">Detalles</p>
@@ -27,7 +33,7 @@ const PageDetails = ({totalIds, pages, currentPage}) => {
                         value='Salir'
                         type='button'
                         btnStyle='btn-out-generator'
-                        action={clear}
+                        action={exit}
                     />
                 </div>
             </ul>

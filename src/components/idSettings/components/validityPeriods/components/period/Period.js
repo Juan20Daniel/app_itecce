@@ -1,4 +1,4 @@
-import { IconPoint } from "../../../../assets/IconPoint";
+import { IconPoint } from "../../../../../../assets/IconPoint";
 import './period.css';
 const Period = ({label, value, onChange, isLoading, validPeriods}) => {
     return (
