@@ -19,6 +19,10 @@ const CentralAlert = () => {
     const { centralAlert, closeCentralAlert } = useContext(CentralAlertContext);
     const { title, message, type, action } = centralAlert;
     const stopClic = e => e.stopPropagation();
+    const actionConfirmed = () => {
+        action();
+        closeCentralAlert();
+    }
     return (
         <article className='central-alert' onClick={() => closeCentralAlert()}>
             <div className='box-content' onClick={stopClic}>
@@ -36,7 +40,7 @@ const CentralAlert = () => {
                         <Button
                             value="Si"
                             btnStyle={btnStyles[type]??'btn-cancel'}
-                            action={action}
+                            action={actionConfirmed}
                         />
                         <Button
                             value="No"
