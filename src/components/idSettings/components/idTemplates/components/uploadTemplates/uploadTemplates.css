@@ -1,6 +1,9 @@
+.upload-templates {
+    margin-bottom: 3rem;
+}
 .upload-templates .title {
     font-size: 1.3rem;
-    padding: 2rem 0;
+    padding: 0 0 1rem 0;
 }
 .upload-templates .box-loaders {
     display: flex;

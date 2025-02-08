@@ -1,7 +1,7 @@
 import { useGetPersonImg } from '../../../../hooks/useGetPersonImg';
 import { useContext } from 'react';
-import IdTamplatesContext from '../../../../context/idTamplates/IdTamplatesContext';
-import NotFountTamplate from '../notFoundTamplate/NotFountTamplate';
+import IdTamplatesContext from '../../../../context/idTemplates/IdTemplatesContext';
+import NotFoundTemplate from '../../../notFoundTemplate/NotFoundTemplate';
 import './frontId.css';
 const sections = {
     "BACHILLERATO GENERAL":"NIVEL MEDIO SUPERIOR",
@@ -31,12 +31,11 @@ const tamplateOptions = {
 const FrontId = ({item}) => {
     const { image } = useGetPersonImg(item.idClient);
     const { imgFront } = useContext(IdTamplatesContext)[tamplateOptions[item.typeClient]];
-    console.log(sections[item.seccion])
     return (
         <figure className='box-front-id'>
             {imgFront 
-                ? <img className='tamplate-front' src={`data:image/jpeg;base64,${imgFront}`} alt='img id' /> 
-                : <NotFountTamplate />
+                ?   <img className='tamplate-front' src={`data:image/jpeg;base64,${imgFront}`} alt='img id' /> 
+                :   <NotFoundTemplate />
             } 
             <img className='img-Studen' src={image} alt='img' />
             <div className='box-name'>

@@ -1,5 +1,5 @@
-import './notFoundTamplate.css';
-const NotFountTamplate = () => {
+import './notFoundTemplate.css';
+const NotFoundTemplate = () => {
     return (
         <div className="box-not-tamplate">
             <p className="text-error">No se encontró ninguna plantilla</p>
@@ -7,4 +7,4 @@ const NotFountTamplate = () => {
     );
 }
 
-export default NotFountTamplate;
+export default NotFoundTemplate;

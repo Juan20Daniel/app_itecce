@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import BoxInfoPerson from './components/boxInfoPerson/BoxInfoPerson';
 import InputExpireDate from './components/inputExpireDate/InputExpireDate';
-import IdTamplatesContext from '../../../../context/idTamplates/IdTamplatesContext';
-import NotFountTamplate from '../notFoundTamplate/NotFountTamplate';
+import IdTemplatesContext from '../../../../context/idTemplates/IdTemplatesContext';
+import NotFoundTemplate from '../../../notFoundTemplate/NotFoundTemplate';
 import './backId.css';
 const tamplateOptions = {
     'student':'studentTemplates',
@@ -10,12 +10,12 @@ const tamplateOptions = {
     'collaborator':'collaboratorTemplates',
 }
 const BackId = ({item, position, hideStyles}) => {
-    const { imgReverse } = useContext(IdTamplatesContext)[tamplateOptions[item.typeClient]];
+    const { imgReverse } = useContext(IdTemplatesContext)[tamplateOptions[item.typeClient]];
     return (
         <div className={`box-back-id box-${position}`}>
             {imgReverse 
-                ? <img className='back-id-img' src={`data:image/jpeg;base64,${imgReverse}`} alt='img id' />
-                : <NotFountTamplate />
+                ?   <img className='back-id-img' src={`data:image/jpeg;base64,${imgReverse}`} alt='img id' />
+                :   <NotFoundTemplate />
             }
             {!hideStyles.current && 
                 <BoxInfoPerson item={item} />    

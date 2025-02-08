@@ -1,8 +1,10 @@
 import { useContext } from 'react';
 import UploadTemplates from './components/uploadTemplates/UploadTemplates';
 import BoxUploadTemplate from './components/boxUploadTemplate/BoxUploadTemplate';
-import IdTamplatesContext from '../../../../context/idTamplates/IdTamplatesContext';
+import IdTamplatesContext from '../../../../context/idTemplates/IdTemplatesContext';
 import BtnTryAgain from '../../../btnTryAgain/BtnTryAgain';
+import LoaderMessage from '../loaderMessage/LoaderMessage';
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import './idTemplates.css';
 const IdTemplates = () => {
     const {
@@ -18,10 +20,10 @@ const IdTemplates = () => {
     } = useContext(IdTamplatesContext);
     return (
         <div className='id-tamplates'>
-            {loadingTemplates && <p>Cargando plantillas...</p>}
+            {loadingTemplates && <LoaderMessage value='Cargando plantillas...' />}
             {(!loadingTemplates && errorLoadingTamplates) && 
                 <>
-                    <p className='message-error'>Error al cargar las plantillas.</p>
+                    <ErrorMessage value='No fue posible cargar las plantillas.' />
                     <BtnTryAgain action={getTemplates}/>
                 </>
             }

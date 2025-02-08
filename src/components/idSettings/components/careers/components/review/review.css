@@ -1,8 +1,10 @@
-.title-review {
-    font-size: 1.2rem;
+.box-Not-found-template {
+    width: 32.5rem;
+    height: 20.5rem;
 }
-@media(min-width:600px) {
-    .title-review {
-        font-size: 1.5rem;
-    } 
+
+@media(min-width:800px) {
+    .review {
+        grid-column: 2 / 3;
+    }
 }

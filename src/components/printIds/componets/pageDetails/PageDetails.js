@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import Button from '../../../button/Button';
 import GenerateIdsContext from "../../../../context/generateIds/GenerateIdsContext";
-
-import './pageDetails.css';
 import CentralAlertContext from "../../../../context/centralAlert/CentralAlertContext";
+import './pageDetails.css';
+
 const PageDetails = ({totalIds, pages, currentPage}) => {
     const { openCentralAlert } = useContext(CentralAlertContext);
     const { clear } = useContext(GenerateIdsContext);

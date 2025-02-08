@@ -1,0 +1,9 @@
+.error-message-settins {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+@media(min-width:600px) {
+    .error-message-settins {
+        font-size: 1.7rem;
+    }
+}

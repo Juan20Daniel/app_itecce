@@ -1,6 +1,6 @@
 import './subTitle.css';
 const Subtitle = ({value}) => (
-    <span className="sub-title">{value}</span>
+    <p className="sub-title">{value}</p>
 );
 
 export default Subtitle;

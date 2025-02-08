@@ -1,8 +1,8 @@
 import { useCallback, useContext, useEffect, useState } from "react";
-import IdTamplatesContext from "./IdTamplatesContext";
+import IdTemplatesContext from "./IdTemplatesContext";
 import axiosInstance from "../../data/remote/axios.instance";
 import CentralAlertContext from "../centralAlert/CentralAlertContext";
-const IdTamplatesProvider = ({children}) => {
+const IdTemplatesProvider = ({children}) => {
     const [ loadingTemplates, setLoadingTemplates ] = useState(true);
     const [ errorLoadingTamplates, setErrorLoadingTamplates ] = useState(false);
     const [ studentTemplates, setStudentTemplates ] = useState(null);
@@ -11,6 +11,7 @@ const IdTamplatesProvider = ({children}) => {
     const { openCentralAlert } = useContext(CentralAlertContext);
     const getTemplates = useCallback( async () => {
         try {
+            setLoadingTemplates(true);
             const response = await axiosInstance.get('/templates');
             const { tamplatesBase64 } = response;
             setStudentTemplates(tamplatesBase64[0]);
@@ -28,7 +29,7 @@ const IdTamplatesProvider = ({children}) => {
         getTemplates();
     },[getTemplates]);
     return (
-        <IdTamplatesContext.Provider value={{
+        <IdTemplatesContext.Provider value={{
             studentTemplates,
             teacherTemplates,
             collaboratorTemplates,
@@ -40,8 +41,8 @@ const IdTamplatesProvider = ({children}) => {
             getTemplates
         }}>
             {children}
-        </IdTamplatesContext.Provider>
+        </IdTemplatesContext.Provider>
     );
 }
 
-export default IdTamplatesProvider;
+export default IdTemplatesProvider;

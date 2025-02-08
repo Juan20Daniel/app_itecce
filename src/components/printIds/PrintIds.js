@@ -1,4 +1,4 @@
-import { useContext, useRef, useState, useLayoutEffect, useEffect } from "react";
+import { useContext, useRef, useState, useLayoutEffect } from "react";
 import { getLastItems } from "../../helpers/getLastItems";
 import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
 import BoxDetails from "./componets/boxDetails/BoxDetails";
@@ -15,9 +15,6 @@ const PrintIds = () => {
     const componentRef = useRef();
     const promiseResolveRef = useRef(null);
     const hideStyles = useRef(false);
-    useEffect(() => {
-        console.log(pages);
-    },[pages]);
     useLayoutEffect(() => {
         let resultLastItems = getLastItems(infoIdentityCard, offset);
         let resultLastItemsCopy = [...resultLastItems];

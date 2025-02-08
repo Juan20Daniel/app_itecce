@@ -1,14 +1,21 @@
 import { useContext } from "react";
-import IdTamplatesContext from "../../../../../../context/idTamplates/IdTamplatesContext";
+import IdTamplatesContext from "../../../../../../context/idTemplates/IdTemplatesContext";
+import TemplateReview from "./components/templateReview/TemplateReview";
+import NotFoundTemplate from "../../../../../notFoundTemplate/NotFoundTemplate";
+import SubTitleSetting from "../subTitleSetting/SubTitleSetting";
 import "./review.css";
 
 const Review = () => {
-    const {loadingTemplates, studentTemplates} = useContext(IdTamplatesContext);
-    console.log(loadingTemplates);
+    const {studentTemplates} = useContext(IdTamplatesContext);
     return (
         <div className="review">
-            <p className="title-review">Abreviatura en credencial</p>
-            
+            <SubTitleSetting value='Abreviatura en credencial' />
+            {!studentTemplates.imgFront
+                ?   <div className="box-Not-found-template">
+                        <NotFoundTemplate />
+                    </div>
+                :   <TemplateReview />
+            }
         </div>
     );
 }

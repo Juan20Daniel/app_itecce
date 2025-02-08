@@ -1,0 +1,35 @@
+.input-career .box-input,
+.input-career .box-input input,
+.input-career .box-input .btn-save-change-career {
+    border-radius: 0.5rem;
+}
+.input-career .box-input {
+    width: 100%;
+    max-width: 30rem;
+    height: 3rem;
+    display: grid;
+    grid-template-columns: 1fr 6rem;
+    border: 0.1rem solid var(--black);
+}
+.input-career .box-input input {
+    font-size: 1.2rem;
+    padding: 0 1rem;
+    border: none;
+    outline: none;
+}
+.input-career .box-input .btn-save-change-career {
+    width: calc(100% - 0.2rem);
+    height: calc(100% - 0.2rem);
+    background-color: var(--blue-font);
+    color: var(--white);
+    margin: 0.1rem;
+    font-size: 1rem;
+}
+.input-career .box-input .btn-save-change-career:active {
+    background-color: var(--blue-active);
+}
+@media(min-width: 1220px) {
+    .input-career .box-input input {
+        font-size: 1.5rem;
+    }
+}
