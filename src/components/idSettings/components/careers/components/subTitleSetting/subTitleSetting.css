@@ -1,0 +1,15 @@
+.box-sub-title-setting {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+@media(min-width:400px) {
+    .box-sub-title-setting p {
+        font-size: 1.5rem;
+    }
+}
+
+@media(min-width:600px) {
+    .box-sub-title-setting p {
+        font-size: 1.7rem;
+    }
+}

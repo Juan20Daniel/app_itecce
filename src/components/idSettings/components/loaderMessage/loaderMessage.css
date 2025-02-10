@@ -1,0 +1,9 @@
+.loader-message-settins {
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-light);
+}
+@media(min-width:600px) {
+    .loader-message-settins {
+        font-size: 1.7rem;
+    }
+}

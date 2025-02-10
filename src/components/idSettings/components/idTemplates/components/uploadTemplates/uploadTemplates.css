@@ -1,0 +1,22 @@
+.upload-templates {
+    margin-bottom: 3rem;
+}
+.upload-templates .title {
+    font-size: 1.3rem;
+    padding: 0 0 1rem 0;
+}
+.upload-templates .box-loaders {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+@media(min-width: 600px) {
+    .upload-templates .title {
+        font-size: 1.7rem
+    }
+}
+@media(min-width: 800px) {
+    .upload-templates .box-loaders {
+        flex-direction: row;
+    }
+}

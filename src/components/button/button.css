@@ -9,4 +9,5 @@
     border-radius: 1rem;
     cursor: pointer;
     background: var(--white);
+    outline: none;
 }
