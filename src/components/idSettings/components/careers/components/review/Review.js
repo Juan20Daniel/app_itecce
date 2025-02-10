@@ -9,13 +9,15 @@ const Review = () => {
     const {studentTemplates} = useContext(IdTamplatesContext);
     return (
         <div className="review">
-            <SubTitleSetting value='Abreviatura en credencial' />
-            {!studentTemplates.imgFront
-                ?   <div className="box-Not-found-template">
-                        <NotFoundTemplate />
-                    </div>
-                :   <TemplateReview />
-            }
+            <div className="box-review">
+                <SubTitleSetting value='Abreviatura en credencial' />
+                {!studentTemplates.imgFront
+                    ?   <div className="box-Not-found-template">
+                            <NotFoundTemplate />
+                        </div>
+                    :   <TemplateReview />
+                }
+            </div>
         </div>
     );
 }

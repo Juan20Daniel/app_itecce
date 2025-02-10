@@ -6,7 +6,6 @@ import "./listCareers.css";
 
 const ListCareers = () => {
     const { careers } = useContext(CareersContext);
-    console.log(careers);
     return (
         <div className="list-careers">
             <SubTitleSetting>

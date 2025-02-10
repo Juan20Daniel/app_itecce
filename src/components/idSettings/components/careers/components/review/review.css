@@ -1,3 +1,6 @@
+.review {
+    position: relative;
+}
 .box-Not-found-template {
     width: 32.5rem;
     height: 20.5rem;
@@ -6,5 +9,11 @@
 @media(min-width:800px) {
     .review {
         grid-column: 2 / 3;
+    }
+}
+@media(min-width: 800px) {
+    .box-review {
+        position: sticky;
+        top: 1rem;
     }
 }

@@ -1,7 +1,7 @@
 import Button from '../../../../../../../../../button/Button';
 import './inputCareer.css';
 
-const InputCareer = ({id, value, setState}) => {
+const InputCareer = ({id, value, setState, isLoading}) => {
     return (
         <div className='box-input'>
             <input
@@ -13,6 +13,7 @@ const InputCareer = ({id, value, setState}) => {
             <Button 
                 value='Guardar'
                 type='submit'
+                isLoading={isLoading}
                 btnStyle='btn-save-change-career'
             />
         </div>

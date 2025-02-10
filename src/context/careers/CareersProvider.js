@@ -27,6 +27,14 @@ const CareersProvider = ({children}) => {
     useLayoutEffect(() => {
         getCareers();
     },[]);
+    const updateCareer = (newCareer) => {
+        const result = careers.map(career => {
+            if(career.idCareer === newCareer.id) {
+                return {...career, abridging:newCareer.abridging}
+            } else return career;
+        });
+        setCareers(result);
+    }
     const selectCareer = (id) => {
         setCareers(select(careers, id, 'idCareer'));
     }
@@ -36,7 +44,8 @@ const CareersProvider = ({children}) => {
             error,
             isLoadingCarrers,
             getCareers,
-            selectCareer
+            updateCareer,
+            selectCareer,
         }}>
             {children}
         </CareersContext.Provider>
