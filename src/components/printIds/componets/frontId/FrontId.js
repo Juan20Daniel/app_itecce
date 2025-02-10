@@ -1,28 +1,10 @@
-import { useGetPersonImg } from '../../../../hooks/useGetPersonImg';
 import { useContext } from 'react';
+import { useGetPersonImg } from '../../../../hooks/useGetPersonImg';
 import IdTamplatesContext from '../../../../context/idTemplates/IdTemplatesContext';
 import NotFoundTemplate from '../../../notFoundTemplate/NotFoundTemplate';
+import CareersContext from '../../../../context/careers/CareersContext';
 import './frontId.css';
-const sections = {
-    "BACHILLERATO GENERAL":"NIVEL MEDIO SUPERIOR",
-    "BACHILLERATO TÉCNICO EN SEGURIDAD PÚBLICA":"NIVEL MEDIO SUPERIOR",
-    "BACHILLERATO TÉCNICO EN COMERCIO EXTERIOR":"NIVEL MEDIO SUPERIOR",
-    "LICENCIATURA EN ADMINISTRACIÓN":"LIC. EN ADMINISTRACIÓN",
-    "LICENCIATURA EN ADUANAS Y COMERCIO EXTERIOR":"LIC. EN ADUANAS Y COM. EXT.",
-    "LICENCIATURA EN DISEÑO GRÁFICO":"LICENCIATURA EN DISEÑO GRÁFICO",
-    "LICENCIATURA EN DERECHO":"LICENCIATURA EN DERECHO",
-    "LICENCIATURA EN NUTRICIÓN":"LICENCIATURA EN NUTRICIÓN",
-    "LICENCIATURA EN CONTABILIDAD":"LIC. EN CONTABILIDAD",
-    "LICENCIATURA EN CIENCIAS DE LA EDUCACIÓN":"LIC. EN C. DE LA EDUCACIÓN",
-    "LICENCIATURA EN INFORMÁTICA (UNAM)":"LIC. EN INFORMÁTICA",
-    "LICENCIATURA EN LENGUA INGLESA":"LIC. EN LENGUA INGLESA",
-    "MAESTRÍA EN GESTIÓN OPERACIÓN ADUANERA":"MAESTRÍA EN GESTIÓN OPE ADU",
-    "MAESTRÍA EN DERECHO FAMILIAR":"MAESTRÍA EN DERECHO FAMILIAR",
-    "MAESTRÍA EN FISCAL":"MAESTRÍA EN FISCAL",
-    "MAESTRÍA EN INVESTIGACIÓN EDUCATIVA":"MAESTRÍA EN INVESTIGACIÓN EDU.",
-    "INGENIERIA MECANICA AUTOMOTRIZ":"ING. MECANICA AUTOMOTRIZ",
-    "EGRESADOS":"EGRESADOS"
-}
+
 const tamplateOptions = {
     'student':'studentTemplates',
     'teacher':'teacherTemplates',
@@ -31,6 +13,7 @@ const tamplateOptions = {
 const FrontId = ({item}) => {
     const { image } = useGetPersonImg(item.idClient);
     const { imgFront } = useContext(IdTamplatesContext)[tamplateOptions[item.typeClient]];
+    const { careers } = useContext(CareersContext);
     return (
         <figure className='box-front-id'>
             {imgFront 
@@ -45,7 +28,7 @@ const FrontId = ({item}) => {
             </div>
             {item.typeClient === 'student' &&
                 <div className='isStuding'>
-                    <p>{sections[item.seccion]}</p>
+                    <p>{careers.find(career => career.idCareer===item.idCareer).abridging}</p>
                 </div>
             }
             <div className='mtc'>
