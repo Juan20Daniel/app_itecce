@@ -1,4 +1,4 @@
-import { useGetPersonImg } from '../../../../../../hooks/useGetPersonImg';
+import { useGetPersonImg } from '../../../../../../../../hooks/useGetPersonImg';
 import './boxInfoPerson.css';;
 const BoxInfoPerson = ({item}) => {
     const { image } = useGetPersonImg(item.idClient);

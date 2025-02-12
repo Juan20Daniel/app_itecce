@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import GenerateIdsContext from "../../../../context/generateIds/GenerateIdsContext";
+import GenerateIdsContext from "../../../../../../context/generateIds/GenerateIdsContext";
 import './notFounds.css';
 const NotFounds = () => {
     const { infoIdentityCardNotFound } = useContext(GenerateIdsContext);

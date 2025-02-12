@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import { IconX } from '../../assets/iconX';
-import GenerateIdsContext from '../../context/generateIds/GenerateIdsContext';
+import { IconX } from '../../../../assets/iconX';
+import GenerateIdsContext from '../../../../context/generateIds/GenerateIdsContext';
 import './itemImage.css';
 const ItemImage = ({data}) => {
     const { removeImage } = useContext(GenerateIdsContext);

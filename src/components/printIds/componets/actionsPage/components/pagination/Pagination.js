@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
-import { IconNext } from '../../../../assets/IconNext';
-import Button from '../../../button/Button';
+import { IconNext } from '../../../../../../assets/IconNext';
+import Button from '../../../../../button/Button';
 import './pagination.css';
 const Pagination = ({setCurrentPage, totalPages}) => {
     const [ btnBack, setBtnBack ] = useState(false);

@@ -1,8 +1,8 @@
 import { useContext } from 'react';
-import { useGetPersonImg } from '../../../../hooks/useGetPersonImg';
-import IdTamplatesContext from '../../../../context/idTemplates/IdTemplatesContext';
-import NotFoundTemplate from '../../../notFoundTemplate/NotFoundTemplate';
-import CareersContext from '../../../../context/careers/CareersContext';
+import { useGetPersonImg } from '../../../../../../hooks/useGetPersonImg';
+import IdTamplatesContext from '../../../../../../context/idTemplates/IdTemplatesContext';
+import NotFoundTemplate from '../../../../../notFoundTemplate/NotFoundTemplate';
+import CareersContext from '../../../../../../context/careers/CareersContext';
 import './frontId.css';
 
 const tamplateOptions = {

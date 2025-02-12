@@ -1,6 +1,6 @@
 import { useContext } from 'react';
-import Button from '../../../button/Button';
-import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
+import Button from '../../../../../button/Button';
+import CentralAlertContext from '../../../../../../context/centralAlert/CentralAlertContext';
 import './optionsId.css';
 
 const OptionsId = ({print, currentPage, pages, setPages, showBack, setShowBack}) => {

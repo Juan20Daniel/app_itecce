@@ -1,6 +1,6 @@
 import { useReactToPrint } from "react-to-print";
-import Pagination from "../pagination/Pagination";
-import OptionsId from "../optionsId/OptionsId";
+import Pagination from "./components/pagination/Pagination";
+import OptionsId from "./components/optionsId/OptionsId";
 import './actionsPage.css';
 const ActionsPage = ({ componentRef, promiseResolveRef, showBack, hideStyles, setShowBack, setIsPrinting, currentPage, setCurrentPage, pages, setPages }) => {
     const print = useReactToPrint({
