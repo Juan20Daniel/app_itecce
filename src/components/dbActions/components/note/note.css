@@ -1,0 +1,11 @@
+.note-setting {
+    font-size: 1.3rem;
+    color: var(--dark-neutral-gray);
+    margin-bottom: 3rem;
+    max-width: 67.7rem;
+}
+@media (min-width: 600px) {
+    .note-setting {
+        font-size: 1.7rem;
+    }
+}

@@ -4,6 +4,7 @@ import TitleSection from "../../components/titleSection/TitleSection";
 import SectionNote from "../../components/sectionNote/SectionNote";
 import CountSettings from '../../components/countSettings/CountSettings';
 import IdSettings from '../../components/idSettings/IdSettings';
+import DbActions from '../../components/dbActions/DbActions';
 const Config = () => {
     return (
         <Section>
@@ -14,6 +15,7 @@ const Config = () => {
             />
             <CountSettings />
             <IdSettings />
+            <DbActions />
         </Section>
     );
 }

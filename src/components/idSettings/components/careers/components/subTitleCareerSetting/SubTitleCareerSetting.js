@@ -1,6 +1,6 @@
-import './subTitleSetting.css';
+import './subTitleCareerSetting.css';
 
-const SubTitleSetting = ({value, children}) => (
+const SubTitleCareerSetting = ({value, children}) => (
     <div className='box-sub-title-setting'>
         {!children 
             ? <p>{value}</p>
@@ -9,4 +9,4 @@ const SubTitleSetting = ({value, children}) => (
     </div>
 );
 
-export default SubTitleSetting;
+export default SubTitleCareerSetting;

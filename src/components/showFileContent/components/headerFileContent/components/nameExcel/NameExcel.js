@@ -1,27 +1,18 @@
-import { useState, useEffect, useContext } from 'react';
+import { useContext } from 'react';
 import { IconFile } from '../../../../../../assets/IconFile'
-import { recordText } from '../../../../../../helpers/recordText';
-import './nameExcel.css';
 import AddPersonalContext from '../../../../../../context/addPersonal/AddPersonalContext';
+import './nameExcel.css';
 const NameExcel = () => {
   const { fileContent, nameExcel } = useContext(AddPersonalContext);
-  const [anchoPantalla, setAnchoPantalla] = useState(window.innerWidth);
-  const actualizarAnchoPantalla = () => setAnchoPantalla(window.innerWidth);
-  useEffect(() => {
-    window.addEventListener('resize', actualizarAnchoPantalla);
-    return () => {
-      window.removeEventListener('resize', actualizarAnchoPantalla);
-    };
-  }, []);
   return(
-    <div className='file'>
+    <div className='name-excel'>
       <div className="box-circle">
         <IconFile />
       </div>
-      <div className="info-file">
+      <div className="info-excel">
         <span className='label'>Archivo</span>
-        <span className="name" title={recordText(nameExcel, anchoPantalla).length !== nameExcel.length ? nameExcel : ''}>
-          {recordText(nameExcel, anchoPantalla)}
+        <span className="name">
+          {nameExcel}
         </span>
         <p className='total'>Total de registros: {fileContent.length}</p>
       </div>

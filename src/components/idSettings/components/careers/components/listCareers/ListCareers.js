@@ -1,5 +1,5 @@
 import { useContext, memo } from "react";
-import SubTitleSetting from "../subTitleSetting/SubTitleSetting";
+import SubTitleCareerSetting from "../subTitleCareerSetting/SubTitleCareerSetting";
 import Career from "./components/career/Career";
 import CareersContext from "../../../../../../context/careers/CareersContext";
 import "./listCareers.css";
@@ -8,9 +8,9 @@ const ListCareers = () => {
     const { careers } = useContext(CareersContext);
     return (
         <div className="list-careers">
-            <SubTitleSetting>
+            <SubTitleCareerSetting>
                 <p><span>Nombre de  la carrera  - </span> Abreviatura para credencial</p>
-            </SubTitleSetting>
+            </SubTitleCareerSetting>
             <ul className="box-list-careers">
                 {careers.map(career => (
                     <Career
