@@ -1,7 +1,32 @@
 .actions {
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
     margin-bottom: 4rem;
 }
-.box-db-action-btn {
-    background-color: red;
-    width: fit-content;
+.actions .db-action-btn {
+    background-color: var(--white);
+    box-shadow: 0 0 0.5rem var(--box-shadow);
+    color: var(--black);
+    width: 25rem;
+    height: 4.2rem;
+    padding: 1rem 3rem;
+    font-size: 1.5rem;
+}
+.actions .db-action-btn:active {
+    background-color: var(--gray-low);
+}
+.actions .btn-remove-all {
+    background-color: var(--red);
+    color: var(--white);
+}
+.actions .btn-remove-all:active {
+    background-color: var(--red-active);
+    color: var(--white);
+}
+@media(min-width: 800px) {
+    .actions .db-action-btn {
+       font-size: 1.8rem;
+    }
 }
