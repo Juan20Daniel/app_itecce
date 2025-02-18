@@ -1,8 +1,9 @@
-.file {
+.name-excel {
     display: flex;
     gap: 1.5rem;
+    align-items: center;
 }
-.file .box-circle {
+.name-excel .box-circle {
     box-shadow: 0 0 0.5rem var(--box-shadow);
     border-radius: 50%;
     width: 5.5rem;
@@ -11,23 +12,37 @@
     justify-content: center;
     align-items: center;
 }
-.file .info-file {
+.name-excel .info-excel {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 0.5rem;    
+    gap: 0.5rem;
     user-select: none;
 }
-.file .info-file .name {
+.name-excel .info-excel .name {
     font-size: 1.5rem;
     font-weight: bold;
+    width: 18rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+@media(min-width: 400px) {
+    .name-excel .info-excel .name {
+        width: 27rem;
+    }
+}
+@media(min-width: 600px) {
+    .name-excel .info-excel .name {
+        width: 40rem;
+    }
 }
 @media(min-width: 800px) {
-    .file .info-file .name {
+    .name-excel .info-excel .name {
         font-size: 2rem;
     }
-    .file .info-file .label,
-    .file .info-file .total {
+    .name-excel .info-excel .label,
+    .name-excel .info-excel .total {
         font-size: 1.2rem;
     }
 }

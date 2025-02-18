@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import PageDetails from "../pageDetails/PageDetails";
-import NotFounds from "../notFounds/NotFounds";
+import PageDetails from "./components/pageDetails/PageDetails";
+import NotFounds from "./components/notFounds/NotFounds";
 import GenerateIdsContext from "../../../../context/generateIds/GenerateIdsContext";
 import './boxDetails.css';
 const BoxDetails = ({totalIds, pages, currentPage}) => {

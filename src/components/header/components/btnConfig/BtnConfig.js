@@ -5,10 +5,12 @@ import './btnConfig.css';
 const BtnConfig = () => {
     const { pathname } = useLocation();
     return (
-        <Link to='/config' className={`btn-config ${pathname==='/config' && 'btn-config-active'}`}>
-            <span>Configuración</span>
-            <IconConfig size={18} />
-        </Link>
+        <li>
+            <Link to='/config' className={`btn-config ${pathname==='/config' && 'btn-config-active'}`}>
+                <span>Configuración</span>
+                <IconConfig size={18} />
+            </Link>
+        </li>
     );
 }
 export default BtnConfig;

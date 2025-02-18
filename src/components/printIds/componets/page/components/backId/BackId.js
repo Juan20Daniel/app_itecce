@@ -1,8 +1,8 @@
 import { useContext } from 'react';
 import BoxInfoPerson from './components/boxInfoPerson/BoxInfoPerson';
 import InputExpireDate from './components/inputExpireDate/InputExpireDate';
-import IdTemplatesContext from '../../../../context/idTemplates/IdTemplatesContext';
-import NotFoundTemplate from '../../../notFoundTemplate/NotFoundTemplate';
+import IdTemplatesContext from '../../../../../../context/idTemplates/IdTemplatesContext';
+import NotFoundTemplate from '../../../../../notFoundTemplate/NotFoundTemplate';
 import './backId.css';
 const tamplateOptions = {
     'student':'studentTemplates',

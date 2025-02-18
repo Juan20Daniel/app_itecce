@@ -1,7 +1,7 @@
 import React, {  useEffect } from 'react';
 import { getGeneralExpireDate } from '../../../../helpers/getGeneralExpireDate';
-import FrontId from '../frontId/FrontId';
-import BackId from '../backId/BackId';
+import FrontId from './components/frontId/FrontId';
+import BackId from './components/backId/BackId';
 import './page.css';
 const Page = React.forwardRef((props, ref) => {
     const { promiseResolveRef, isPrinting, pages, currentPage, hideStyles, showBack } = props;

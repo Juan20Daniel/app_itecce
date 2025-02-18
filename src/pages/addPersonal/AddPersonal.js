@@ -16,8 +16,10 @@ const AddPersonal = () => {
                 maxWidth={500}
             />
             <OptionsLoadFiles />
-            <UploadFile />
-            {fileContent.length > 0 && <ShowFileContent />}
+            {!fileContent.length 
+                ?   <UploadFile />
+                :   <ShowFileContent />
+            }
         </Section>
     );
 }

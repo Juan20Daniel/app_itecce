@@ -6,7 +6,7 @@ import Period from './components/period/Period';
 import ValidityPeriodsContext from '../../../../context/validityPeriods/ValidityPeriodsContext';
 import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
 import BtnSetting from '../../../btnSetting/BtnSetting';
-import Subtitle from '../subTitle/SubTitle';
+import SubTitleSetting from "../../../subTitleSetting/SubTitleSetting";
 import BoxForm from '../boxForm/BoxForm';
 import { expretions } from '../../../../helpers/expretions';
 import './validityPeriods.css';
@@ -66,7 +66,7 @@ const ValidityPeriods = () => {
     }
     return (
         <BoxForm submit={handleSubmit}>
-            <Subtitle value='Vigencia general' />
+            <SubTitleSetting value='Vigencia general' />
             <Period 
                 label='Alumnos'
                 value={students}

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import Subtitle from "../subTitle/SubTitle";
+import SubTitleSetting from "../../../subTitleSetting/SubTitleSetting";
 import ListCareers from "./components/listCareers/ListCareers";
 import Review from "./components/review/Review";
 import IdTamplatesContext from "../../../../context/idTemplates/IdTemplatesContext";
@@ -13,7 +13,7 @@ const Careers = () => {
     const { isLoadingCarrers, error, getCareers } = useContext(CareersContext);
     return (
         <div className="careers">
-            <Subtitle value='Carreras' />
+            <SubTitleSetting value='Carreras' />
             <div className="box-careers">
                 {loadingTemplates
                     ?   <div className='box-reposition-rigth'>

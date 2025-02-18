@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import ValidityPeriodsContext from "../../../../../../context/validityPeriods/ValidityPeriodsContext";
+import ValidityPeriodsContext from "../../../../../../../../context/validityPeriods/ValidityPeriodsContext";
 import './inputExpireDate.css';
 const typeClients = {
     'student':'students',

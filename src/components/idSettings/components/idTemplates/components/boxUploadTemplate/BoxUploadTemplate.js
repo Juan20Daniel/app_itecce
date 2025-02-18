@@ -76,7 +76,7 @@ const BoxUploadTemplate = ({name, type, id, imageTamplate, idSectionIdTemp, tamp
                     handleTemplate={handleTemplate}
                 />
             </div>
-            {image && <div className='box-btn-save-tamplate'>
+            {image && <div className='box-btn-remove-tamplate'>
                     <Button
                         value='Eliminar'
                         btnStyle='btn-delete-tamplate'
@@ -84,7 +84,7 @@ const BoxUploadTemplate = ({name, type, id, imageTamplate, idSectionIdTemp, tamp
                         action={confirmRemoveImg}                    
                     />
                 </div>}
-            <span className='name-loader'>{name}</span>
+            <span className='name-tamplate'>{name}</span>
         </div>
     );
 }

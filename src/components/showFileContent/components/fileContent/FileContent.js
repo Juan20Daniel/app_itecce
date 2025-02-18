@@ -1,4 +1,4 @@
-import ResultFile from '../../../resultFile/ResultFile';
+import ResultFile from './components/resultFile/ResultFile';
 import { IconPoint } from '../../../../assets/IconPoint';
 import './fileContent.css';
 import { useContext } from 'react';

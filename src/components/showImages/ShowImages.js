@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState, useCallback, useRef } from "react";
 import { getLastItems } from '../../helpers/getLastItems';
 import Button from "../button/Button";
-import ItemImage from "../itemImage/ItemImage";
+import ItemImage from "./components/itemImage/ItemImage";
 import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
 import './showImages.css';
 const range = 43
