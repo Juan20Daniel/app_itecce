@@ -30,7 +30,11 @@ const CareersProvider = ({children}) => {
     const updateCareer = (newCareer) => {
         const result = careers.map(career => {
             if(career.idCareer === newCareer.id) {
-                return {...career, abridging:newCareer.abridging}
+                return {
+                    ...career, 
+                    abridging:newCareer.abridging,
+                    duration:newCareer.duration
+                }
             } else return career;
         });
         setCareers(result);

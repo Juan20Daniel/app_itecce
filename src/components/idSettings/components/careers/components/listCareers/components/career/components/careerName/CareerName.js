@@ -1,8 +1,8 @@
 import './careerName.css';
-const CareerName = ({id, fullname}) => (
-    <label htmlFor={id} title={fullname}>
-        {fullname}:
-    </label>
+const CareerName = ({fullname}) => (
+    <p className='career-name'>
+        {fullname}
+    </p>
 );
 
 export default CareerName;
