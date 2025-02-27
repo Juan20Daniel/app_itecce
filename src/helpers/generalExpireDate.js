@@ -41,6 +41,7 @@ const calcExpireYear = (actualMonth, expireMonth) => {
 export function generateExpireDate(data, defaultExpireDate) {
     const { groupStudent, duration, idSectionClients } = data;
     if(idSectionClients > 1) return defaultExpireDate;
+    if(!duration) return 'N/A';
     const grade = getGrade(groupStudent.replace(/\s/g, ''));
     if(!calcRemainingTime(parseInt(grade), duration)) return defaultExpireDate;
 

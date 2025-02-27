@@ -3,13 +3,13 @@ import { generateExpireDate } from "../../../../../../../../helpers/generalExpir
 import ValidityPeriodsContext from "../../../../../../../../context/validityPeriods/ValidityPeriodsContext";
 import './inputExpireDate.css';
 const typeClients = {
-    'student':'students',
-    'teacher':'teachers',
-    'collaborator':'collaborators'
+    1:'students',
+    2:'teachers',
+    3:'collaborators'
 }
 const InputExpireDate = ({item, hideStyles}) => {
     const validityPeriods  = useContext(ValidityPeriodsContext);
-    const defaultExporeDate = validityPeriods[typeClients[item.typeClient]];
+    const defaultExporeDate = validityPeriods[typeClients[item.idSectionClients]];
     const [ expireDate, setExpireDate ] = useState('');
     const expireDateEdited = (e) => setExpireDate(e.target.value);
     useLayoutEffect(() => {

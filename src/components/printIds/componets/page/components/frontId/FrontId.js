@@ -6,13 +6,13 @@ import CareersContext from '../../../../../../context/careers/CareersContext';
 import './frontId.css';
 
 const tamplateOptions = {
-    'student':'studentTemplates',
-    'teacher':'teacherTemplates',
-    'collaborator':'collaboratorTemplates',
+    1:'studentTemplates',
+    2:'teacherTemplates',
+    3:'collaboratorTemplates',
 }
 const FrontId = ({item}) => {
     const { image } = useGetPersonImg(item.idClient);
-    const { imgFront } = useContext(IdTamplatesContext)[tamplateOptions[item.typeClient]];
+    const { imgFront } = useContext(IdTamplatesContext)[tamplateOptions[item.idSectionClients]];
     const { careers } = useContext(CareersContext);
     return (
         <figure className='box-front-id'>
@@ -26,7 +26,7 @@ const FrontId = ({item}) => {
                 <p className='name'>{item.firstname}</p>
                 <p className='name'>{item.lastname}</p>
             </div>
-            {item.typeClient === 'student' &&
+            {item.idSectionClients === 1 &&
                 <div className='isStuding'>
                     <p>{careers.find(career => career.idCareer===item.idCareer).abridging}</p>
                 </div>
