@@ -36,13 +36,15 @@ const PrintIds = () => {
         if(items.length >= 5) return items;
         let result = [...items];
         for(let i=0; i<=items.length-1; i++) {
-            result.push({
+            result.push({ 
                 name:items[i].name,
                 firstname:items[i].firstname,
                 lastname:items[i].lastname,
                 groupStudent:items[i].groupStudent,
                 idClient:items[i].idClient,
-                typeClient:items[i].typeClient,
+                idSectionClients:items[i].idSectionClients,
+                duration:items[i].duration,
+                idCareer:items[i].idCareer,
                 typeCard:'reverse',
             });
         }

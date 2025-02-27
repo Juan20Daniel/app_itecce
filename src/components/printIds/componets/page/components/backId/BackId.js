@@ -5,12 +5,12 @@ import IdTemplatesContext from '../../../../../../context/idTemplates/IdTemplate
 import NotFoundTemplate from '../../../../../notFoundTemplate/NotFoundTemplate';
 import './backId.css';
 const tamplateOptions = {
-    'student':'studentTemplates',
-    'teacher':'teacherTemplates',
-    'collaborator':'collaboratorTemplates',
+    1:'studentTemplates',
+    2:'teacherTemplates',
+    3:'collaboratorTemplates',
 }
 const BackId = ({item, position, hideStyles}) => {
-    const { imgReverse } = useContext(IdTemplatesContext)[tamplateOptions[item.typeClient]];
+    const { imgReverse } = useContext(IdTemplatesContext)[tamplateOptions[item.idSectionClients]];
     return (
         <div className={`box-back-id box-${position}`}>
             {imgReverse 
