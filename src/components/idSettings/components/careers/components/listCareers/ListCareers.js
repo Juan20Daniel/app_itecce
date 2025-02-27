@@ -1,16 +1,12 @@
 import { useContext, memo } from "react";
-import SubTitleCareerSetting from "../subTitleCareerSetting/SubTitleCareerSetting";
-import Career from "./components/career/Career";
 import CareersContext from "../../../../../../context/careers/CareersContext";
+import Career from "./components/career/Career";
 import "./listCareers.css";
 
 const ListCareers = () => {
-    const { careers } = useContext(CareersContext);
+    const {careers} = useContext(CareersContext);
     return (
         <div className="list-careers">
-            <SubTitleCareerSetting>
-                <p><span>Nombre de  la carrera  - </span> Abreviatura para credencial</p>
-            </SubTitleCareerSetting>
             <ul className="box-list-careers">
                 {careers.map(career => (
                     <Career
@@ -18,6 +14,7 @@ const ListCareers = () => {
                         id={career.idCareer}
                         fullname={career.fullname}
                         abridging={career.abridging}
+                        duration={career.duration??0}
                         active={career.active}
                     />
                 ))}

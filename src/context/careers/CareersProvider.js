@@ -3,7 +3,7 @@ import axiosInstance from '../../data/remote/axios.instance';
 import CareersContext from "./CareersContext";
 import { select } from "../../helpers/select";
 const CareersProvider = ({children}) => {
-    const [ careers, setCareers ] = useState(null);
+    const [ careers, setCareers ] = useState([]);
     const [ error, setError ] = useState(null);
     const [ isLoadingCarrers, setIsLoadingCarrers ] = useState(true);
     const getCareers = async () => {
@@ -30,10 +30,23 @@ const CareersProvider = ({children}) => {
     const updateCareer = (newCareer) => {
         const result = careers.map(career => {
             if(career.idCareer === newCareer.id) {
-                return {...career, abridging:newCareer.abridging}
+                return {
+                    ...career, 
+                    abridging:newCareer.abridging,
+                    duration:newCareer.duration
+                }
             } else return career;
         });
         setCareers(result);
+    }
+    const removeCareer = (id) => {
+        const result = careers.filter(career => career.idCareer !== id);
+        if(result.length) {
+            console.log('ezce')
+            result[0].active = true;
+        }
+        setCareers(result);
+
     }
     const selectCareer = (id) => {
         setCareers(select(careers, id, 'idCareer'));
@@ -46,6 +59,7 @@ const CareersProvider = ({children}) => {
             getCareers,
             updateCareer,
             selectCareer,
+            removeCareer
         }}>
             {children}
         </CareersContext.Provider>

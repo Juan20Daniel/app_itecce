@@ -2,7 +2,6 @@
     color: var(--dark-neutral-gray);
 }
 @media(min-width:800px) {
-    .box-reposition,
     .list-careers {
         grid-row: 1 / 2;
         grid-column: 1 / 2;

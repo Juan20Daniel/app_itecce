@@ -14,16 +14,16 @@ const Button = ({
         if(action) action();
     }
     return (
-        <button 
+        <button
             className={`btn ${btnStyle}`} 
             onClick={() => handleAction()}
             type={type}
         >
-            {children 
-                ? children
-                : isLoading 
-                    ? <Spin size={sizeSpinner} color={colorSpinner} />
-                    : <span>{value}</span>
+            {children
+                ?   children
+                :   isLoading
+                        ? <Spin size={sizeSpinner} color={colorSpinner} />
+                        : <span>{value}</span>
             }
         </button>
     );

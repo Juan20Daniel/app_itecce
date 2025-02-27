@@ -1,0 +1,41 @@
+.input-career {
+    margin-bottom: 1rem;
+}
+.input-career:nth-child(2) input {
+    width: 100%;
+    max-width: 40rem;
+}
+.input-career:nth-child(2) input,
+.input-career:nth-child(2) span {
+    display: block;
+}
+.input-career:nth-child(3) input {
+    width: 5.5rem;
+}
+.input-career label {
+    margin-right: 0.4rem;
+}
+.input-career label,
+.input-career span,
+.input-career input {
+    font-size: 1.5rem;
+}
+
+.input-career input {
+    outline: none;
+    height: 3rem;
+    border: 0.1rem solid var(--gray);
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+}
+@media(min-width: 350px) {
+    .input-career label {
+        font-size: 2rem;
+    }
+}
+@media(min-width: 520px) {
+    .input-career:nth-child(2) input,
+    .input-career:nth-child(2) span {
+        display: inline;
+    }
+}

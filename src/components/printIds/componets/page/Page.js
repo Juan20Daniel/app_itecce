@@ -1,5 +1,4 @@
 import React, {  useEffect } from 'react';
-import { getGeneralExpireDate } from '../../../../helpers/getGeneralExpireDate';
 import FrontId from './components/frontId/FrontId';
 import BackId from './components/backId/BackId';
 import './page.css';
@@ -21,7 +20,6 @@ const Page = React.forwardRef((props, ref) => {
                         position={(!pages[currentPage]?.reverse && pages[currentPage]?.page.length === 6 ) ? index+1 : index}
                         key={index} 
                         hideStyles={hideStyles}
-                        defaultExpireDate={getGeneralExpireDate()}
                     />
                 }
                 return <FrontId item={infoIdentity} key={index} />
