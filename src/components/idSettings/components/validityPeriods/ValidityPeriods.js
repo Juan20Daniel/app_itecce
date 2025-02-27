@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { IconSave } from '../../../../assets/IconSave';
+import { expretions } from '../../../../helpers/expretions';
 import axiosInstance from '../../../../data/remote/axios.instance';
 import BtnTryAgain from '../../../btnTryAgain/BtnTryAgain';
 import Period from './components/period/Period';
@@ -7,8 +8,8 @@ import ValidityPeriodsContext from '../../../../context/validityPeriods/Validity
 import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
 import BtnSetting from '../../../btnSetting/BtnSetting';
 import SubTitleSetting from "../../../subTitleSetting/SubTitleSetting";
+import ErrorMessage from '../errorMessage/ErrorMessage';
 import BoxForm from '../boxForm/BoxForm';
-import { expretions } from '../../../../helpers/expretions';
 import './validityPeriods.css';
 
 const ValidityPeriods = () => {
@@ -67,37 +68,46 @@ const ValidityPeriods = () => {
     return (
         <BoxForm submit={handleSubmit}>
             <SubTitleSetting value='Vigencia general' />
-            <Period 
-                label='Alumnos'
-                value={students}
-                onChange={setStudents}
-                isLoading={isLoadingPeriods}
-                validPeriods={validPeriods}
-            />
-            <Period
-                label='Profesores'
-                value={teachers}
-                onChange={setTeachers}
-                isLoading={isLoadingPeriods}
-                validPeriods={validPeriods}
-            />
-            <Period
-                label='Colaboradores'
-                value={collaborators}
-                onChange={setCollaborators}
-                isLoading={isLoadingPeriods}
-                validPeriods={validPeriods}
-            />
-            <div className='box-buttons'>
-                <BtnSetting
-                    value='Guardar'
-                    type="submit"
-                    isLoading={isLoading}
-                >
-                    <IconSave size={20} color='#000000' />
-                </BtnSetting>
-                {errorPeriods && <BtnTryAgain action={validityPeriods} />}
-            </div>
+            {errorPeriods 
+                ?   <>
+                        <ErrorMessage value='Error al obtener las vigencias de credenciales.' />   
+                        <BtnTryAgain action={validityPeriods} />
+                    </>
+                :   <>
+                        <Period 
+                            label='Alumnos'
+                            value={students}
+                            onChange={setStudents}
+                            isLoading={isLoadingPeriods}
+                            validPeriods={validPeriods}
+                        />
+                        <Period
+                            label='Profesores'
+                            value={teachers}
+                            onChange={setTeachers}
+                            isLoading={isLoadingPeriods}
+                            validPeriods={validPeriods}
+                        />
+                        <Period
+                            label='Colaboradores'
+                            value={collaborators}
+                            onChange={setCollaborators}
+                            isLoading={isLoadingPeriods}
+                            validPeriods={validPeriods}
+                        />
+                        {!isLoadingPeriods && 
+                            <div className='box-buttons'>
+                                <BtnSetting
+                                    value='Guardar'
+                                    type="submit"
+                                    isLoading={isLoading}
+                                >
+                                    <IconSave size={20} color='#000000' />
+                                </BtnSetting>
+                            </div>
+                        }
+                    </>
+            }
         </BoxForm>
     );
 }

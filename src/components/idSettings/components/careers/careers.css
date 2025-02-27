@@ -2,17 +2,65 @@
     width: 100%;
     margin-bottom: 4rem;
 }
-.box-careers {
+.careers .box-subtitle-career {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+}
+.careers .box-subtitle-career p {
+    margin-bottom: 0;
+}
+.careers .box-subtitle-career .cant-careers {
+    font-size: 1.8rem;
+}
+.careers .box-subtitle-career .box-refresh-careers {
+    max-width: 20rem;
+    margin-left: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.careers .box-subtitle-career .box-refresh-careers span {
+    font-size: 1.2rem;
+}
+.careers .box-subtitle-career .box-refresh-careers .btn-refresh-careers {
+    width: 7rem;
+    height: 3rem;
+    background-color: var(--gray-low);
+}
+.careers .box-subtitle-career .box-refresh-careers .btn-refresh-careers:active {
+    background-color: var(--gray-active);
+}
+.careers .not-found-careers {
+    font-size: 1.3rem;
+    font-weight: 300;
+}
+.careers .not-found-careers .note {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+.careers .box-careers {
     width: 100%;
     display: grid;
     gap: 1rem;
 }
 @media(min-width:800px) {
-    .box-careers {
+    .careers .box-careers {
         max-width: 130.4rem;
         display: grid;
         grid-template-columns: 1fr 32.5rem;
         justify-content: flex-start;
         gap: 3rem;
+    }
+    .careers .box-subtitle-career .box-refresh-careers span {
+        font-size: 1.3rem;
+    }
+    .careers .not-found-careers {
+        font-size: 1.7rem;
+    }
+    .careers .not-found-careers .note {
+        font-size: 1.4rem;
+        margin-top: 0.5rem;
     }
 }

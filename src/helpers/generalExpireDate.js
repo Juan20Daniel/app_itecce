@@ -2,12 +2,6 @@ const periods = [["ENE","FEB","MAR","ABR"],["MAY","JUN","JUL","AGO"],["SEP","OCT
 const months = periods.flat();
 const date = new Date();
 
-export const getGeneralExpireDate = () => {
-    const date = new Date();
-    const nextYear = date.getFullYear()+1;
-    const getExpireYear = nextYear.toString().replace(/^[0-9]{2}/,'');
-    return months[date.getMonth()]+'/'+getExpireYear;
-}
 const getMonth = () => {
     return months[date.getMonth()];
 }

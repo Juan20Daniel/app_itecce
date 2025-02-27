@@ -15,10 +15,11 @@ import './career.css';
 
 const Career = ({id, fullname, abridging, duration, active}) => {
     const [ isUpdating, setIsUpdating ] = useState(false);
-    const { updateCareer } = useContext(CareersContext);
+    const [ isRemoving, setIsRemoving ] = useState(false);
+    const { updateCareer, removeCareer } = useContext(CareersContext);
     const { careerAbridging, careerDuration, setCareerAbridging, setCareerDuration } = useContext(CareerSelectedContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
-    const fetch = async (data) => {
+    const fetchUpdate = async (data) => {
         try {
             setIsUpdating(true);
             const response = await axiosInstance.patch('/careers',data);
@@ -47,15 +48,27 @@ const Career = ({id, fullname, abridging, duration, active}) => {
                 abridging:careerAbridging.toUpperCase(),
                 duration:parseInt(careerDuration)
             }
-            const result = await fetch(data);
+            const result = await fetchUpdate(data);
             updateCareer(result);
             openCentralAlert('Actualización de abreviatura','La abreviatura se actualizo de forma correcta.','success');
         } catch (error) {
             openCentralAlert('Actualización de carrera',error.message, 'error');
         }
     }
-    const removeCareer = () => {
-        console.log('Eliminando carrera...');
+    const fetchRemove = async () => {
+        try {
+            setIsRemoving(true);
+            await axiosInstance.delete(`/careers/${id}`);
+            removeCareer(id);
+            openCentralAlert('Eliminación de carrera','La carrera se eliminó de forma correcta.','success');
+        } catch (error) {
+            openCentralAlert('Eliminación de carrera',error.message,'error');
+        } finally {
+            setIsRemoving(false);
+        }
+    }
+    const confirmDeletion = () => {
+        openCentralAlert('Eliminar carrera','¿Se borraran los estudiantes relacionados a esta carrera, seguro que quieres continuar?','confirm',fetchRemove);
     }
     return (
         <li className='career'>
@@ -87,7 +100,8 @@ const Career = ({id, fullname, abridging, duration, active}) => {
                         <Button
                             btnStyle='career-btn career-btn-remove'
                             type='button'
-                            action={removeCareer}
+                            action={confirmDeletion}
+                            isLoading={isRemoving}
                         >
                             <span>Borrar</span>
                             <IconRemove />
