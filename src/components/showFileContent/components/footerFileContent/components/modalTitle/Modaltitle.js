@@ -1,7 +1,9 @@
 import { useContext } from 'react';
-import './modalTitle.css';
 import AddPersonalContext from '../../../../../../context/addPersonal/AddPersonalContext';
-const ModalTitle = ({uploadedFile}) => {
+import FileContenContext from '../../../../../../context/fileContent/FileContenContext';
+import './modalTitle.css';
+const ModalTitle = () => {
+    const { uploadedFile } = useContext(FileContenContext);
     const { nameExcel } = useContext(AddPersonalContext);
     return (
         <p className={`modal-title ${uploadedFile && 'enlargeText'}`}>

@@ -32,7 +32,6 @@ const Careers = () => {
                     </Button>
                 </div>
             </div>
-
             {isLoadingCarrers 
                 ?   <LoaderMessage value='Cargando carreras...' />
                 :   error 

@@ -7,6 +7,7 @@ import LoadImageActions from "../../components/loadImagesActions/LoadImageAction
 import ShowImages from "../../components/showImages/ShowImages";
 import PrintIds from "../../components/printIds/PrintIds";
 import GenerateIdsContext from "../../context/generateIds/GenerateIdsContext";
+import CredentialsProvider from "../../context/credentialsSheet/CredentialsSheetProvider";
 const GenerateIds = () => {
     const { images, printIds } = useContext(GenerateIdsContext);
     return (
@@ -26,7 +27,11 @@ const GenerateIds = () => {
                     <LoadImageActions />
                 </>
             }
-            {printIds && <PrintIds />}
+            {printIds &&
+                <CredentialsProvider>
+                    <PrintIds />
+                </CredentialsProvider>
+            }
         </Section>
     );
 }

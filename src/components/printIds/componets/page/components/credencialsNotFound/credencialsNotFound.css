@@ -1,0 +1,9 @@
+.credentials-not-found {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.credentials-not-found p {
+    font-size: 2rem;
+}

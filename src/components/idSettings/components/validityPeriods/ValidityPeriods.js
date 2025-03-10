@@ -9,7 +9,7 @@ import CentralAlertContext from '../../../../context/centralAlert/CentralAlertCo
 import BtnSetting from '../../../btnSetting/BtnSetting';
 import SubTitleSetting from "../../../subTitleSetting/SubTitleSetting";
 import ErrorMessage from '../errorMessage/ErrorMessage';
-import BoxForm from '../boxForm/BoxForm';
+import BoxFormSettings from '../boxFormSettings/BoxFormSettings';
 import './validityPeriods.css';
 
 const ValidityPeriods = () => {
@@ -66,7 +66,7 @@ const ValidityPeriods = () => {
         updateValidityPeriods(newValidityPeriods);
     }
     return (
-        <BoxForm submit={handleSubmit}>
+        <BoxFormSettings submit={handleSubmit}>
             <SubTitleSetting value='Vigencia general' />
             {errorPeriods 
                 ?   <>
@@ -108,7 +108,7 @@ const ValidityPeriods = () => {
                         }
                     </>
             }
-        </BoxForm>
+        </BoxFormSettings>
     );
 }
 

@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import axiosInstance from '../../data/remote/axios.instance';
 import GenerateIdsContext from "./GenerateIdsContext";
 import CentralAlertContext from "../centralAlert/CentralAlertContext";
@@ -14,9 +14,6 @@ const GenerateIdsProvider = ({children}) => {
     const getUrl = (id) => {
         return axiosInstance.get(`/schoolIdentityCard/info-identity-card/${id}`);
     }
-    useEffect(() => {
-        console.log(infoIdentityCard)
-    },[infoIdentityCard])
     const saveImages = async () => {
         try {
             setIsLoading(true);
