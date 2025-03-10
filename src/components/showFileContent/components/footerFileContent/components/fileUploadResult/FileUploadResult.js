@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { downloadExcel } from "../../../../../../helpers/excel";
+import FileContenContext from "../../../../../../context/fileContent/FileContenContext";
 import Button from '../../../../../button/Button';
 import './fileUploadResult.css';
 
-const FileUploadResult = ({inserts, updates, faileds, section}) => {
+const FileUploadResult = () => {
+    const {inserts, updates, faileds, section} = useContext(FileContenContext);
     const action = () => downloadExcel(section,faileds,'No registrados');
     return (
         <div className='file-upload-result'>

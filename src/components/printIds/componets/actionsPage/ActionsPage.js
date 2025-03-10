@@ -1,8 +1,21 @@
+import { useContext } from "react";
 import { useReactToPrint } from "react-to-print";
 import Pagination from "./components/pagination/Pagination";
 import OptionsId from "./components/optionsId/OptionsId";
+import PrintContext from "../../../../context/print/PrintContext";
 import './actionsPage.css';
-const ActionsPage = ({ componentRef, promiseResolveRef, showBack, hideStyles, setShowBack, setIsPrinting, currentPage, setCurrentPage, pages, setPages }) => {
+import CredentialsSheetContext from "../../../../context/credentialsSheet/CredentialsSheetContext";
+const ActionsPage = () => {
+    const { componentRef, promiseResolveRef, hideStyles } = useContext(PrintContext);
+    const { 
+        pages, 
+        currentPage, 
+        showBack, 
+        setIsPrinting, 
+        setShowBack, 
+        setCurrentPage,
+        setPages
+    } = useContext(CredentialsSheetContext);
     const print = useReactToPrint({
         content:() => componentRef.current,
         onBeforeGetContent:() => {

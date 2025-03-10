@@ -3,11 +3,13 @@ import Button from '../../../../../button/Button';
 import GenerateIdsContext from "../../../../../../context/generateIds/GenerateIdsContext";
 import CentralAlertContext from "../../../../../../context/centralAlert/CentralAlertContext";
 import ItemDetail from "./components/itemDetail/ItemDetail";
+import CredentialsSheetContext from "../../../../../../context/credentialsSheet/CredentialsSheetContext";
 import './pageDetails.css';
 
-const PageDetails = ({totalIds, pages, currentPage}) => {
+const PageDetails = () => {
     const { openCentralAlert } = useContext(CentralAlertContext);
-    const { clear } = useContext(GenerateIdsContext);
+    const { pages, currentPage } = useContext(CredentialsSheetContext);
+    const { infoIdentityCard, clear } = useContext(GenerateIdsContext);
     const exit = () => {
         openCentralAlert('Salir del generador', '¿Seguro que quieres salir del generador de credenciales?', 'confirm', clear)
     }
@@ -17,7 +19,7 @@ const PageDetails = ({totalIds, pages, currentPage}) => {
             <ul className="list-items-details">
                 <ItemDetail 
                     label='Cantidad de credenciales'
-                    value={totalIds}
+                    value={infoIdentityCard.length}
                 />
                 <ItemDetail 
                     label='Páginas'

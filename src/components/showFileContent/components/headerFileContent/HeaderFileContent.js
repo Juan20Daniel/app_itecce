@@ -1,10 +1,10 @@
 import NameExcel from './components/nameExcel/NameExcel';
 import BtnCloseModal from './components/btnCloseModal/BtnCloseModal';
 import './headerFileContent.css';
-const HeaderFileContent = ({close}) => (
+const HeaderFileContent = () => (
     <div className='header'>
         <NameExcel />
-        <BtnCloseModal action={close} />
+        <BtnCloseModal />
     </div>
 );
 export default HeaderFileContent;

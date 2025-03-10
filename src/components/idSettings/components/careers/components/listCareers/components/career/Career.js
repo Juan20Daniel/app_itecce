@@ -16,9 +16,16 @@ import './career.css';
 const Career = ({id, fullname, abridging, duration, active}) => {
     const [ isUpdating, setIsUpdating ] = useState(false);
     const [ isRemoving, setIsRemoving ] = useState(false);
-    const { updateCareer, removeCareer } = useContext(CareersContext);
-    const { careerAbridging, careerDuration, setCareerAbridging, setCareerDuration } = useContext(CareerSelectedContext);
+    const { updateCareer, removeCareer, selectCareer } = useContext(CareersContext);
     const { openCentralAlert } = useContext(CentralAlertContext);
+    const { 
+        careerAbridging, 
+        careerDuration,
+        lastAbridging,
+        lastDuration,
+        setCareerAbridging, 
+        setCareerDuration 
+    } = useContext(CareerSelectedContext);
     const fetchUpdate = async (data) => {
         try {
             setIsUpdating(true);
@@ -30,11 +37,29 @@ const Career = ({id, fullname, abridging, duration, active}) => {
             setIsUpdating(false);
         }
     }
+    const selectOther = () => {
+        selectCareer(id);
+    }
+    const discardChanges = () => {
+        if(careerAbridging !== lastAbridging || careerDuration !== lastDuration) {
+            return openCentralAlert(
+                'Actualización de carrera',
+                'No se guardarán los cambios hechos en la carrera seleccionada actualmente, ¿seguro que quieres salir?',
+                'confirm',
+                selectOther
+            );
+        }
+        selectOther();
+    }
     const handleSudmit = async (e) => {
         try {
             e.preventDefault();
             if(abridging === careerAbridging && duration === careerDuration) {
-                throw new Error('No se encontraron cambios para actualizar');
+                return openCentralAlert(
+                    'Actualización de carrera',
+                    'No se encontraron cambios para actualizar',
+                    'success'
+                );
             }
             const transformAbridging = careerAbridging.toUpperCase();
             if(!expretions.careerAbridging.test(transformAbridging)) {
@@ -75,7 +100,10 @@ const Career = ({id, fullname, abridging, duration, active}) => {
             <form onSubmit={handleSudmit} className='box-career'>
                 <div className='box-top'>
                     <CareerName fullname={fullname}/>
-                    <BtnSelecter idInput={id} active={active} />
+                    <BtnSelecter 
+                        active={active}
+                        action={discardChanges}
+                    />
                 </div>
                 <InputGroupCareer
                     id='abridging'

@@ -1,8 +1,11 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import FileContenContext from '../../../../../../context/fileContent/FileContenContext';
 import Button from '../../../../../button/Button';
 import './actions.css';
 
-const Actions = ({uploadedFile, close, loadFile, isLoading}) => {
+const Actions = () => {
+    const {uploadedFile, close, loadFile, isLoading} = useContext(FileContenContext);
     const navigate = useNavigate();
     const goToGenerate = () => {
         close();
