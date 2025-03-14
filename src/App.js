@@ -8,7 +8,7 @@ import AppGuard from './guards/AppGuard';
 const LoginGuard = lazy(() => import('./guards/LoginGuard'));
 const AddPersonal = lazy(() => import('./pages/addPersonal/AddPersonal'));
 const GenerateIds = lazy(() => import('./pages/generateIds/GenerateIds'));
-const Login = lazy(() => import('./pages/login/Login'));
+const Auth = lazy(() => import('./pages/auth/Auth'));
 const Config = lazy(() => import('./pages/config/Config'));
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
               </Route>
             </Route>
             <Route path='/login' element={<LoginGuard />}>
-              <Route index element={<Login />} />
+              <Route index element={<Auth />} />
             </Route>
           </Route>
           <Route path='*' element={<Navigate to='/' replace={true}/>} />

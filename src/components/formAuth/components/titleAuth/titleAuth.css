@@ -1,0 +1,12 @@
+.title-auth {
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 1.8rem;
+}
+@media(min-width: 1000px) and (min-height: 800px) {
+    .title-auth {
+        text-align: center;
+        margin: 2rem 0;
+        font-size: 2.5rem;
+    }
+}

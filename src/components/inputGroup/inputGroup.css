@@ -1,13 +1,13 @@
 .input-group-setting-pass,
 .input-group-setting,
-.input-group-login {
+.input-group-auth {
     position: relative;
     margin-bottom: 1rem;
     background: var(--white);
     display: grid;
     border: 0.1rem solid var(--white);
 }
-.input-group-login {
+.input-group-auth {
     border-radius: 5rem;
     height: 4.5rem;
     width: 27.5rem;
@@ -28,24 +28,24 @@
 .input-group-setting label,
 .input-group-setting-pass svg,
 .input-group-setting svg,
-.input-group-login svg {
+.input-group-auth svg {
     align-self: center;
 }
 .input-group-setting-pass svg,
 .input-group-setting svg,
-.input-group-login svg {
+.input-group-auth svg {
     align-self: center;
     justify-self: center;
 }
 .input-group-setting-pass input,
 .input-group-setting input,
-.input-group-login input {
+.input-group-auth input {
     display: block;
     border: none;
     outline: none;
     height: 100%;
 }
-.input-group-login input {
+.input-group-auth input {
     height: 90%;
     border-radius: 0 5rem 5rem 0;
     align-self: center;
@@ -55,7 +55,7 @@
     color: var(--red);
 }
 .input-group-setting-pass .btn-show-pass,
-.input-group-login .btn-show-pass {
+.input-group-auth .btn-show-pass {
     border: none;
     border-radius: 0 5rem 5rem 0;
     width: 100%;
@@ -67,7 +67,7 @@
     cursor: pointer;
     outline: none;
 }
-.input-group-login .btn-show-pass svg {
+.input-group-auth .btn-show-pass svg {
     height: 1.8rem;
 }
 .input-group-setting {
@@ -99,7 +99,7 @@
     }
 }
 @media(min-width: 1000px) and (min-height: 800px) {
-    .input-group-login {
+    .input-group-auth {
         width: 35rem;
         height: 4.5rem;
         margin-bottom: 2.5rem;

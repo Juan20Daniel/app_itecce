@@ -1,0 +1,16 @@
+.box-btn-auth {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.btn-auth {
+    width: 18rem;
+    height: 4.5rem;
+    border-radius: 5rem;
+    border: none;
+    background-color: var(--blue-font);
+    color: var(--white);
+}
+.btn-auth:active {
+    background-color: var(--blue-active);
+}

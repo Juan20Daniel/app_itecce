@@ -1,0 +1,15 @@
+.box-btn-redirect {
+    height: 1.8rem;
+    display: flex;
+    justify-content: center;
+}
+.btn-redirect-auth {
+    width: fit-content;
+    margin-top: 3rem;
+    font-size: 1.5rem;
+    color: var(--dark-neutral-gray);
+    text-decoration: underline;
+}
+.btn-redirect-auth:active {
+    color: var(--gray);
+}
