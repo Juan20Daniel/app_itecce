@@ -1,16 +1,15 @@
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { check } from '../../../../helpers/check';
-import { saveTokenLocalStorage } from '../../../../data/local/localStorage';
-import { IconUser } from '../../../../assets/IconUser';
-import { IconPassword } from '../../../../assets/IconPassword';
-import axiosInstance from '../../../../data/remote/axios.instance';
-import ChangeFormAuthContext from '../../../../context/changeFormAuth/ChangeFormAuthContext';
-import CentralAlertContext from '../../../../context/centralAlert/CentralAlertContext';
-import InputGroup from '../../../inputGroup/InputGroup';
-import TitleAuth from '../titleAuth/TitleAuth';
-import BtnRedirect from '../btnRedirect/BtnRedirect';
-import BtnAuth from '../btnAuth/BtnAuth';
+import { check } from '../../helpers/check';
+import { saveTokenLocalStorage } from '../../data/local/localStorage';
+import { IconUser } from '../../assets/IconUser';
+import { IconPassword } from '../../assets/IconPassword';
+import axiosInstance from '../../data/remote/axios.instance';
+import CentralAlertContext from '../../context/centralAlert/CentralAlertContext';
+import InputGroup from '../../components/inputGroup/InputGroup';
+import TitleAuth from '../../components/titleAuth/TitleAuth';
+import BtnRedirect from '../../components/btnRedirect/BtnRedirect';
+import BtnAuth from '../../components/btnAuth/BtnAuth';
 
 const errorMesages = {
     user:'El usuario no es válido, favor de verificar que solo contenga entre 6 y 20 números o letras solamente.',
@@ -23,7 +22,6 @@ const Login = () => {
     const [ password, setPassword ] = useState({ value:'', name:'password', state:'normal'});
     const [ isLoading, setIsLoading ] = useState(false);
     const { openCentralAlert } = useContext(CentralAlertContext);
-    const { setShowLogin } = useContext(ChangeFormAuthContext);
     const navigate = useNavigate();
     const login = async e => {
         e.preventDefault();
@@ -95,7 +93,7 @@ const Login = () => {
                 type='password'
                 setValue={setPassword}
             >
-                <IconPassword 
+                <IconPassword
                     size={20} 
                     color={password.state === 'normal' 
                         ? '#979797' 
@@ -103,13 +101,13 @@ const Login = () => {
                     }
                 />
             </InputGroup>
-            <BtnAuth 
+            <BtnAuth
                 value='ENTRAR'
                 isLoading={isLoading}
             />
             <BtnRedirect
                 value='Recuperar contraseña'
-                action={() => setShowLogin(false)}
+                action={() => console.log('redirect')}
             />
         </form>
     );

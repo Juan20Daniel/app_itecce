@@ -1,15 +1,16 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import MainLayout from './layouts/mainLayout/MainLayout';
-import AppLayout from './layouts/AppLayout/AppLayout';
 import CentralAlertProvider from './context/centralAlert/CentralAlertProvider';
+import MainLayout from './layouts/mainLayout/MainLayout';
 import Loader from './components/loader/Loader';
 import AppGuard from './guards/AppGuard';
-const LoginGuard = lazy(() => import('./guards/LoginGuard'));
+const AuthGuard = lazy(() => import('./guards/AuthGuard'));
 const AddPersonal = lazy(() => import('./pages/addPersonal/AddPersonal'));
+const AppLayout = lazy(() => import('./layouts/AppLayout/AppLayout'));
 const GenerateIds = lazy(() => import('./pages/generateIds/GenerateIds'));
-const Auth = lazy(() => import('./pages/auth/Auth'));
 const Config = lazy(() => import('./pages/config/Config'));
+const AuthLayout = lazy(() => import('./layouts/authLayout/AuthLayout'));
+const Login = lazy(() => import('./pages/login/Login'));
 
 function App() {
   return (
@@ -24,8 +25,10 @@ function App() {
                 <Route path='/config' element={<Config />} />
               </Route>
             </Route>
-            <Route path='/login' element={<LoginGuard />}>
-              <Route index element={<Auth />} />
+            <Route path='/auth' element={<AuthGuard />}>
+              <Route path='/auth' element={<AuthLayout />}>
+                <Route index element={<Login />} />
+              </Route>
             </Route>
           </Route>
           <Route path='*' element={<Navigate to='/' replace={true}/>} />

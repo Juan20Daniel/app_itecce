@@ -6,7 +6,7 @@ const Auth = () => {
         <>
             {token 
                 ? <Outlet />
-                : <Navigate to='/login' />
+                : <Navigate to='/auth' />
             }
         </>
     )

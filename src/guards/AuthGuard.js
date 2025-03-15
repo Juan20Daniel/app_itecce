@@ -1,6 +1,6 @@
 import { Outlet, Navigate } from "react-router-dom";
 import { getTokenLocalStorage } from '../data/local/localStorage';
-const LoginGuard = () => {
+const AuthGuard = () => {
     const token = getTokenLocalStorage();
     return (
         <>
@@ -12,4 +12,4 @@ const LoginGuard = () => {
     )
 }
 
-export default LoginGuard;
+export default AuthGuard;

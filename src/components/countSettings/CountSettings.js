@@ -82,7 +82,7 @@ const CountSettings = () => {
     }
     const closeSession = () => {
         removeTokenLocalStorage();
-        navigate('/login', {replace:true});
+        navigate('/auth', {replace:true});
     }
     return (
         <SettingBox title='Cuenta'>
