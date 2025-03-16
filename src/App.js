@@ -11,6 +11,8 @@ const GenerateIds = lazy(() => import('./pages/generateIds/GenerateIds'));
 const Config = lazy(() => import('./pages/config/Config'));
 const AuthLayout = lazy(() => import('./layouts/authLayout/AuthLayout'));
 const Login = lazy(() => import('./pages/login/Login'));
+const RecoverPass = lazy(() => import('./pages/recoverPass/RecoverPass'));
+const UpdatePass = lazy(() => import('./pages/updatePass/UpdatePass'));
 
 function App() {
   return (
@@ -21,13 +23,15 @@ function App() {
             <Route path='/' element={<AppGuard />}>
               <Route path='/' element={<AppLayout />} >
                 <Route index element={<GenerateIds />} />
-                <Route path="/add-personal" element={<AddPersonal />} />
+                <Route path='/add-personal' element={<AddPersonal />} />
                 <Route path='/config' element={<Config />} />
               </Route>
             </Route>
             <Route path='/auth' element={<AuthGuard />}>
               <Route path='/auth' element={<AuthLayout />}>
                 <Route index element={<Login />} />
+                <Route path='recover-pass' element={<RecoverPass />} />
+                <Route path='update-pass' element={<UpdatePass />} />
               </Route>
             </Route>
           </Route>

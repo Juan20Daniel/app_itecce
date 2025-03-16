@@ -107,7 +107,7 @@ const Login = () => {
             />
             <BtnRedirect
                 value='Recuperar contraseña'
-                action={() => console.log('redirect')}
+                action={() => navigate('/auth/recover-pass')}
             />
         </form>
     );
