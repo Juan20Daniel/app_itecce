@@ -23,8 +23,8 @@ function App() {
             <Route path='/' element={<AppGuard />}>
               <Route path='/' element={<AppLayout />} >
                 <Route index element={<GenerateIds />} />
-                <Route path='/add-personal' element={<AddPersonal />} />
-                <Route path='/config' element={<Config />} />
+                <Route path='add-personal' element={<AddPersonal />} />
+                <Route path='config' element={<Config />} />
               </Route>
             </Route>
             <Route path='/auth' element={<AuthGuard />}>

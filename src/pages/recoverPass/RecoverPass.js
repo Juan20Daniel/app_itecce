@@ -7,7 +7,7 @@ import InputGroup from '../../components/inputGroup/InputGroup';
 import TitleAuth from '../../components/titleAuth/TitleAuth';
 import BtnRedirect from '../../components/btnRedirect/BtnRedirect';
 import BtnAuth from '../../components/btnAuth/BtnAuth';
-
+import axiosInstance from '../../data/remote/axios.instance';
 const RecoverPass = () => {
     const [ email, setEmail ] = useState({ value:'', name:'email', state:'normal'});
     const [ isLoading, setIsLoading ] = useState(false);
@@ -25,7 +25,9 @@ const RecoverPass = () => {
             e.preventDefault();
             setIsLoading(true);
             validateEmail();
-            console.log('recuperar contraseña');
+            await axiosInstance.get(`/auth/recover-pass?email=${email.value}`);
+            openCentralAlert('Recuperar contraseña', `Se envió un correo de recuperación a ${email.value}`, 'success');
+            setEmail({ value:'', name:'email', state:'normal'});
         } catch (error) {
             console.log(error);
             openCentralAlert('Recuperar contraseña', error.message, 'error');
