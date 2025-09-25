@@ -8,16 +8,23 @@
 .upload-file .box-note {
     margin: 1rem 0 1.5rem;
 }
-.upload-file .note {
+.upload-file .note,
+.upload-file .file-structure {
     font-size: 1.2rem;
     min-width: 27rem;
     padding-bottom: 0.5rem
 }
+ .upload-file .file-structure {
+        font-size: 2rem;
+    }
 @media(min-width:600px) {
     .upload-file h2 {
         font-size: 2.5rem;
     }
     .upload-file .note {
         font-size: 1.4rem;
+    }
+    .upload-file .file-structure {
+        font-size: 3rem;
     }
 }

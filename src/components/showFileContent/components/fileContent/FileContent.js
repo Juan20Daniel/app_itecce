@@ -1,5 +1,5 @@
-import { IconPoint } from '../../../../assets/IconPoint';
 import { useContext } from 'react';
+import { IconPoint } from '../../../../assets/IconPoint';
 import ResultFile from './components/resultFile/ResultFile';
 import AddPersonalContext from '../../../../context/addPersonal/AddPersonalContext';
 import FileContenContext from '../../../../context/fileContent/FileContenContext';
@@ -15,9 +15,9 @@ const ItemsFileContent = () => {
                 <span>{fileContent.length}</span>
             </div>
             {data.map((item, index) => (
-                <ResultFile 
-                    key={index} 
-                    data={item} 
+                <ResultFile
+                    key={index}
+                    data={item}
                 />
             ))}
             <div ref={elementRef}/>

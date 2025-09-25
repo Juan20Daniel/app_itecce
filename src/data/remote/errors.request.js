@@ -15,5 +15,6 @@ export const handleErrors = (error) => {
         return {message:'No fue posible realizar la operación'};
     }
     const {message} = error.response.data;
+    console.log(error.response)
     return {message};
 }
