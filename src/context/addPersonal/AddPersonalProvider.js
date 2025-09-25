@@ -33,6 +33,16 @@ const AddPersonalProvider = ({ children }) => {
                 'error'
             );
         }
+        const verifyCorrectIdPlateLength = data.every(item => item['Matrícula'].toString().length === 7);
+        if(!verifyCorrectIdPlateLength) {
+            setInputValue('');
+            return openCentralAlert(
+                'Error al cargar el archivo',
+                `Verifica que las matrículas tengan 7 números.`,
+                'error'
+            );
+        }
+        
         setFileContent(addTempAvatar(data));
     }
     const handleFile = async e => {

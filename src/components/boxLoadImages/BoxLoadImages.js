@@ -13,8 +13,8 @@ const BoxLoadImages = () => {
         const validImgs = files.map(file => expretions.imgClient.test(file.name) ? true : false);
         if(validImgs.includes(false)) {
             openCentralAlert(
-                'Error al cargar las imagenes',
-                'El nombre o la extención de una de las imagenes no es correcto, verifica que sean 7 números y extención JPG.',
+                'Error al cargar las imágenes',
+                'El nombre o la extensión de una de las imágenes no es correcto, verifica que el nombre tenga 7 números y extención JPG o PNG.',
                 'error'
             );
             return setInputValue('');

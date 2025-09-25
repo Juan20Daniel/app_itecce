@@ -4,7 +4,7 @@ const ResultFile = ({ data }) => {
         <li className='excel-loaded-item'>
             <div className="excel-loaded-item__box-avatar">
                 <div className="item__box-avatar--circle" style={{ background:data.avatar }}>
-                    <span>{data['Nombre'][0]}</span>
+                    <span>{data['Nombre'] ? data['Nombre'][0] : 'N/A'}</span>
                 </div>
             </div>
             <div className="excel-loaded-item__info">
