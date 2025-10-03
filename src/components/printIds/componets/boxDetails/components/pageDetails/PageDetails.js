@@ -10,6 +10,7 @@ const PageDetails = () => {
     const { openCentralAlert } = useContext(CentralAlertContext);
     const { pages, currentPage } = useContext(CredentialsSheetContext);
     const { infoIdentityCard, clear } = useContext(GenerateIdsContext);
+    console.log(pages);
     const exit = () => {
         openCentralAlert('Salir del generador', '¿Seguro que quieres salir del generador de credenciales?', 'confirm', clear)
     }

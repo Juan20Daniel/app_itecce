@@ -11,18 +11,25 @@
     overflow: auto;
     margin-bottom: 1rem;
 }
+
 @media(min-width: 1250px) {
     .generate-ids {
-        grid-template-columns: 35rem 1fr;
+        grid-template-columns: 35rem 756px;
         grid-template-rows: 1fr auto;
     }
     .box-pages {
         justify-self: start;
     }
 }
-@media(min-width: 1400px) {
+@media(min-width: 1650px) {
     .generate-ids {
-        grid-template-columns: 44rem 1fr;
+        grid-template-columns: 35rem 756px 1fr;
+        grid-template-rows: 1fr auto;
+    }
+}
+@media(min-width: 1800px) {
+    .generate-ids {
+        grid-template-columns: 44rem 756px 1fr;
         grid-template-rows: 1fr auto;
         gap: 5rem;
     }
