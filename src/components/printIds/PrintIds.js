@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import Remiders from "./componets/remiders/Remiders";
 import BoxDetails from "./componets/boxDetails/BoxDetails";
 import Page from "./componets/page/Page";
 import ActionsPage from "./componets/actionsPage/ActionsPage";
@@ -10,6 +11,7 @@ const PrintIds = () => {
     return (
         <PrintProvider>
             <div className="generate-ids">
+                <Remiders />
                 <BoxDetails />
                 <div className="box-pages">
                     <Page />
